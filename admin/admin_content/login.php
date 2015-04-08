@@ -1,40 +1,86 @@
+<?php
+//error_reporting(0);
+require_once("../../ClassesController/DBDirect.php");
+require_once("../../ClassesController/AdminManager.php");
+
+$db = new DBConnecting();
+$adm = new AdminController();
+
+if(isset($_POST['btnSignIn']))
+{
+    $msg = $adm->adminLogin();
+}
+
+if(isset($_GET['r']) && base64_decode($_GET['r'])=="failed")
+{
+    //$msg = "<div class=\"errortitle\">Invalid Username or Password</div>";
+
+    $msg =  '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh snap!</strong> Invalid Username or Password.
+             </div>';
+}
+elseif(isset($_GET['r']) && base64_decode($_GET['r'])=="empty")
+{
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please enter your login details!
+             </div>';
+}elseif(isset($_GET['r']) && base64_decode($_GET['r'])=="logout")
+{
+    $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Gracias!
+                                  </h4>
+                                  <p>You have successfully logged out, see you soon!</p>
+                              </div>';
+}elseif(isset($_GET['r']) && base64_decode($_GET['r'])=="uas")
+{
+    $msg ='<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh Oh!</strong> Unauthorized access, Please log in
+             </div>';
+}elseif(isset($_GET['r']) && base64_decode($_GET['r'])=="inactiveuser")
+{
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh Oh!</strong> Your account has not been activated.
+             </div>';
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="shortcut icon" href="img/favicon.png">
-
-    <title>Security Login Page for vHotelManager</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-</head>
+<?php
+require_once('head.php');
+?>
 
   <body class="login-body">
 
     <div class="container">
 
-      <form class="form-signin" action="index.html">
+      <form class="form-signin" id="login-form" method="post" action="" autocomplete="off">
+          <!--class="form-signin"-->
         <h2 class="form-signin-heading">sign in now</h2>
         <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="User ID" autofocus>
-            <input type="password" class="form-control" placeholder="Password">
+            <?php if(isset($msg)) echo $msg; ?>
+            <input type="text" class="form-control"  name="userId" placeholder="Username" autofocus>
+            <input type="password" class="form-control"  name="password" placeholder="Password">
             <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me
                 <span class="pull-right">
@@ -42,18 +88,19 @@
 
                 </span>
             </label>
-            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
-            <p>or you can sign in via social network</p>
-            <div class="login-social-link">
-                <a href="index.html" class="facebook">
-                    <i class="fa fa-facebook"></i>
-                    Facebook
-                </a>
-                <a href="index.html" class="twitter">
-                    <i class="fa fa-twitter"></i>
-                    Twitter
-                </a>
-            </div>
+            <!-- <button class="btn btn-lg btn-login btn-block" name="btnSignIn" type="submit">Sign in</button>-->
+             <input class="btn btn-lg btn-login btn-block" name="btnSignIn" type="submit" value="Sign in" />
+            <!-- <p>or you can sign in via social network</p>
+             <div class="login-social-link">
+                 <a href="index.html" class="facebook">
+                     <i class="fa fa-facebook"></i>
+                     Facebook
+                 </a>
+                 <a href="index.html" class="twitter">
+                     <i class="fa fa-twitter"></i>
+                     Twitter
+                 </a>
+             </div>-->
             <div class="registration">
                 Don't have an account yet?
                 <a class="" href="registration.html">

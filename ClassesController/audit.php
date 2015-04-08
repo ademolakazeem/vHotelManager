@@ -14,14 +14,18 @@ class AuditLog
 	function audit_log($operation)
 	{
 		$cmpname = php_uname('n');
-		$adminid = $_SESSION['userfullname']; 
-		$ip = $this ->getRealIpAddr();
+		$userFullname = $_SESSION['userfullname'];
+        $user_id = $_SESSION['user_id'];
+        $ip = $this ->getRealIpAddr();
 		$host = $_SERVER['HTTP_HOST'];
 		$referer = $_SERVER['HTTP_REFERER'];
-		$sql = "INSERT INTO audit_log (comp_name, user_id, datelog, ip_addr, operation, host, referer) VALUES ('$cmpname', '$adminid',
-				'".time()."', '$ip', '$operation', '$host', '$referer')"; 
-		$query = mysql_query($sql) or die(mysql_error());
-	}
+        //echo "I got here before saving into audit";
+		$sql = "INSERT INTO audit_log_tbl (comp_name,userFullname, user_id, datelog, ip_addr, operation, host, referer) VALUES ('$cmpname','$userFullname','$user_id',
+				'".date("Y-m-d H:i:s")."', '$ip', '$operation', '$host', '$referer')";
+        //time();
+        $conn=$this->db->getConnection();
+        $query=mysqli_query($conn,$sql);
+       	}
 	
 	function getRealIpAddr()
 	{

@@ -32,7 +32,6 @@ class Utilities
 		}
 		
 	}
-	
 	public function updateStafflinks()
 	{
 		$label = $_POST['link'];
@@ -53,26 +52,6 @@ class Utilities
 			return '<font color="#FF0000" size="-2">Operation not successful, Please try again</font>';
 		}
 	}
-	
-	public function addStudlinks()
-	{
-		$label = $_POST['link'];
-		$url = $_POST['url'];
-		$image = $_POST['path'];
-		
-		$qry = "INSERT INTO admin_menu (id,label,link_url,image) VALUES('','$label','$url','$image')";
-		
-		if($this->db->executeQuery($qry))
-		{
-			$this->audit->audit_log("Admin ".$_SESSION['username']." added a new student link - ".$label);
-			return '<font color="#006600" size="-2">You have successfully added a link!</font>';
-		}
-		else
-		{
-			return '<font color="#FF0000" size="-2">Operation not successful, Please try again</font>';
-		}
-	}
-	
 	public function updateStudlinks()
 	{
 		$label = $_POST['link'];
@@ -93,45 +72,6 @@ class Utilities
 			return '<font color="#FF0000" size="-2">Operation not successful, Please try again</font>';
 		}	
 	}
-	
-	public function addSubjects()
-	{
-		$subject = $_POST['subject'];
-		$shortfrm = $_POST['shortfrm'];
-		
-		$qry = "INSERT INTO tblsubject (id,shortform,subject) VALUES('','$shortfrm','$subject')";
-		
-		if($this->db->executeQuery($qry))
-		{
-			$this->audit->audit_log("Admin ".$_SESSION['username']." added a new subject - ".$subject);
-			return '<font color="#006600" size="-2">You have successfully added a subject!</font>';
-		}
-		else
-		{
-			return '<font color="#FF0000" size="-2">Operation not successful, Please try again</font>';
-		}
-	}
-	
-	public function updateSubjects()
-	{
-		$subject = $_POST['subject'];
-		$shortfrm = $_POST['shortfrm'];
-		
-		$subid = $_POST['subid'];
-		
-		$qry = "UPDATE tblsubject SET subject ='$subject',shortform='$shortfrm' WHERE id = $subid";
-		
-		if($this->db->executeQuery($qry))
-		{
-			$this->audit->audit_log("Admin ".$_SESSION['username']." updated subject - ".$subject);
-			return '<font color="#006600" size="-2">Subject update was successful</font>';
-		}
-		else
-		{
-			return '<font color="#FF0000" size="-2">Operation not successful, Please try again</font>';
-		}	
-	}
-	
 	public function getCurrentSession()
 	{
 		$qry = "SELECT * FROM tblsession WHERE sessionstatus = 1";
@@ -169,12 +109,12 @@ class Utilities
 		return $sch = $schData['shortform'];
 	}
 	
-	public function getStaffName($staffid)
+	public function getUserName($userId)
 	{
-		$qry = "SELECT * FROM tblstaff WHERE staff_id = '$staffid'";
+		$qry = "SELECT * FROM users_tbl WHERE user_id = '$userId'";
 		$rs = $this->db->fetchData($qry);
-		
-		return $rs['title']." ".$rs['lname']." ".$rs['fname'];
+        return $rs['fname'];
+		//return $rs['title']." ".$rs['lname']." ".$rs['fname'];
 	}
 	
 	public function getStudentClass($studid)
@@ -199,14 +139,28 @@ class Utilities
 	
 public function upload($path,$ownerid)
 {
-	
+	//echo "Owner Id".$ownerid;
 	if(empty($_FILES["file"]["name"]))
 	{
-		return '<font color="#FF0000" size="-2">Select file to be uploaded</font>';
+        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Nah!</strong> Select file to be uploaded!
+             </div>';
+        return $msg;
+
 	}
 	if($_FILES["file"]["size"] > 900000)
 	{
-		return '<font color="#FF0000" size="-2">The passport is more than the allowed upload size of 900kb</font>';
+        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> The photograph is more than the allowed upload size of 900kb!
+             </div>';
+        return $msg;
+
 	}
 	
 	$filename = $ownerid."_".$_FILES["file"]["name"];
@@ -215,30 +169,51 @@ public function upload($path,$ownerid)
 	||($_FILES["file"]["type"] == "image/jpg")||($_FILES["file"]["type"] == "image/gif")||($_FILES["file"]["type"] == "image/pjpeg")))
 	{
 				
-					$target_path = "../imgs/uploads/".$path."/".$filename;
-					$realpath = "imgs/uploads/".$path."/".$filename;
+					$target_path = "../../imgs/uploads/".$path."/".$filename;
+					$realpath = "../../imgs/uploads/".$path."/".$filename;
 					//check if the user has a pix before remove it and replace
 					
 						if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_path))
 						{
 							
 							$pcqy ="";
-							if($path=="staff")
+							if($path=="user")
 							{
 								//$_SESSION['staimage']=$realpath;
-								$pcqy = "SELECT * FROM tblstaff WHERE staff_id='$ownerid'";
+								$pcqy = "SELECT * FROM users_tbl WHERE user_id='$ownerid'";
 								$pxdata = $this->db->fetchData($pcqy);
-								$imagename="../".$pxdata['imagepath'];
-								
-								if(!empty($imagename)) unlink($imagename);
-								
-								mysql_query("UPDATE tblstaff SET imagepath='$realpath' WHERE staff_id='$ownerid'");
-								
-								$this->audit->audit_log("Admin ".$_SESSION['username']." uploaded picture for staff ".$this->getStaffName($ownerid));
-								return '<font color="#006600" size="-2">Picture uploaded successfully!</font>';
-								
+								$imagename=$pxdata['imagepath'];
+                                //"../../".
+
+                                chmod($imagename, 0777);
+								if(!empty($imagename))unlink($imagename);
+
+                                $qry="UPDATE  users_tbl SET imagepath='$realpath' WHERE user_id='$ownerid'";
+								//mysql_query("UPDATE users_tbl SET imagepath='$realpath' WHERE user_id='$ownerid'");
+
+                                $res = $this->db->executeQuery($qry);
+                                if($res)
+                                {    $_SESSION['image']=$realpath;
+                                    $this->audit->audit_log("User ".$_SESSION['username']." uploaded picture for user ".$this->getUserName($ownerid));
+
+                                    $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Gracias!
+                                  </h4>
+                                  <p>Picture uploaded successfully!</p>
+                              </div>';
+                                    return $msg;
+
+
+                                }
+
 							}
-							else
+							/*
+							 * else
 							{	
 								//$_SESSION['image']=$realpath;
 								$pcqy = "SELECT * FROM tblstudent WHERE stud_id='$ownerid'";
@@ -253,14 +228,30 @@ public function upload($path,$ownerid)
 									$this->audit->audit_log($this->getStudentName($ownerid)." uploaded a picture ".$filename);
 									return '<font color="#006600" size="-2">Picture uploaded successfully!</font>';
 								
-							}
+							}*/
 						}
-						else return '<font color="#FF0000" size="-2">File Upload failed, please try again!</font>';
+						else
+                            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> File Upload failed, please try again!
+             </div>';
+        return $msg;
+
       	
 		}//end if checking file type
 		else
 		{
-			return '<font color="#FF0000" size="-2">Invalid File selected!</font>';
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Invalid File selected!
+             </div>';
+            return $msg;
+
+
 		}
 }//end upload
 	

@@ -5,30 +5,23 @@ class DBConnecting
 
 	private $db;
 	private $conn;
+    private $mysqli;
 	
     function  __construct() 
 	{	
-		//establishing connection in the construction
-		//database info, or u can ur db conn file
-		//offline
-		
-		/* 
 		$hostname_login = "localhost"; //host
-		$database_login = "verdeinf_verdesis"; //dbname
-		$username_login = "root";//db username
-		$password_login = ""; //db password 
-		*/
-		
-		$hostname_login = "localhost"; //host
-		$database_login = "verdeinf_verdesis"; //dbname
-		$username_login = "verdeinf_sisuser";//db username
-		$password_login = "VerdeISCool123"; //db password
-		
+		$database_login = "vhotelmgrdb"; //dbname
+		$username_login = "v_hotel_mgr_user";//db username
+		$password_login = "vHotelIsCool123;"; //db password
 
-		
-		$this->conn = mysql_connect($hostname_login, $username_login, $password_login) or trigger_error(mysql_error(),E_USER_ERROR);
-		$this->db = mysql_select_db($database_login, $this->conn);
-		
+
+        //$connection = mysqli_connect('localhost', 'username', 'password', 'database');
+        //$this->db =mysqli_select_db($database_login, $this->conn);
+        //$mysqli = new mysqli("localhost", "my_user", "my_password", "world");
+		$this->conn = mysqli_connect($hostname_login, $username_login, $password_login, $database_login) or trigger_error(mysql_error(),E_USER_ERROR);
+        //$this->db =mysqli_select_db($this->conn, $database_login);
+        //$this->mysqli = new mysqli($hostname_login, $username_login, $password_login, $database_login);
+
 		
     }
 	
@@ -36,24 +29,31 @@ class DBConnecting
 	{
 		return $this->conn;
 	}
+
 	
 	public function executeQuery($qry)
 	{
-		$res=mysql_query($qry) or die(mysql_error());
+		$res=mysqli_query($this->conn,$qry) or die(mysql_error());
 		return $res;
+
 	}
 		
 	public function fetchData($qry)
 	{
-		$res=mysql_query($qry) or die(mysql_error());
-		$rs=mysql_fetch_assoc($res);
+		$res=mysqli_query($this->conn, $qry) or die(mysql_error());
+		$rs=mysqli_fetch_assoc($res);
 		return $rs;
 	}
 		
 	function getNumOfRows($qry)
 	{
-		$res=mysql_query($qry) or die(mysql_error());
-		$num=mysql_num_rows($res);
+
+        //$res=$this->mysqli->query($qry) or die(mysql_error());
+        $res=mysqli_query($this->conn, $qry);
+        //_query($qry) or die(mysql_error());
+		$num=mysqli_num_rows($res);
+        //$num=mysql_num_rows($this->mysqli->query($qry) or die(mysql_error()));
+
 		return $num;
 	}
 	
