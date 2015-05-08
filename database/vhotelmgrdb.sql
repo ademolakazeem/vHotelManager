@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2015 at 12:53 PM
+-- Generation Time: May 08, 2015 at 07:52 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -45,7 +45,36 @@ INSERT INTO `audit_log_tbl` (`comp_name`, `userFullname`, `user_id`, `datelog`, 
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 01:29:19', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/index.php'),
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 01:29:41', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php?r=bG9nb3V0'),
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 11:41:31', '::1', 'User admin added a new room feature - 1', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php'),
-('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 11:49:07', '::1', 'User admin added a new room feature - 2', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php');
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 11:49:07', '::1', 'User admin added a new room feature - 2', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 16:03:40', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php?r=dWFz'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 16:04:17', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/index.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 16:04:18', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php?r=bG9nb3V0'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 16:08:30', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/index.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-06 16:08:32', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php?r=bG9nb3V0'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-07 16:14:15', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/profile.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-07 16:14:24', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php?r=dWFz'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-09 15:28:44', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=1'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-09 15:28:58', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 00:00:05', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=1'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 00:16:39', '::1', 'User admin added a new room feature - 200', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 00:17:27', '::1', 'User admin added a new room feature - 300', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 00:18:32', '::1', 'User admin added a new room feature - 201', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 01:24:33', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=200'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 01:45:36', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=300'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:02:26', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=300'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:05:10', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=201'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:15:45', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=201'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:25:09', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=300'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:30:20', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=201'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-12 02:35:21', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/room_reservation.php?room_number=200'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-14 19:18:39', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-16 19:25:52', '::1', 'User admin added a new hall information - Johnson Jack Banquet Hall', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/hall_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-16 19:33:27', '::1', 'User admin added a new hall information - Airforce Modern Hall', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/hall_setup.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-17 22:09:13', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-17 22:27:05', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/hall_reservation.php?hall_number=2'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-01 08:59:03', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-03 12:46:55', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-03 13:00:19', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/profile-edit.php');
 
 -- --------------------------------------------------------
 
@@ -59,7 +88,9 @@ CREATE TABLE IF NOT EXISTS `bar_setup_tbl` (
   `item_name` varchar(200) NOT NULL,
   `item_rate` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `quantity_available` int(11) NOT NULL,
   `threshold` int(11) NOT NULL,
+  `created_by` varchar(200) NOT NULL,
   `created_date` timestamp NOT NULL,
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -68,9 +99,9 @@ CREATE TABLE IF NOT EXISTS `bar_setup_tbl` (
 -- Dumping data for table `bar_setup_tbl`
 --
 
-INSERT INTO `bar_setup_tbl` (`item_id`, `item_type`, `item_name`, `item_rate`, `quantity`, `threshold`, `created_date`) VALUES
-(1, 'Drink', 'Champagne ', '30', 40, 30, '2015-03-26 16:06:15'),
-(2, 'Drink', '33 Lergar Beer', '20,000', 500, 400, '2015-03-26 17:41:31');
+INSERT INTO `bar_setup_tbl` (`item_id`, `item_type`, `item_name`, `item_rate`, `quantity`, `quantity_available`, `threshold`, `created_by`, `created_date`) VALUES
+(1, 'Drink', 'Champagne ', '10000', 100, 100, 30, '', '2015-04-19 10:13:43'),
+(2, 'Drink', '33 Lergar Beer', '370', 1000, 1000, 400, '', '2015-04-19 10:12:49');
 
 -- --------------------------------------------------------
 
@@ -81,12 +112,21 @@ INSERT INTO `bar_setup_tbl` (`item_id`, `item_type`, `item_name`, `item_rate`, `
 CREATE TABLE IF NOT EXISTS `bar_tbl` (
   `bar_item_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `quantity_bought` int(11) NOT NULL,
+  `quantity_sold` int(11) NOT NULL,
   `rate` double NOT NULL,
   `total` double NOT NULL,
   `attended_to_by` varchar(255) NOT NULL,
-  `date_bought` datetime NOT NULL
+  `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bar_tbl`
+--
+
+INSERT INTO `bar_tbl` (`bar_item_id`, `item_id`, `quantity_sold`, `rate`, `total`, `attended_to_by`, `date_created`, `date_updated`) VALUES
+(0, 2, 200, 370, 74, 'admin', '2015-05-01 23:05:23', '2015-05-01 22:05:23'),
+(0, 2, 10, 370, 3, 'admin', '2015-05-02 11:52:05', '2015-05-02 10:52:05');
 
 -- --------------------------------------------------------
 
@@ -108,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `hall_feature_tbl` (
 --
 
 INSERT INTO `hall_feature_tbl` (`hall_feature_id`, `feature_name`, `feature_description`, `feature_rate`, `created_date`) VALUES
-(1, 'Ambassador Bolaji Raimi Hall', '&lt;p&gt;Full tight Air Conditional&lt;/p&gt;\r\n\r\n&lt;p&gt;50,000 capacity&lt;/p&gt;\r\n\r\n&lt;p&gt;70,000 Seats&lt;/p&gt;\r\n\r\n&lt;p&gt;Pulpit among others&lt;/p&gt;\r\n', '40', '2015-03-24 18:36:38'),
-(2, 'Chief Fortune Diamond Hall', '&lt;p&gt;100,000 Seats&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Full tight Air conditional&lt;/p&gt;\r\n\r\n&lt;p&gt;Flat Screen Televisions and projector&lt;/p&gt;\r\n', '100,000', '2015-03-24 18:47:17');
+(1, 'Standard Hall', 'Full tight Air Conditional', '40', '2015-04-16 15:09:33'),
+(2, 'Diamond Banquet Hall', 'Full tight Air conditional, Flat Screen Televisions and projector\r\n', '100,000', '2015-04-16 15:15:31');
 
 -- --------------------------------------------------------
 
@@ -124,13 +164,26 @@ CREATE TABLE IF NOT EXISTS `hall_reservation_tbl` (
   `client_email` varchar(50) NOT NULL,
   `client_phone` varchar(50) NOT NULL,
   `purpose_of_use` varchar(255) NOT NULL,
-  `date_time_start` datetime NOT NULL,
-  `date_time_end` datetime NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `startTime` time NOT NULL,
+  `no_of_days` int(11) NOT NULL,
+  `end_date` varchar(255) NOT NULL,
+  `end_time` time NOT NULL,
   `feature_id` int(11) NOT NULL,
-  `rate` double NOT NULL,
-  `hall_id` int(11) NOT NULL,
+  `rate` varchar(255) NOT NULL,
+  `hall_number` int(11) NOT NULL,
+  `price_paid` varchar(255) NOT NULL,
+  `attended_to_by` varchar(255) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`hall_reservation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `hall_reservation_tbl`
+--
+
+INSERT INTO `hall_reservation_tbl` (`hall_reservation_id`, `client_name`, `client_address`, `client_email`, `client_phone`, `purpose_of_use`, `start_date`, `startTime`, `no_of_days`, `end_date`, `end_time`, `feature_id`, `rate`, `hall_number`, `price_paid`, `attended_to_by`, `created_date`) VALUES
+(1, 'Jackson Cooper', 'Union Building, No 389, Broad street, Lagos                                                                                                ', 'Jackson.Cooper@cooperfield.com', '08077112345', ' Wedding                                                                                       ', '17-04-2015', '22:23:30', 3, '20-04-2015', '22:23:30', 0, '100000', 2, '300,000.00', 'admin', '2015-04-17 22:27:05');
 
 -- --------------------------------------------------------
 
@@ -139,22 +192,23 @@ CREATE TABLE IF NOT EXISTS `hall_reservation_tbl` (
 --
 
 CREATE TABLE IF NOT EXISTS `hall_setup_tbl` (
-  `hall_id` int(11) NOT NULL AUTO_INCREMENT,
-  `hall_number` varchar(200) NOT NULL,
+  `hall_number` int(11) NOT NULL AUTO_INCREMENT,
   `hall_name` varchar(255) NOT NULL,
   `hall_feature_id` int(11) NOT NULL,
   `availability` varchar(50) NOT NULL,
   `created_date` timestamp NOT NULL,
-  PRIMARY KEY (`hall_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`hall_number`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `hall_setup_tbl`
 --
 
-INSERT INTO `hall_setup_tbl` (`hall_id`, `hall_number`, `hall_name`, `hall_feature_id`, `availability`, `created_date`) VALUES
-(1, '', 'dsafadf', 1, 'Available', '2015-03-25 13:52:11'),
-(2, '', 'Victor Olatunde Presidential Hall', 2, 'Available', '2015-03-25 13:54:58');
+INSERT INTO `hall_setup_tbl` (`hall_number`, `hall_name`, `hall_feature_id`, `availability`, `created_date`) VALUES
+(1, 'Yatch Hall', 1, 'Available', '2015-04-16 18:26:36'),
+(2, 'Victor Olatunde Presidential Hall', 2, 'Available', '2015-04-16 18:27:00'),
+(3, 'Johnson Jack Banquet Hall', 2, 'Available', '2015-04-16 19:25:52'),
+(4, 'Airforce Modern Hall', 2, 'Available', '2015-04-16 19:33:27');
 
 -- --------------------------------------------------------
 
@@ -190,6 +244,7 @@ CREATE TABLE IF NOT EXISTS `room_feature_tbl` (
   `feature_name` varchar(200) NOT NULL,
   `full_description` text NOT NULL,
   `rate` varchar(255) NOT NULL,
+  `discounts` varchar(250) NOT NULL,
   `created_date` datetime NOT NULL,
   PRIMARY KEY (`feature_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
@@ -198,11 +253,11 @@ CREATE TABLE IF NOT EXISTS `room_feature_tbl` (
 -- Dumping data for table `room_feature_tbl`
 --
 
-INSERT INTO `room_feature_tbl` (`feature_id`, `feature_name`, `full_description`, `rate`, `created_date`) VALUES
-(6, 'Double Standard', 'Double bed for family, standard bathroom and toilet, flatscreen TV, etc', '0', '2015-03-21 13:39:47'),
-(7, 'Standard Room', 'family bed, reading table, flatscreentv,etc', '0', '2015-03-21 13:41:19'),
-(14, 'Deluxe Standard', '&lt;ul&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Family bed&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Reading table&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Flatscreentv&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Fridge&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Hot bath&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Automatic A/C&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '20,000', '2015-03-23 14:29:06'),
-(15, 'Royal Suite', '&lt;p&gt;Family bed&lt;/p&gt;\r\n\r\n&lt;p&gt;Hot Bath&lt;/p&gt;\r\n\r\n&lt;p&gt;Flatscreen Television&lt;/p&gt;\r\n\r\n&lt;p&gt;Mirror&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n', '30,000', '2015-03-23 23:04:54');
+INSERT INTO `room_feature_tbl` (`feature_id`, `feature_name`, `full_description`, `rate`, `discounts`, `created_date`) VALUES
+(6, 'Double Standard', 'Double bed for family, standard bathroom and toilet, flatscreen TV, etc', '5500', '', '2015-03-21 13:39:47'),
+(7, 'Standard Room', 'family bed, reading table, flatscreentv,etc', '0', '', '2015-03-21 13:41:19'),
+(14, 'Deluxe Standard', '&lt;ul&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Family bed&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Reading table&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Flatscreentv&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Fridge&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Hot bath&lt;/li&gt;\r\n	&lt;li style=&quot;line-height: 20.7999992370605px;&quot;&gt;Automatic A/C&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '20,000', '', '2015-03-23 14:29:06'),
+(15, 'Royal Suite', '&lt;p&gt;Family bed&lt;/p&gt;\r\n\r\n&lt;p&gt;Hot Bath&lt;/p&gt;\r\n\r\n&lt;p&gt;Flatscreen Television&lt;/p&gt;\r\n\r\n&lt;p&gt;Mirror&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n', '30,000', '', '2015-03-23 23:04:54');
 
 -- --------------------------------------------------------
 
@@ -214,21 +269,35 @@ CREATE TABLE IF NOT EXISTS `room_reservation_tbl` (
   `room_reservation_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_name` varchar(200) NOT NULL,
   `client_address` varchar(100) NOT NULL,
-  `client_phone` int(11) NOT NULL,
-  `client_email` int(11) NOT NULL,
+  `client_phone` varchar(255) NOT NULL,
+  `client_email` varchar(150) NOT NULL,
   `room_number` int(11) NOT NULL,
-  `rate` double NOT NULL,
+  `rate` varchar(255) NOT NULL,
   `number_of_people` int(11) NOT NULL,
-  `date_time_in` datetime NOT NULL,
+  `date_in` varchar(100) NOT NULL,
+  `time_in` time NOT NULL,
   `number_of_days` int(11) NOT NULL,
-  `date_time_out` datetime NOT NULL,
+  `date_out` varchar(100) NOT NULL,
+  `time_out` time NOT NULL DEFAULT '12:00:00',
   `visit_purpose` text NOT NULL,
   `car_reg_number` varchar(50) NOT NULL,
   `car_model` varchar(50) NOT NULL,
   `car_color` varchar(50) NOT NULL,
-  `attended_to_by` int(11) NOT NULL,
+  `price_paid` varchar(255) NOT NULL,
+  `attended_to_by` varchar(250) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`room_reservation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `room_reservation_tbl`
+--
+
+INSERT INTO `room_reservation_tbl` (`room_reservation_id`, `client_name`, `client_address`, `client_phone`, `client_email`, `room_number`, `rate`, `number_of_people`, `date_in`, `time_in`, `number_of_days`, `date_out`, `time_out`, `visit_purpose`, `car_reg_number`, `car_model`, `car_color`, `price_paid`, `attended_to_by`, `date_created`) VALUES
+(6, 'safawef', '          asfasdfas                                                                                 ', '2147483647', 'a.b@cem.now', 201, '30', 2, '0000-00-00', '02:15:00', 5, '0000-00-00', '12:00:00', 'Business', 'asdfasdfa', 'asfdasfdsa', 'asdfasfassadf', '150', 'admin', '2015-04-12 02:15:45'),
+(7, 'Johnson Ashaolu', 'No 29, Ashaolu Avenue, Festac Town, Ede                                                             ', '08037659910', 'johnson.ashaolu@vhotelmanager.com', 300, '20000', 2, '12-04-2015', '02:23:15', 2, '14-04-2015', '12:00:00', 'Other', 'BH-343-FTD', 'Range Rover Sport 2015 model', 'White', '40', 'admin', '2015-04-12 02:25:09'),
+(8, 'Olumide Ajayi', 'No 480, Akinyele Villa, Esa Oke, Ilesha, Osun State Nigeria                                         ', '08077154410', 'oajayi@vhotelmanager.com', 201, '30000', 2, '12-04-2015', '02:28:15', 3, '15-04-2015', '12:00:00', 'Business', 'IS-343-FOB', 'E-Class Benz 2017', 'Green', '90000', 'admin', '2015-04-12 02:30:20'),
+(9, 'Adewole Kayode', 'No 89, Jackson street, London         ', '08077112345', 'adewole.kayode@vhotelmanager.com', 200, '20,000.00', 3, '12-04-2015', '02:33:30', 5, '17-04-2015', '12:00:00', 'Business', 'YQ-343-KAZ', 'Volkswagen Bettle', 'Pink', '100,000.00', 'admin', '2015-04-12 02:35:21');
 
 -- --------------------------------------------------------
 
@@ -246,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `room_setup_tbl` (
   `created_date` timestamp NOT NULL,
   PRIMARY KEY (`room_id`),
   UNIQUE KEY `room_number` (`room_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `room_setup_tbl`
@@ -254,7 +323,10 @@ CREATE TABLE IF NOT EXISTS `room_setup_tbl` (
 
 INSERT INTO `room_setup_tbl` (`room_id`, `room_number`, `room_name`, `floor_number`, `feature_id`, `availability`, `created_date`) VALUES
 (1, 1, 'Room 1', '', 6, 'Available', '2015-04-06 10:50:13'),
-(3, 2, 'Room 2', '', 7, 'Available', '2015-04-06 10:50:18');
+(3, 2, 'Room 2', '', 7, 'Available', '2015-04-06 10:50:18'),
+(4, 200, 'Room200', '', 14, 'Available', '2015-04-12 00:16:38'),
+(5, 300, 'Room300', '', 14, 'Available', '2015-04-12 00:17:27'),
+(6, 201, 'Room 201', '', 15, 'Available', '2015-04-12 00:18:32');
 
 -- --------------------------------------------------------
 
