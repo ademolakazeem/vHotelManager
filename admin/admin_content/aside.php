@@ -49,13 +49,24 @@
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-laptop"></i>
-                    <span>Layouts</span>
+                    <span>The Halls</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Boxed Page</a></li>
-                    <li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
-                    <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
-                    <li><a  href="email_template.html" target="_blank">Email Template</a></li>
+                    <li><a  href="hall_reservation.php">Add Hall</a></li>
+                    <li><a  href="#">Update Hall</a></li>
+                    <li><a  href="#">View Hall</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-glass"></i>
+                    <span>The Bar</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="new_bar_item.php">Add Items to Bar</a></li>
+                    <li><a  href="#">Update Items in the Bar</a></li>
+                    <li><a  href="#">View Items in the Bar</a></li>
                 </ul>
             </li>
 
@@ -74,7 +85,7 @@
                     <li><a  href="font_awesome.html">Font Awesome</a></li>
                 </ul>
             </li>
-
+<!--
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-cogs"></i>
@@ -189,9 +200,9 @@
                     <span>Login Page</span>
                 </a>
             </li>
-
+-->
             <!--multi level menu start-->
-            <li class="sub-menu">
+<!--            <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-sitemap"></i>
                     <span>Multi level Menu</span>
@@ -212,7 +223,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li>-->
             <!--multi level menu end-->
 
         </ul>

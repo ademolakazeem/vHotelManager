@@ -52,7 +52,7 @@ require_once('head.php');
                                       <div class="form-group ">
                                           <label for="roomNumber" class="control-label col-lg-2">Room Number</label>
                                           <div class="col-lg-10">
-                                              <input class=" form-control" id="roomNumber" name="roomNumber" type="text" />
+                                              <input class="numbaOnly form-control" id="roomNumber" name="roomNumber" type="text" />
                                           </div>
                                       </div>
 
@@ -108,7 +108,7 @@ require_once('head.php');
 
 
 
-                                              <select class="form-control m-bot15">
+                                              <select class="form-control m-bot15" id="availability" name="availability">
                                                   <option value="">--- Select ---</option>
                                                   <option>Available</option>
                                                   <option>Not Available</option>
@@ -175,6 +175,23 @@ require_once('head.php');
   });
   });
 </script>
+  <script>
+      $('input.numbaOnly').keyup(function(event) {
+
+          // skip for arrow keys
+          if(event.which >= 37 && event.which <= 40) {
+              alert("Numbers only please");
+              return;
+          }
+          //.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          $(this).val(function(index, value) {
+              return value
+                  .replace(/\D/g, '')
+                  ;
+          });
+
+      });
+  </script>
 
   </body>
 </html>

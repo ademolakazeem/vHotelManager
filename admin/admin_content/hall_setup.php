@@ -49,13 +49,14 @@ require_once('head.php');
                               <div class="form">
                                   <form class="cmxform form-horizontal tasi-form" id="signupForm" method="POST" action="">
 
-
+                                    <!--
                                       <div class="form-group ">
                                           <label for="hallNumber" class="control-label col-lg-2">Hall Number</label>
                                           <div class="col-lg-10">
                                               <input class=" form-control" id="hallNumber" name="hallNumber" type="text" />
                                           </div>
                                       </div>
+                                      -->
                                       <div class="form-group ">
                                           <label for="hallName" class="control-label col-lg-2">Hall Name</label>
                                           <div class="col-lg-10">
