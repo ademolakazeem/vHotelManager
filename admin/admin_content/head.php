@@ -26,6 +26,11 @@
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/jquery-multi-select/css/multi-select.css" />
 
+    <!-- Table-->
+    <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
+
 
 
 
@@ -38,3 +43,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
+
+
+
+

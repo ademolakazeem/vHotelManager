@@ -51,21 +51,21 @@ require_once('head.php');
                                   <form class="cmxform form-horizontal tasi-form" id="signupForm" method="POST" action="">
                                       <div class="form-group ">
                                           <label for="roomNumber" class="control-label col-lg-2">Room Number</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class="numbaOnly form-control" id="roomNumber" name="roomNumber" type="text" />
                                           </div>
                                       </div>
 
                                       <div class="form-group ">
                                           <label for="roomName" class="control-label col-lg-2">Room Name</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class=" form-control" id="roomName" name="roomName" type="text" />
                                           </div>
                                       </div>
 
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Feature Name</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
 
 
 
@@ -104,7 +104,7 @@ require_once('head.php');
 
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Availability</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
 
 
 

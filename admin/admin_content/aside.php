@@ -39,8 +39,8 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="room_reservation.php">Add Reservation</a></li>
-                    <li><a  href="#">Update Reservation</a></li>
-                    <li><a  href="#">View Reservation</a></li>
+                    <li><a  href="show_update_reservation.php">Update Reservation</a></li>
+                    <li><a  href="view_update_reservation.php">View Reservation</a></li>
                     <!--<li class="active"><a  href="form_validation.html">View Reservation</a></li>-->
 
                 </ul>
@@ -53,8 +53,8 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="hall_reservation.php">Add Hall</a></li>
-                    <li><a  href="#">Update Hall</a></li>
-                    <li><a  href="#">View Hall</a></li>
+                    <li><a  href="show_update_hall.php">Update Hall</a></li>
+                    <li><a  href="view_update_hall.php">View Hall</a></li>
                 </ul>
             </li>
 

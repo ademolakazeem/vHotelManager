@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2015 at 07:52 PM
+-- Generation Time: May 10, 2015 at 08:50 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -74,7 +74,8 @@ INSERT INTO `audit_log_tbl` (`comp_name`, `userFullname`, `user_id`, `datelog`, 
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-04-17 22:27:05', '::1', 'User admin added a new user - admin', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/hall_reservation.php?hall_number=2'),
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-01 08:59:03', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
 ('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-03 12:46:55', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php'),
-('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-03 13:00:19', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/profile-edit.php');
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-03 13:00:19', '::1', 'User Oluwagbemiro Diamond Successfully logged out', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/profile-edit.php'),
+('FORBESDIAMOND', 'Oluwagbemiro Diamond', 'VHM201204041144458372', '2015-05-10 19:36:48', '::1', 'User admin Successfully logged in', 'localhost:8889', 'http://localhost:8889/vHotelManager/admin/admin_content/login.php');
 
 -- --------------------------------------------------------
 

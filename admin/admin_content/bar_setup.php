@@ -51,7 +51,7 @@ require_once('head.php');
 
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Item Type</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <select  class="form-control m-bot15" name="itemType" id="itemType">
                                                   <option value="<?php echo isset($_POST['itemType']) ? $_POST['itemType'] : ''; ?>"><?php echo isset($_POST['itemType']) ? $_POST['itemType'] : '--- Select ---'; ?></option>
                                                   <option>Drink</option>
@@ -64,7 +64,7 @@ require_once('head.php');
 
                                       <div class="form-group ">
                                           <label for="itemName" class="control-label col-lg-2">Item Name</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class=" form-control" id="itemName" name="itemName" type="text"
                                                      value="<?php echo isset($_POST['itemName']) ? $_POST['itemName'] : ''; ?>" />
                                           </div>
@@ -72,21 +72,21 @@ require_once('head.php');
 
                                       <div class="form-group ">
                                           <label for="rate" class="control-label col-lg-2">Rate</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class="rate form-control" id="rate" name="rate" type="text" value="<?php echo isset($_POST['rate']) ? $_POST['rate'] : ''; ?>" />
                                           </div>
                                       </div>
 
                                       <div class="form-group ">
                                           <label for="rate" class="control-label col-lg-2">Threshold</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class="rate form-control" id="threshold" name="threshold" type="text" value="<?php echo isset($_POST['threshold']) ? $_POST['threshold'] : ''; ?>" />
                                           </div>
                                       </div>
 
                                       <div class="form-group ">
                                           <label for="rate" class="control-label col-lg-2">Quantity</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class="rate form-control" id="quantity" name="quantity" type="text" value="<?php echo isset($_POST['quantity']) ? $_POST['quantity'] : ''; ?>" />
                                           </div>
                                       </div>

@@ -364,10 +364,14 @@ class AdminController
                <strong>Oops!</strong> The Bar items has already been setup, Try another Hall name!
              </div>';
                 return $msg;
-            } else {
+            }
 
-                $insertQry = "INSERT INTO bar_setup_tbl (item_type, item_name,item_rate,quantity,threshold,created_date)
-			VALUES('$itemType','$itemName','$itemRate','$quantity','$threshold','".date("Y-m-d H:i:s")."')";
+            else
+
+            {
+                $userInAttendance=$_SESSION['username'];
+                $insertQry = "INSERT INTO bar_setup_tbl (item_type, item_name,item_rate,quantity,threshold,created_by, created_date)
+			VALUES('$itemType','$itemName','$itemRate','$quantity','$threshold','$userInAttendance','".date("Y-m-d H:i:s")."')";
 
                 $res = $this->db->executeQuery($insertQry);
 
@@ -895,11 +899,16 @@ class AdminController
             {
 
                 $qtyQuery = "SELECT quantity_available qtyAvailable FROM `bar_setup_tbl` where quantity_available > 0 and item_id=$itemId";
+                echo "I got here after string qtyQuery and item_id:".$itemId;
                 $qtyRow = $this->db->fetchData($qtyQuery);
                 $qtyCounted=$qtyRow['qtyAvailable'];
                 $newQtyAvail=floatval($qtyCounted) - floatval($quantity);
+                //echo "<br>I got here after counted qtyCounted=".$qtyCounted.", quantity= ".$quantity." newQtyAvail =".$newQtyAvail;
                 $updQuery = "UPDATE bar_setup_tbl SET quantity_available = '$newQtyAvail', updated_date ='".date("Y-m-d H:i:s")."'  WHERE item_id=$itemId";
                 $upRes = $this->db->executeQuery($updQuery);
+                //echo "<br>I got here after counted qtyCounted=".$qtyCounted.", quantity= ".$quantity." newQtyAvail =".$newQtyAvail;
+
+               // echo "I got here after update";
                 $this->audit->audit_log("User ".$_SESSION['username']." added a new user - ".$userInAttendance);
 
                 $msg = '<div class="alert alert-success alert-block fade in">
@@ -1190,7 +1199,136 @@ class AdminController
 
 
     }//updateUserPassword
+    public function updateRoomReservation()
+    {
+        $clt_id = $this->fm->processfield($_POST['client_id']);
+        $client_name = $this->fm->processfield($_POST['client_name']);
+        $client_address = $this->fm->processfield($_POST['client_address']);
+        $client_phone = $this->fm->processfield($_POST['client_phone']);
+        $client_email = $this->fm->processfield($_POST['client_email']);
+        $room_number = $this->fm->processfield($_POST['room_number']);
+        $room_rate = $this->fm->processfield($_POST['room_rate']);
+        $number_of_nights = $this->fm->processfield($_POST['number_of_nights']);
+        $number_of_people = $this->fm->processfield($_POST['number_of_people']);
+        $dateIn = $this->fm->processfield($_POST['dateIn']);
+        $timeIn = $this->fm->processfield($_POST['timeIn']);
+        $dateOut = $this->fm->processfield($_POST['dateOut']);
+        //$timeOut = $this->fm->processfield($_POST['timeOut']);
+        $visit_purpose = $this->fm->processfield($_POST['visit_purpose']);
+        $reg_number = $this->fm->processfield($_POST['reg_number']);
+        $model = $this->fm->processfield($_POST['model']);
+        $color = $this->fm->processfield($_POST['color']);
 
+
+        //echo date_diff(date("Y-m-d"),$dob);
+
+
+        //validate
+        if(empty($client_name)||empty($client_address)||empty($client_phone)||empty($room_number)||empty($room_rate) ||empty($number_of_nights)||empty($number_of_people)
+            ||empty($dateIn)||empty($timeIn) ||empty($visit_purpose) ||empty($dateOut)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please make sure all required fields are completed!
+             </div>';
+            return $msg;
+        }
+
+        if(!filter_var($client_email, FILTER_VALIDATE_EMAIL)) {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please Specify a valid email!
+             </div>';
+            return $msg;
+        }
+        //, $min
+        // $then will first be a string-date
+        $inDate = strtotime($dateIn);
+        $outDate=strtotime($dateOut);
+        $inTime=strtotime($timeIn);
+
+        if($outDate < $inDate)
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+                 <button data-dismiss="alert" class="close close-sm" type="button">
+                   <i class="fa fa-times"></i>
+                 </button>
+                 <strong>Nah!</strong> Date Check out cannot come first!
+               </div>';
+            return $msg;
+
+
+        }
+
+        //check if the username has not beeen registered before
+
+        $qry = "SELECT * FROM room_reservation_tbl WHERE room_reservation_id=$clt_id";
+
+        $row = $this->db->getNumOfRows($qry);
+        if($row <= 0 )
+        {
+            //username in use
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh oh!</strong> The client information does not exist, please create this client first!
+             </div>';
+            return $msg;
+
+        }
+        else if($row > 0)
+        {
+            /*//generate 4digit random number
+            $serial = rand(100,999).substr(str_shuffle("0123456789"),0,1);
+            //call a method that returns school's shorth form
+            $minshr = "VHM";
+            $curDate=date('YmdHis');
+            $userid = $minshr.$curDate.$serial;//generate*/
+            $userInAttendance=$_SESSION['username'];
+            $delimiter=',';
+            $room_rate=str_replace($delimiter, '', $room_rate);
+            $totalPrice= floatval($room_rate)*floatval($number_of_nights);
+            $room_rate=number_format($room_rate,2);
+            $totalPrice=number_format($totalPrice,2);
+
+
+            //$twelveTime=strtotime("12:00:00");
+
+            //date_out, time_out
+            //prepare to insert
+            $insertQry = "UPDATE room_reservation_tbl SET client_name='$client_name', client_address='$client_address',client_phone='$client_phone',client_email='$client_email'
+,room_number='$room_number',rate='$room_rate',number_of_people='$number_of_people',date_in='$dateIn',time_in='$timeIn',number_of_days='$number_of_nights',date_out='$dateOut',
+visit_purpose='$visit_purpose', car_reg_number='$reg_number',car_model='$model',car_color='$color',price_paid='$totalPrice', attended_to_by='$userInAttendance', date_updated='".date("Y-m-d H:i:s")."' where room_reservation_id=".$clt_id."";
+
+            $res = $this->db->executeQuery($insertQry);
+
+            if($res)
+            {
+                $this->audit->audit_log("User ".$_SESSION['username']." updated client information");
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully updated an accommodation information for a client!</p>
+                              </div>';
+                return $msg;
+
+
+            }
+        }
+
+    }//end updateRoomReservation
 
 
 

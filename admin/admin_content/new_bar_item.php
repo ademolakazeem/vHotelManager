@@ -108,7 +108,7 @@ require_once('head.php');
 
 
 
-                                  <div class="form-group ">
+                                  <div class="form-group">
                                       <label for="item_rate" class="control-label col-lg-2">Rate (<em>&#8358;</em>)</label>
                                       <div class="col-lg-6">
                                           <input class="form-control" readonly id="item_rate" name="item_rate" type="text"

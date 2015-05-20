@@ -28,221 +28,61 @@
       <file leaf-file-name="hall_reservation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/admin_content/hall_reservation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="6970">
-              <caret line="62" column="35" selection-start-line="58" selection-start-column="34" selection-end-line="62" selection-end-column="35" />
-              <folding>
-                <marker date="1429223875870" expanded="true" signature="1407:1489" placeholder="SELECT hall_..." />
-                <marker date="1429223875870" expanded="true" signature="1631:1914" placeholder="select a.hal..hall_setup_tbl..." />
-                <marker date="1429223875870" expanded="true" signature="2147:2419" placeholder="select a.hal..hall_setup_tbl..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_bar_item.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/admin_content/new_bar_item.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9381818" vertical-offset="844" max-vertical-offset="4811">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding>
-                <marker date="1430467905622" expanded="true" signature="1379:1454" placeholder="SELECT item_..." />
-                <marker date="1430467905622" expanded="true" signature="1588:1735" placeholder="select item_..bar_setup_tbl..." />
-                <marker date="1430467905622" expanded="true" signature="1588:1743" placeholder="select item_..bar_setup_tbl..." />
-                <marker date="1430467905622" expanded="true" signature="1976:2123" placeholder="select item_..bar_setup_tbl..." />
-                <marker date="1430467905622" expanded="true" signature="1976:2124" placeholder="select item_..bar_setup_tbl..." />
-                <marker date="1430467905622" expanded="true" signature="5169:5266" placeholder="SELECT count..." />
-                <marker date="1430467905622" expanded="true" signature="5169:5267" placeholder="SELECT count..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClassesController/AdminManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="9112">
-              <caret line="809" column="30" selection-start-line="809" selection-start-column="20" selection-end-line="809" selection-end-column="30" />
-              <folding>
-                <element signature="n#__construct#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#adminLogin#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addRoomFeatures#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addHallFeatures#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addRoomSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addHallSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addBarSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addUserSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addRoomReservation#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#addHallReservation#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#validateAge#0;n#AdminController#0;n#!!top" expanded="false" />
-                <element signature="n#updateUserSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-                <marker date="1430517852765" expanded="true" signature="646:735" placeholder="SELECT * FRO..users_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="2212:2462" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="2294:2364" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="2537:2603" placeholder="SELECT * FRO..room_feature_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="2907:3172" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="2989:3059" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="3257:3419" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="3829:4359" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="3930:4040" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="4079:4232" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="5006:5256" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="5088:5158" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="5331:5397" placeholder="SELECT * FRO..hall_feature_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="5701:5966" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="5783:5853" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="6051:6221" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="6631:7161" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="6732:6842" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="6881:7034" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="7852:8102" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="7934:8004" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="8177:8226" placeholder="SELECT * FRO..room_setup_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="8395:8664" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="8477:8547" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="8749:8930" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="9339:9854" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="9440:9550" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="9589:9742" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="10645:10895" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="10727:10797" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="10970:11028" placeholder="SELECT * FRO..hall_setup_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="11186:11452" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="11268:11338" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="11537:11696" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="12123:12648" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="12224:12334" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="12373:12526" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="13519:13769" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="13601:13671" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="13931:14203" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="14013:14083" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="14388:14631" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="14470:14540" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="15136:15193" placeholder="SELECT * FRO..bar_setup_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="15351:15622" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="15433:15503" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="15707:15895" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="16310:16839" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="16411:16521" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="16560:16713" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="18172:18434" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="18254:18324" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="18602:18842" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="18684:18754" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="19930:20189" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="20012:20082" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="20379:20629" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="20461:20531" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="20751:20867" placeholder="SELECT * FRO..users_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="21049:21332" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="21131:21201" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="21759:22087" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="22365:22894" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="22466:22576" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="22615:22768" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="24563:24825" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="24645:24715" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="25000:25240" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="25082:25152" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="25566:25819" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="25650:25724" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="26547:26662" placeholder="SELECT * FRO..room_reservation_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="26844:27141" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="26926:26996" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="27982:28543" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="28829:29369" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="28930:29040" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="29079:29231" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="30766:31028" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="30848:30918" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="31203:31443" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="31285:31355" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="31777:32030" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="31861:31935" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="32153:32274" placeholder="SELECT * FRO..room_reservation_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="32456:32731" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="32538:32608" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="33603:34085" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="34371:34902" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="34472:34582" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="34621:34773" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="35398:35660" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="35480:35550" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="35816:36069" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="35900:35974" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="36196:36317" placeholder="SELECT * FRO..hall_reservation_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="36508:36783" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="36590:36660" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="37617:37825" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="37951:38052" placeholder="SELECT quant..." />
-                <marker date="1430517852765" expanded="true" signature="38277:38394" placeholder="UPDATE bar_s..." />
-                <marker date="1430517852765" expanded="true" signature="38277:38401" placeholder="UPDATE bar_s..." />
-                <marker date="1430517852765" expanded="true" signature="38655:39181" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="38756:38866" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="38905:39057" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="39666:39925" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="39748:39818" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="41142:41404" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="41224:41294" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="41571:41811" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="41653:41723" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="42117:42376" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="42199:42269" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="42770:43048" placeholder="UPDATE users..." />
-                <marker date="1430517852765" expanded="true" signature="43300:43831" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="43401:43511" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="43550:43705" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="44389:44651" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="44471:44541" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="44839:45088" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="44921:44991" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="45278:45515" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="45360:45430" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="45681:45953" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="45763:45833" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="46129:46201" placeholder="SELECT * FRO..users_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="46377:46655" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="46459:46529" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="47642:47690" placeholder="SELECT * FRO..users_tbl..." />
-                <marker date="1430517852765" expanded="true" signature="48128:48279" placeholder="UPDATE users..." />
-                <marker date="1430517852765" expanded="true" signature="49070:49696" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="49171:49281" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="49320:49475" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="49932:50180" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="50014:50084" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="50383:50617" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="50465:50535" placeholder="..." />
-                <marker date="1430517852765" expanded="true" signature="51713:51999" placeholder="UPDATE tblst..." />
-                <marker date="1430517852765" expanded="true" signature="52790:52982" placeholder="UPDATE tblst..." />
-                <marker date="1430517852765" expanded="true" signature="53751:53832" placeholder="SELECT * FRO..tblstaff..." />
-                <marker date="1430517852765" expanded="true" signature="54072:54148" placeholder="UPDATE tblst..." />
-                <marker date="1430517852765" expanded="true" signature="54589:54634" placeholder="SELECT * FRO..tblstaff..." />
-                <marker date="1430517852765" expanded="true" signature="54872:54944" placeholder="UPDATE tblst..." />
-                <marker date="1430517852765" expanded="true" signature="55445:55519" placeholder="INSERT INTO ..." />
-                <marker date="1430517852765" expanded="true" signature="56055:56132" placeholder="UPDATE tblne..." />
-                <marker date="1430517852765" expanded="true" signature="56385:56434" placeholder="select * fro..tblstaff..." />
-                <marker date="1430517852765" expanded="true" signature="56659:56704" placeholder="delete from ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBDirect.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClassesController/DBDirect.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1292">
-              <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+            <state vertical-scroll-proportion="-5.8846154" vertical-offset="2550" max-vertical-offset="6970">
+              <caret line="159" column="78" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aside.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/admin_content/aside.php">
+      <file leaf-file-name="manage_hall_reservation.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_hall_reservation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="672" max-vertical-offset="3944">
-              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.58518517" vertical-offset="6144" max-vertical-offset="7310">
+              <caret line="380" column="79" selection-start-line="380" selection-start-column="79" selection-end-line="380" selection-end-column="79" />
+              <folding>
+                <marker date="1432040749142" expanded="true" signature="136:208" placeholder="SELECT * FRO..hall_reservation_tbl..." />
+                <marker date="1432040749142" expanded="true" signature="1564:1646" placeholder="SELECT hall_..." />
+                <marker date="1432040749142" expanded="true" signature="1788:2071" placeholder="select a.hal..hall_setup_tbl..." />
+                <marker date="1432040749142" expanded="true" signature="2304:2576" placeholder="select a.hal..hall_setup_tbl..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_room_reservation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_room_reservation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="8041">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="26" />
+              <folding>
+                <marker date="1431972042258" expanded="true" signature="136:208" placeholder="SELECT * FRO..room_reservation_tbl..." />
+                <marker date="1431972042258" expanded="true" signature="1565:1647" placeholder="SELECT room_..." />
+                <marker date="1431972042258" expanded="true" signature="1788:2035" placeholder="select a.roo..room_setup_tbl..." />
+                <marker date="1431972042258" expanded="true" signature="2268:2504" placeholder="select a.roo..room_setup_tbl..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_update_hall.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/admin_content/show_update_hall.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923" vertical-offset="816" max-vertical-offset="3485">
+              <caret line="68" column="100" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="100" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_ind_room_reservation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_ind_room_reservation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.884615" vertical-offset="4029" max-vertical-offset="5899">
+              <caret line="272" column="0" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+              <folding>
+                <marker date="1431959570176" expanded="true" signature="136:208" placeholder="SELECT * FRO..room_reservation_tbl..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -262,13 +102,9 @@
         <option value="$PROJECT_DIR$/admin/admin_content/google_maps.html" />
         <option value="$PROJECT_DIR$/admin/admin_content/footer.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/logo.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/room_feature_setup.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/hall_feature_setup.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/bar_setup.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/index.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/login.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/advanced_form_components.html" />
-        <option value="$PROJECT_DIR$/ClassesController/DBDirect.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/authenticate.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/upload.php" />
         <option value="$PROJECT_DIR$/ClassesController/Utilities.php" />
@@ -279,26 +115,38 @@
         <option value="$PROJECT_DIR$/admin/admin_content/profile-activity.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/header.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/user_registration.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/head.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/room_reservation1.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/room_setup.php" />
         <option value="$PROJECT_DIR$/frontend/frontend_content/index.html" />
         <option value="$PROJECT_DIR$/admin/admin_content/add_hall.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/hall_setup.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/hall_reservation.php" />
-        <option value="$PROJECT_DIR$/admin/admin_content/aside.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/room_reservation.php" />
-        <option value="$PROJECT_DIR$/ClassesController/AdminManager.php" />
         <option value="$PROJECT_DIR$/admin/admin_content/new_bar_item.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/room_feature_setup.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/room_setup.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/hall_feature_setup.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/bar_setup.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/head.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/advanced_table.html" />
+        <option value="$PROJECT_DIR$/ClassesController/DBDirect.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/show_update_reservation.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/view_update_reservation.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/manage_ind_room_reservation.php" />
+        <option value="$PROJECT_DIR$/ClassesController/AdminManager.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/manage_room_reservation.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/css/style.css" />
+        <option value="$PROJECT_DIR$/admin/admin_content/show_update_hall.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/aside.php" />
+        <option value="$PROJECT_DIR$/admin/admin_content/manage_hall_reservation.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1363" />
-    <option name="height" value="726" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -447,7 +295,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1363" height="726" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -456,7 +304,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25315517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24597365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -489,88 +337,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05851979" vertical-offset="0" max-vertical-offset="581">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1802">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33278418" vertical-offset="1872" max-vertical-offset="8721">
-          <caret line="122" column="18" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="139.42857" vertical-offset="3904" max-vertical-offset="99229">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/css/bootstrap-reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.05156538" vertical-offset="28" max-vertical-offset="6460">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/css/image-crop.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.05035971" vertical-offset="28" max-vertical-offset="731">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/css/style-responsive.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.05035971" vertical-offset="28" max-vertical-offset="9707">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/general.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16725352" vertical-offset="7997" max-vertical-offset="18411">
-          <caret line="476" column="30" selection-start-line="476" selection-start-column="30" selection-end-line="485" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/google_maps.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="103.30769" vertical-offset="2873" max-vertical-offset="10047">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/inbox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15708">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/room_feature_setup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="1020" max-vertical-offset="2737">
-          <caret line="77" column="44" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin_content/form_validation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231" vertical-offset="9996" max-vertical-offset="11152">
@@ -606,13 +377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/form_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.3333335" vertical-offset="9898" max-vertical-offset="23613">
-          <caret line="596" column="78" selection-start-line="596" selection-start-column="78" selection-end-line="596" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin_content/user_registration1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.074074" vertical-offset="735" max-vertical-offset="2822">
@@ -624,20 +388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.548387" vertical-offset="3213" max-vertical-offset="20502">
           <caret line="17" column="39" selection-start-line="3" selection-start-column="4" selection-end-line="27" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/hall_feature_setup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65384614" vertical-offset="816" max-vertical-offset="2295">
-          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/bar_setup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="714" max-vertical-offset="2703">
-          <caret line="55" column="58" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="131" />
         </state>
       </provider>
     </entry>
@@ -740,13 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/head.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.124333926" vertical-offset="202" max-vertical-offset="765">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin_content/profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24727273" vertical-offset="561" max-vertical-offset="3876">
@@ -782,13 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/room_setup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5133215" vertical-offset="1581" max-vertical-offset="3451">
-          <caret line="110" column="119" selection-start-line="110" selection-start-column="119" selection-end-line="110" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin_content/user_registration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50545454" vertical-offset="1813" max-vertical-offset="5576">
@@ -810,45 +546,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/aside.php">
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/room_setup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="672" max-vertical-offset="3944">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.90555555" vertical-offset="1738" max-vertical-offset="3451">
+          <caret line="131" column="32" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/room_feature_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9396092" vertical-offset="1205" max-vertical-offset="2737">
+          <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/new_bar_item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44363636" vertical-offset="1813" max-vertical-offset="4811">
+          <caret line="121" column="63" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5277778" vertical-offset="191" max-vertical-offset="935">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/editable_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="301.42307" vertical-offset="8160" max-vertical-offset="10965">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/advanced_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.846154" vertical-offset="15298" max-vertical-offset="15878">
+          <caret line="918" column="85" selection-start-line="911" selection-start-column="3" selection-end-line="918" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/update_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2295">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/bar_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9027523" vertical-offset="1393" max-vertical-offset="2703">
+          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/hall_feature_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2295">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ClassesController/DBDirect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1292">
-          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="611" max-vertical-offset="1411">
+          <caret line="50" column="51" selection-start-line="49" selection-start-column="7" selection-end-line="50" selection-end-column="51" />
+          <folding>
+            <marker date="1431735711682" expanded="true" signature="-1:-1" placeholder="SELECT * FRO.._table WHERE..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin_content/room_reservation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27818182" vertical-offset="1530" max-vertical-offset="8534">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="1530" max-vertical-offset="8534">
           <caret line="99" column="68" selection-start-line="99" selection-start-column="61" selection-end-line="99" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/hall_reservation.php">
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="6970">
-          <caret line="62" column="35" selection-start-line="58" selection-start-column="34" selection-end-line="62" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.33274958" vertical-offset="7336" max-vertical-offset="93568">
+          <caret line="438" column="14" selection-start-line="438" selection-start-column="14" selection-end-line="438" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/form_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3984526" vertical-offset="22251" max-vertical-offset="23613">
+          <caret line="1321" column="129" selection-start-line="1321" selection-start-column="53" selection-end-line="1321" selection-end-column="129" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/aside.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5322581" vertical-offset="570" max-vertical-offset="3944">
+          <caret line="56" column="50" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_ind_room_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.884615" vertical-offset="4029" max-vertical-offset="5899">
+          <caret line="272" column="0" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
           <folding>
-            <marker date="1429223875870" expanded="true" signature="1407:1489" placeholder="SELECT hall_..." />
-            <marker date="1429223875870" expanded="true" signature="1631:1914" placeholder="select a.hal..hall_setup_tbl..." />
-            <marker date="1429223875870" expanded="true" signature="2147:2419" placeholder="select a.hal..hall_setup_tbl..." />
+            <marker date="1431959570176" expanded="true" signature="136:208" placeholder="SELECT * FRO..room_reservation_tbl..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ClassesController/AdminManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="9112">
-          <caret line="809" column="30" selection-start-line="809" selection-start-column="20" selection-end-line="809" selection-end-column="30" />
+        <state vertical-scroll-proportion="-10.5" vertical-offset="3467" max-vertical-offset="8194">
+          <caret line="1306" column="235" selection-start-line="1306" selection-start-column="235" selection-end-line="1306" selection-end-column="235" />
           <folding>
             <element signature="n#__construct#0;n#AdminController#0;n#!!top" expanded="false" />
             <element signature="n#adminLogin#0;n#AdminController#0;n#!!top" expanded="false" />
@@ -860,171 +678,232 @@
             <element signature="n#addUserSetup#0;n#AdminController#0;n#!!top" expanded="false" />
             <element signature="n#addRoomReservation#0;n#AdminController#0;n#!!top" expanded="false" />
             <element signature="n#addHallReservation#0;n#AdminController#0;n#!!top" expanded="false" />
+            <element signature="n#addBarItem#0;n#AdminController#0;n#!!top" expanded="false" />
             <element signature="n#validateAge#0;n#AdminController#0;n#!!top" expanded="false" />
-            <element signature="n#updateUserSetup#0;n#AdminController#0;n#!!top" expanded="false" />
-            <marker date="1430517852765" expanded="true" signature="646:735" placeholder="SELECT * FRO..users_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="2212:2462" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="2294:2364" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="2537:2603" placeholder="SELECT * FRO..room_feature_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="2907:3172" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="2989:3059" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="3257:3419" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="3829:4359" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="3930:4040" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="4079:4232" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="5006:5256" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="5088:5158" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="5331:5397" placeholder="SELECT * FRO..hall_feature_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="5701:5966" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="5783:5853" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="6051:6221" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="6631:7161" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="6732:6842" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="6881:7034" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="7852:8102" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="7934:8004" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="8177:8226" placeholder="SELECT * FRO..room_setup_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="8395:8664" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="8477:8547" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="8749:8930" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="9339:9854" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="9440:9550" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="9589:9742" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="10645:10895" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="10727:10797" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="10970:11028" placeholder="SELECT * FRO..hall_setup_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="11186:11452" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="11268:11338" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="11537:11696" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="12123:12648" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="12224:12334" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="12373:12526" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="13519:13769" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="13601:13671" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="13931:14203" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="14013:14083" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="14388:14631" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="14470:14540" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="15136:15193" placeholder="SELECT * FRO..bar_setup_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="15351:15622" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="15433:15503" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="15707:15895" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="16310:16839" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="16411:16521" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="16560:16713" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="18172:18434" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="18254:18324" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="18602:18842" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="18684:18754" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="19930:20189" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="20012:20082" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="20379:20629" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="20461:20531" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="20751:20867" placeholder="SELECT * FRO..users_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="21049:21332" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="21131:21201" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="21759:22087" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="22365:22894" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="22466:22576" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="22615:22768" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="24563:24825" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="24645:24715" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="25000:25240" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="25082:25152" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="25566:25819" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="25650:25724" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="26547:26662" placeholder="SELECT * FRO..room_reservation_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="26844:27141" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="26926:26996" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="27982:28543" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="28829:29369" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="28930:29040" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="29079:29231" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="30766:31028" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="30848:30918" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="31203:31443" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="31285:31355" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="31777:32030" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="31861:31935" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="32153:32274" placeholder="SELECT * FRO..room_reservation_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="32456:32731" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="32538:32608" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="33603:34085" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="34371:34902" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="34472:34582" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="34621:34773" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="35398:35660" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="35480:35550" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="35816:36069" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="35900:35974" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="36196:36317" placeholder="SELECT * FRO..hall_reservation_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="36508:36783" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="36590:36660" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="37617:37825" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="37951:38052" placeholder="SELECT quant..." />
-            <marker date="1430517852765" expanded="true" signature="38277:38394" placeholder="UPDATE bar_s..." />
-            <marker date="1430517852765" expanded="true" signature="38277:38401" placeholder="UPDATE bar_s..." />
-            <marker date="1430517852765" expanded="true" signature="38655:39181" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="38756:38866" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="38905:39057" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="39666:39925" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="39748:39818" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="41142:41404" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="41224:41294" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="41571:41811" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="41653:41723" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="42117:42376" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="42199:42269" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="42770:43048" placeholder="UPDATE users..." />
-            <marker date="1430517852765" expanded="true" signature="43300:43831" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="43401:43511" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="43550:43705" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="44389:44651" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="44471:44541" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="44839:45088" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="44921:44991" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="45278:45515" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="45360:45430" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="45681:45953" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="45763:45833" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="46129:46201" placeholder="SELECT * FRO..users_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="46377:46655" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="46459:46529" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="47642:47690" placeholder="SELECT * FRO..users_tbl..." />
-            <marker date="1430517852765" expanded="true" signature="48128:48279" placeholder="UPDATE users..." />
-            <marker date="1430517852765" expanded="true" signature="49070:49696" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="49171:49281" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="49320:49475" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="49932:50180" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="50014:50084" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="50383:50617" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="50465:50535" placeholder="..." />
-            <marker date="1430517852765" expanded="true" signature="51713:51999" placeholder="UPDATE tblst..." />
-            <marker date="1430517852765" expanded="true" signature="52790:52982" placeholder="UPDATE tblst..." />
-            <marker date="1430517852765" expanded="true" signature="53751:53832" placeholder="SELECT * FRO..tblstaff..." />
-            <marker date="1430517852765" expanded="true" signature="54072:54148" placeholder="UPDATE tblst..." />
-            <marker date="1430517852765" expanded="true" signature="54589:54634" placeholder="SELECT * FRO..tblstaff..." />
-            <marker date="1430517852765" expanded="true" signature="54872:54944" placeholder="UPDATE tblst..." />
-            <marker date="1430517852765" expanded="true" signature="55445:55519" placeholder="INSERT INTO ..." />
-            <marker date="1430517852765" expanded="true" signature="56055:56132" placeholder="UPDATE tblne..." />
-            <marker date="1430517852765" expanded="true" signature="56385:56434" placeholder="select * fro..tblstaff..." />
-            <marker date="1430517852765" expanded="true" signature="56659:56704" placeholder="delete from ..." />
+            <element signature="n#updateUserPassword#0;n#AdminController#0;n#!!top" expanded="false" />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..users_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_feature_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..hall_feature_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_setup_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..hall_setup_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..bar_setup_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..users_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..hall_reservation_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT quant..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE bar_s..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE users..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..users_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..users_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE users..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE room_..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE tblst..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE tblst..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tblstaff..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE tblst..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tblstaff..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE tblst..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="UPDATE tblne..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="select * fro..tblstaff..." />
+            <marker date="1431963181243" expanded="true" signature="-1:-1" placeholder="delete from ..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin_content/new_bar_item.php">
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/show_update_reservation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9381818" vertical-offset="844" max-vertical-offset="4811">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.18899083" vertical-offset="1036" max-vertical-offset="3519">
+          <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
           <folding>
-            <marker date="1430467905622" expanded="true" signature="1379:1454" placeholder="SELECT item_..." />
-            <marker date="1430467905622" expanded="true" signature="1588:1735" placeholder="select item_..bar_setup_tbl..." />
-            <marker date="1430467905622" expanded="true" signature="1588:1743" placeholder="select item_..bar_setup_tbl..." />
-            <marker date="1430467905622" expanded="true" signature="1976:2123" placeholder="select item_..bar_setup_tbl..." />
-            <marker date="1430467905622" expanded="true" signature="1976:2124" placeholder="select item_..bar_setup_tbl..." />
-            <marker date="1430467905622" expanded="true" signature="5169:5266" placeholder="SELECT count..." />
-            <marker date="1430467905622" expanded="true" signature="5169:5267" placeholder="SELECT count..." />
+            <marker date="1431955797621" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431955797621" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/view_update_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39816514" vertical-offset="990" max-vertical-offset="3536">
+          <caret line="71" column="78" selection-start-line="71" selection-start-column="78" selection-end-line="71" selection-end-column="78" />
+          <folding>
+            <marker date="1431957885129" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431957885129" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431957885129" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/hall_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="2550" max-vertical-offset="6970">
+          <caret line="159" column="78" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_room_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="8041">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <marker date="1431972042258" expanded="true" signature="136:208" placeholder="SELECT * FRO..room_reservation_tbl..." />
+            <marker date="1431972042258" expanded="true" signature="1565:1647" placeholder="SELECT room_..." />
+            <marker date="1431972042258" expanded="true" signature="1788:2035" placeholder="select a.roo..room_setup_tbl..." />
+            <marker date="1431972042258" expanded="true" signature="2268:2504" placeholder="select a.roo..room_setup_tbl..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/show_update_hall.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="816" max-vertical-offset="3485">
+          <caret line="68" column="100" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_content/manage_hall_reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58518517" vertical-offset="6144" max-vertical-offset="7310">
+          <caret line="380" column="79" selection-start-line="380" selection-start-column="79" selection-end-line="380" selection-end-column="79" />
+          <folding>
+            <marker date="1432040749142" expanded="true" signature="136:208" placeholder="SELECT * FRO..hall_reservation_tbl..." />
+            <marker date="1432040749142" expanded="true" signature="1564:1646" placeholder="SELECT hall_..." />
+            <marker date="1432040749142" expanded="true" signature="1788:2071" placeholder="select a.hal..hall_setup_tbl..." />
+            <marker date="1432040749142" expanded="true" signature="2304:2576" placeholder="select a.hal..hall_setup_tbl..." />
           </folding>
         </state>
       </provider>

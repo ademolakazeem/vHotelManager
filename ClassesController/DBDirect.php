@@ -39,11 +39,18 @@ class DBConnecting
 	}
 		
 	public function fetchData($qry)
-	{
-		$res=mysqli_query($this->conn, $qry) or die(mysql_error());
-		$rs=mysqli_fetch_assoc($res);
-		return $rs;
-	}
+{
+    $res=mysqli_query($this->conn, $qry) or die(mysql_error());
+    $rs=mysqli_fetch_assoc($res);
+    return $rs;
+}
+
+    public function fetchArrayData($qry)
+    {
+        $res=mysqli_query($this->conn, $qry) or die(mysql_error());
+        $rs=mysqli_fetch_array($res, MYSQLI_ASSOC);
+        return $rs;
+    }
 		
 	function getNumOfRows($qry)
 	{

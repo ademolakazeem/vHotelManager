@@ -72,13 +72,13 @@ if(isset($_POST['save']))
                                   <form class="cmxform form-horizontal tasi-form" id="signupForm" method="POST" action="">
                                       <div class="form-group ">
                                           <label for="featurename" class="control-label col-lg-2">Feature Name</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class=" form-control" id="featurename" name="featurename" type="text" />
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="featurdescription" class="control-label col-lg-2">Feature Description</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <textarea class="form-control ckeditor" name="featuredescription" rows="6"></textarea>
                                           </div>
                                       </div>
@@ -86,7 +86,7 @@ if(isset($_POST['save']))
 
                                       <div class="form-group ">
                                           <label for="rate" class="control-label col-lg-2">Rate</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class="rate form-control" id="rate" name="rate" type="text" />
                                           </div>
                                       </div>
