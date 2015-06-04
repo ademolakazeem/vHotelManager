@@ -31,6 +31,40 @@
                     <li><a  href="user_registration.php">User Setup</a></li>
                 </ul>
             </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
+                    <span>Update Setups</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="show_update_room_features.php">Update Room Features</a></li>
+                    <li><a  href="show_update_room_info.php">Update Room Information</a></li>
+                    <li><a  href="show_update_hall_features.php">Update Hall Features</a></li>
+                    <li><a  href="show_update_hall_info.php">Update Hall Information</a></li>
+                    <li><a  href="show_update_bar_setup.php">Update Bar Information</a></li>
+
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
+                    <span>View Setups</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="view_room_feature.php">View Room Features</a></li>
+                    <li><a  href="view_room_info.php">View Room Information</a></li>
+                    <li><a  href="view_hall_features.php">View Hall Features</a></li>
+                    <li><a  href="view_hall_info.php">View Hall Information</a></li>
+                    <li><a  href="view_bar.php">View Bar Information</a></li>
+
+                </ul>
+            </li>
+
+
+
+
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <!-- <a href="javascript:;" class="active" >-->
@@ -41,6 +75,9 @@
                     <li><a  href="room_reservation.php">Add Reservation</a></li>
                     <li><a  href="show_update_reservation.php">Update Reservation</a></li>
                     <li><a  href="view_update_reservation.php">View Reservation</a></li>
+                    <li>-------</li>
+                    <li><a  href="show_update_reservation_checkins.php">Checked in Clients</a></li>
+                    <li><a  href="#">Checked out Clients</a></li>
                     <!--<li class="active"><a  href="form_validation.html">View Reservation</a></li>-->
 
                 </ul>
@@ -54,7 +91,7 @@
                 <ul class="sub">
                     <li><a  href="hall_reservation.php">Add Hall</a></li>
                     <li><a  href="show_update_hall.php">Update Hall</a></li>
-                    <li><a  href="view_update_hall.php">View Hall</a></li>
+                    <li><a  href="view_hall_reservation.php">View Hall</a></li>
                 </ul>
             </li>
 
@@ -65,8 +102,8 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="new_bar_item.php">Add Items to Bar</a></li>
-                    <li><a  href="#">Update Items in the Bar</a></li>
-                    <li><a  href="#">View Items in the Bar</a></li>
+                    <li><a  href="show_update_bar.php">Update Items in the Bar</a></li>
+                    <li><a  href="view_bar.php">View Items in the Bar</a></li>
                 </ul>
             </li>
 

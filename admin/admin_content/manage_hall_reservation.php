@@ -4,6 +4,7 @@ $db = new DBConnecting();
 $adm = new AdminController();
 
 $clt_id = $_GET['clt_id'];
+@$hall_number=$_GET['hall_number'];
 
 $selQry = "SELECT * FROM hall_reservation_tbl WHERE hall_reservation_id = '$clt_id'";
 $rsEditRm = $db->fetchArrayData($selQry);
@@ -24,8 +25,8 @@ require_once('head.php');
   <body>
   <?Php
 
-  @$room_number=$_GET['room_number']; // Use this line or below line if register_global is off
-  if(strlen($room_number) > 0 and !is_numeric($room_number)){ // to check if $cat is numeric data or not.
+  // Use this line or below line if register_global is off
+  if(strlen($hall_number) > 0 and !is_numeric($hall_number)){ // to check if $cat is numeric data or not.
       echo "Data Error";
       exit;
   }
@@ -59,6 +60,8 @@ require_once('head.php');
                                  <?php
 
                                   $query = "SELECT hall_number, hall_name FROM `hall_setup_tbl` where availability='Available'";
+                                 $hNo=$rsEditRm['hall_number'];
+                                 $qryHlNumber = "SELECT hall_number, hall_name FROM `hall_setup_tbl` where availability='Available' and hall_number=$hNo";
                                   if(isset($hall_number) and strlen($hall_number) > 0){
 
                                       $queryRate="select a.hall_number hall_number, a.hall_feature_id hall_feature_id, a.availability availability, b.hall_feature_id feature_feature_id, b.feature_rate hall_feature_rate from hall_setup_tbl a, hall_feature_tbl b where a.hall_number=$hall_number and a.hall_feature_id=b.hall_feature_id";
@@ -75,12 +78,17 @@ require_once('head.php');
                                   <div class="form-group ">
                                       <label for="hall_number" class="control-label col-lg-2">Available Hall</label>
                                       <div class="col-lg-6">
+                                          <?php
+                                          $conn=$db->getConnection();
+                                          $result = mysqli_query($conn, $query);
+                                          $resHNumber= mysqli_query($conn, $qryHlNumber);
+                                          $rowHNumber=mysqli_fetch_array($resHNumber, MYSQLI_ASSOC);
+                                          ?>
 
                                           <select name="hall_number" id="hall_number" class="form-control m-bot15" onchange="reload(this.form)">
-                                              <option value="<?php echo $rsEditRm['hall_number']; ?>"><?php echo $rsEditRm['hall_number']; ?></option>
+                                              <option value="<?php echo $rowHNumber['hall_number']; ?>"><?php echo $rowHNumber['hall_name']; ?></option>
                                               <?php
-                                              $conn=$db->getConnection();
-                                              $result = mysqli_query($conn, $query);
+
 
                                               while($row=mysqli_fetch_assoc($result))
 
@@ -110,15 +118,15 @@ require_once('head.php');
                                   <div class="form-group">
                                       <label for="room_rate" class="control-label col-lg-2">Rate</label>
                                       <div class="col-lg-6">
-                                          <input class="form-control" readonly="readonly" id="room_rate" name="room_rate" type="text"
+                                          <input class="form-control" readonly="readonly" id="hall_feature_rate" name="hall_feature_rate" type="text"
                                                  value="<?php
-                                                 if($clt_id > 0)
+                                                 if(strlen($clt_id) > 0 && strlen($hall_number) <= 0  )
                                                  {
                                                      echo $rsEditRm['rate'];
                                                  }
-                                                 else
+                                                 else if( strlen($clt_id) > 0 && strlen($hall_number) > 0 )
                                                  {
-                                                     echo $numRate['room_rate'];
+                                                     echo $numRate['hall_feature_rate'];
                                                  }
 
                                                   ?>"

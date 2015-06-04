@@ -4,43 +4,18 @@ $db = new DBConnecting();
 $adm = new AdminController();
 
 
-//$featurename =mysqli_real_escape_string($_POST['featurename']);
-//$featurdescription = mysql_real_escape_string($_POST['featurdescription']);
 
-
-if(isset($_POST['save']))
+if(isset($_POST['update']))
 	{
-		$msg = $adm->addRoomFeatures();
+		$msg = $adm->updateRoomSetup();
 	}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="shortcut icon" href="favicon.png">
-
-    <title>Room Features Management Setup Form</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<?php
+require_once('head.php');
+?>
 
   <body>
 
@@ -60,6 +35,7 @@ if(isset($_POST['save']))
       <section id="main-content">
           <section class="wrapper">
               <!-- page start-->
+
              <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
@@ -71,40 +47,79 @@ if(isset($_POST['save']))
                               <div class="form">
                                   <form class="cmxform form-horizontal tasi-form" id="signupForm" method="POST" action="">
                                       <div class="form-group ">
-                                          <label for="featurename" class="control-label col-lg-2">Feature Name</label>
+                                          <label for="roomNumber" class="control-label col-lg-2">Room Number</label>
                                           <div class="col-lg-6">
-                                              <input class=" form-control" id="featurename" name="featurename" type="text" />
+                                              <input class="numbaOnly form-control" id="roomNumber" name="roomNumber" type="text" />
                                           </div>
                                       </div>
-                                      <div class="form-group ">
-                                          <label for="featurdescription" class="control-label col-lg-2">Feature Description</label>
-                                          <div class="col-lg-6">
-                                              <textarea class="form-control" name="featuredescription"></textarea>
-                                             <!-- <textarea class="form-control ckeditor" name="featuredescription" rows="6"></textarea>-->
-                                          </div>
-                                      </div>
-
 
                                       <div class="form-group ">
-                                          <label for="rate" class="control-label col-lg-2">Rate</label>
+                                          <label for="roomName" class="control-label col-lg-2">Room Name</label>
                                           <div class="col-lg-6">
-                                              <input class="rate form-control" id="rate" name="rate" type="text" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="rate" class="control-label col-lg-2">Discount</label>
-                                          <div class="col-lg-6">
-                                              <input class="rate form-control" id="discount" name="discount" type="text" />
+                                              <input class=" form-control" id="roomName" name="roomName" type="text" />
                                           </div>
                                       </div>
 
+                                      <div class="form-group">
+                                          <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Feature Name</label>
+                                          <div class="col-lg-6">
 
 
+
+                                          <select name="featureId" id="featureId" class="form-control m-bot15">
+                                              <option value="">--- Select ---</option>
+
+                                              <?php
+
+                                              $query = "SELECT * FROM `room_feature_tbl`";
+                                              $conn=$db->getConnection();
+                                              //$this->db->getConnection();
+                                              $result = mysqli_query($conn, $query);
+                                              //, MYSQL_ASSOC
+                                              //_fetch_array($result,MYSQL_BOTH))
+                                              while($row=mysqli_fetch_assoc($result))
+
+                                              {
+                                                  echo "<option value='".$row['feature_id']."'>".$row['feature_name']."</option>";
+                                              }
+
+                                              ?>
+
+
+
+                                          </select>
+
+
+
+
+
+
+
+
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Availability</label>
+                                          <div class="col-lg-6">
+
+
+
+                                              <select class="form-control m-bot15" id="availability" name="availability">
+                                                  <option value="">--- Select ---</option>
+                                                  <option>Available</option>
+                                                  <option>Not Available</option>
+                                              </select>
+
+
+
+                                          </div>
+                                      </div>
 
 
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
-                                              <button class="btn btn-danger" type="submit" name="save">Save</button>
+                                              <button class="btn btn-danger" type="submit" name="update">Update Now</button>
                                               <button class="btn btn-default" type="button">Cancel</button>
                                           </div>
                                       </div>
@@ -157,6 +172,23 @@ if(isset($_POST['save']))
   });
   });
 </script>
+  <script>
+      $('input.numbaOnly').keyup(function(event) {
+
+          // skip for arrow keys
+          if(event.which >= 37 && event.which <= 40) {
+              alert("Numbers only please");
+              return;
+          }
+          //.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          $(this).val(function(index, value) {
+              return value
+                  .replace(/\D/g, '')
+                  ;
+          });
+
+      });
+  </script>
 
   </body>
 </html>

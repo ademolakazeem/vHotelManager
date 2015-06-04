@@ -5,14 +5,10 @@ $adm = new AdminController();
 
 $clt_id = $_GET['clt_id'];
 
-$selQry = "SELECT * FROM room_reservation_tbl WHERE room_reservation_id = '$clt_id'";
+$selQry = "SELECT * FROM hall_reservation_tbl WHERE hall_reservation_id = '$clt_id'";
 $rsEditRm = $db->fetchArrayData($selQry);
 
 
-if(isset($_POST['update']))
-{
-    $msg = $adm->updateRoomReservation();
-}
 
 ?>
 <!DOCTYPE html>
@@ -22,14 +18,7 @@ require_once('head.php');
 ?>
 
   <body>
-  <?Php
 
-  @$room_number=$_GET['room_number']; // Use this line or below line if register_global is off
-  if(strlen($room_number) > 0 and !is_numeric($room_number)){ // to check if $cat is numeric data or not.
-      echo "Data Error";
-      exit;
-  }
-  ?>
   <section id="container" class="">
       <!--header start-->
       <?php
@@ -51,19 +40,26 @@ require_once('head.php');
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                             View Room Reservation
+                             View Hall Reservation
                           </header>
                           <div class="panel-body">
-
+                            <?php
+                            $hNo=$rsEditRm['hall_number'];
+                            $qryHlNumber = "SELECT hall_number, hall_name FROM `hall_setup_tbl` where availability='Available' and hall_number=$hNo";
+                            $conn=$db->getConnection();
+                            //$result = mysqli_query($conn, $query);
+                            $resHNumber= mysqli_query($conn, $qryHlNumber);
+                            $rowHNumber=mysqli_fetch_array($resHNumber, MYSQLI_ASSOC);
+                            ?>
                               <div class="form">
 
                                  <form class="cmxform form-horizontal tasi-form" id="signupForm" method="POST" action="">
 
                                   <input name="client_id" type="hidden" id="client_id" value="<?php echo $clt_id ?>">
                                   <div class="form-group">
-                                      <label for="room_number" class="control-label col-lg-2">Available Room Number</label>
+                                      <label for="room_number" class="control-label col-lg-2">Hall Name</label>
                                       <div class="col-lg-6">
-                                          <?php echo $rsEditRm['room_number']; ?>
+                                          <?php echo $rowHNumber['hall_name']; ?>
                                       </div>
                                   </div>
                                   <!--The current balance is &#8358;'.number_format($current_balance, 2)-->
@@ -107,78 +103,81 @@ require_once('head.php');
 
 
                                        <div class="form-group ">
-                                          <label for="number_of_people" class="control-label col-lg-2">Number of People</label>
+                                          <label for="purpose_of_use" class="control-label col-lg-2">Purpose of Use</label>
                                           <div class="col-lg-6">
-                                                     <?php echo $rsEditRm['number_of_people']; ?>
+                                                     <?php echo $rsEditRm['purpose_of_use']; ?>
                                           </div>
                                       </div>
 
 
-                                      <div class="form-group ">
-                                          <label for="dateIn" class="control-label col-lg-2">Date Checked in</label>
+                                      <div class="form-group">
+                                          <label for="dateIn" class="control-label col-lg-2">Start Date</label>
                                           <div class="col-lg-6">
 
-                                              <?php echo $rsEditRm['date_in']; ?>
+                                              <?php echo $rsEditRm['start_date']; ?>
                                               </div>
 
                                       </div>
 
 
                                           <div class="form-group">
-                                              <label for="timeIn" class="control-label col-lg-2">Time Checked in</label>
+                                              <label for="timeIn" class="control-label col-lg-2">Start Time</label>
                                               <div class="col-lg-6">
-                                                  <?php echo $rsEditRm['date_in']; ?>
+                                                  <?php echo $rsEditRm['startTime']; ?>
 
 
                                               </div>
                                           </div>
 
                                   <div class="form-group ">
-                                      <label for="number_of_nights" class="control-label col-lg-2">Number of Nights</label>
+                                      <label for="no_of_days" class="control-label col-lg-2">number of Days</label>
                                       <div class="col-lg-6">
-                                          <?php echo $rsEditRm['number_of_days']; ?>
+                                          <?php echo $rsEditRm['no_of_days']; ?>
                                       </div>
                                   </div>
 
 
                                   <div class="form-group ">
-                                      <label for="dateOut" class="control-label col-lg-2">Date Checked out</label>
+                                      <label for="dateOut" class="control-label col-lg-2">End Date</label>
                                       <div class="col-lg-6">
-                                          <?php echo $rsEditRm['date_out']; ?>
+                                          <?php echo $rsEditRm['end_date']; ?>
                                       </div>
                                   </div>
 
 
 
                                       <div class="form-group ">
-                                          <label for="visit_purpose" class="control-label col-lg-2">Visit Purpose</label>
+                                          <label for="visit_purpose" class="control-label col-lg-2">End Time</label>
                                           <div class="col-lg-6">
 
-                                              <?php echo $rsEditRm['visit_purpose']; ?>
+                                              <?php echo $rsEditRm['end_time']; ?>
                                           </div>
                                       </div>
+                                     <div class="form-group ">
+                                         <label for="visit_purpose" class="control-label col-lg-2">Price Paid</label>
+                                         <div class="col-lg-6">
+
+                                             <?php echo $rsEditRm['price_paid']; ?>
+                                         </div>
+                                     </div>
+
+
 
 
 
 
 
                                       <div class="form-group ">
-                                          <label for="reg_number" class="control-label col-lg-2">Car Registration Number</label>
+                                          <label for="reg_number" class="control-label col-lg-2">Attended to by</label>
                                           <div class="col-lg-6">
-                                              <?php echo $rsEditRm['car_reg_number']; ?>
+                                              <?php echo $rsEditRm['attended_to_by']; ?>
                                           </div>
                                       </div>
 
                                       <div class="form-group ">
-                                          <label for="model" class="control-label col-lg-2">Car Model</label>
+                                          <label for="model" class="control-label col-lg-2">created_date</label>
                                           <div class="col-lg-6">
-                                              <?php echo $rsEditRm['car_model']; ?>
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="color" class="control-label col-lg-2">Car color</label>
-                                          <div class="col-lg-6">
-                                              <?php echo $rsEditRm['car_color'];?>
+                                              <?php echo $rsEditRm['created_date']; ?>
                                           </div>
                                       </div>
 

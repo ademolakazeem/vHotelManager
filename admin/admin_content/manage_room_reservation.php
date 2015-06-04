@@ -120,16 +120,18 @@ require_once('head.php');
                                       <div class="col-lg-6">
                                           <input class="form-control" readonly="readonly" id="room_rate" name="room_rate" type="text"
                                                  value="<?php
-                                                 if($clt_id > 0)
+                                                 if(strlen($clt_id) > 0 && strlen($room_number) <= 0  )
                                                  {
                                                      echo $rsEditRm['rate'];
                                                  }
-                                                 else
+                                                 else if( strlen($clt_id) > 0 && strlen($room_number) > 0 )
                                                  {
                                                      echo $numRate['room_rate'];
                                                  }
 
-                                                  ?>"
+                                                 ?>
+
+                                                  "
                                               />
                                       </div>
                                   </div>

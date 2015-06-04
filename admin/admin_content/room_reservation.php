@@ -75,7 +75,7 @@ require_once('head.php');
                                                      value="<?php //echo isset($_POST['client_room_number']) ? $_POST['client_room_number'] : ''; ?>"
                                                   />-->
                                           <select name="room_number" id="room_number" class="form-control m-bot15" onchange="reload(this.form)">
-                                              <option value="">--- Select Room Number ---</option>
+                                              <option value="<?php echo isset($_POST['room_number']) ? "Room ".$_POST['room_number'] : ''; ?>"><?php echo isset($_POST['room_number']) ? "Room ".$_POST['room_number'] : '--- Select Room ---'; ?></option>
                                               <?php
                                               $conn=$db->getConnection();
                                               $result = mysqli_query($conn, $query);
@@ -113,7 +113,12 @@ require_once('head.php');
                                       <label for="room_rate" class="control-label col-lg-2">Rate</label>
                                       <div class="col-lg-6">
                                           <input class="form-control" readonly="readonly" id="room_rate" name="room_rate" type="text"
-                                                 value="<?php echo $numRate['room_rate']; ?>"
+                                                 <?php
+                                                 $dRate=$numRate['room_rate'];
+                                                 $delimiter=',';
+                                                 $dRate=str_replace($delimiter, '', $dRate);
+                                                 ?>
+                                                 value="<?php echo number_format(floatval($dRate),2); ?>"
                                               />
                                       </div>
                                   </div>
