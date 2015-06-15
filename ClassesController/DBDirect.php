@@ -63,6 +63,7 @@ class DBConnecting
 
 		return $num;
 	}
+
 	
 	function checkIfExists($table,$field,$value)
 	{

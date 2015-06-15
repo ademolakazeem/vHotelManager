@@ -58,11 +58,11 @@ require_once('head.php');
                                   $query = "SELECT hall_number, hall_name FROM `hall_setup_tbl` where availability='Available'";
                                   if(isset($hall_number) and strlen($hall_number) > 0){
 
-                                      $queryRate="select a.hall_number hall_number, a.hall_feature_id hall_feature_id, a.availability availability, b.hall_feature_id feature_feature_id, b.feature_rate hall_feature_rate from hall_setup_tbl a, hall_feature_tbl b where a.hall_number=$hall_number and a.hall_feature_id=b.hall_feature_id";
+                                      $queryRate="select a.hall_number hall_number, a.hall_feature_id hall_feature_id, a.availability availability, b.hall_feature_id feature_feature_id, b.feature_rate hall_feature_rate, b.price_paid price_paid from hall_setup_tbl a, hall_feature_tbl b where a.hall_number=$hall_number and a.hall_feature_id=b.hall_feature_id";
                                       //SELECT * FROM subcategory where cat_id=$cat order by subcategory
                                   }
                                   else
-                                      $queryRate="select a.hall_number hall_number, a.hall_feature_id hall_feature_id, a.availability availability, b.hall_feature_id feature_feature_id, b.feature_rate hall_feature_rate from hall_setup_tbl a, hall_feature_tbl b where a.hall_number=0 and a.hall_feature_id=b.hall_feature_id";
+                                      $queryRate="select a.hall_number hall_number, a.hall_feature_id hall_feature_id, a.availability availability, b.hall_feature_id feature_feature_id, b.feature_rate hall_feature_rate, b.price_paid price_paid from hall_setup_tbl a, hall_feature_tbl b where a.hall_number=0 and a.hall_feature_id=b.hall_feature_id";
 
                                   ?>
 
@@ -110,9 +110,9 @@ require_once('head.php');
 
                                   <div class="form-group ">
                                       <label for="hall_feature_rate" class="control-label col-lg-2">Rate</label>
-                                      <div class="col-lg-6">
+                                      <div class="col-lg-6"><!--echo $numRate['hall_feature_rate'];-->
                                           <input class=" form-control" readonly id="hall_feature_rate" name="hall_feature_rate" type="text"
-                                                 value="<?php echo $numRate['hall_feature_rate']; ?>"
+                                                 value="<?php  echo $numRate['price_paid']; ?>"
                                               />
                                       </div>
                                   </div>

@@ -4,7 +4,7 @@ function countUp(count)
         speed = Math.round(count / div_by),
         $display = $('.count'),
         run_count = 1,
-        int_speed = 24;
+        int_speed = 0.0000000001;
 
     var int = setInterval(function() {
         if(run_count < div_by){
@@ -19,7 +19,9 @@ function countUp(count)
     }, int_speed);
 }
 
-countUp(495);
+//countUp(495);
+countUp(sumAccEarning);
+
 
 function countUp2(count)
 {
@@ -27,7 +29,7 @@ function countUp2(count)
         speed = Math.round(count / div_by),
         $display = $('.count2'),
         run_count = 1,
-        int_speed = 24;
+        int_speed = 0.0000000001;
 
     var int = setInterval(function() {
         if(run_count < div_by){
@@ -42,7 +44,8 @@ function countUp2(count)
     }, int_speed);
 }
 
-countUp2(947);
+countUp2(sumHallEarning);
+//countUp2(947);
 
 function countUp3(count)
 {
@@ -50,7 +53,7 @@ function countUp3(count)
         speed = Math.round(count / div_by),
         $display = $('.count3'),
         run_count = 1,
-        int_speed = 24;
+        int_speed = 0.0000000001;
 
     var int = setInterval(function() {
         if(run_count < div_by){
@@ -64,8 +67,8 @@ function countUp3(count)
         }
     }, int_speed);
 }
-
-countUp3(328);
+countUp3(sumBarEarning);
+//countUp3(328);
 
 function countUp4(count)
 {
@@ -73,7 +76,8 @@ function countUp4(count)
         speed = Math.round(count / div_by),
         $display = $('.count4'),
         run_count = 1,
-        int_speed = 24;
+        int_speed = 0.0000000001;
+    // int_speed = 24;
 
     var int = setInterval(function() {
         if(run_count < div_by){
@@ -87,5 +91,5 @@ function countUp4(count)
         }
     }, int_speed);
 }
-
-countUp4(10328);
+countUp4(totalEarning);
+//countUp4(10328);

@@ -309,7 +309,17 @@ require_once('head.php');
                                           </div>
                                       </div>
 
+                                  <div class="form-group ">
+                                      <label for="status" class="control-label col-lg-2">Status</label>
+                                      <div class="col-lg-6">
 
+                                          <select name="status" id="status" class="form-control m-bot15"">
+                                          <option value="<?php echo $rsEditRm['status']; ?>"><?php echo $rsEditRm['status'];?></option>
+                                          <option value="Business">Checked In</option>
+                                          <option value="Pleasure">Checked Out</option>
+                                          </select>
+                                      </div>
+                                  </div>
 
 
                                       <div class="form-group">

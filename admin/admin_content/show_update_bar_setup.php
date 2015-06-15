@@ -71,8 +71,8 @@ require_once('head.php');
 
                                   </td>
                                   <td><?php echo $rsBar['item_name'];?></td>
-                                  <td><?php echo $rsBar['item_rate'];?></td>
-                                  <td class="hidden-phone"><?php echo $rsBar['quantity_available'];?></td>
+                                  <td><?php echo number_format(floatval($rsBar['item_rate']),2);?></td>
+                                  <td class="hidden-phone"><?php echo number_format(floatval($rsBar['quantity_available']),0);?></td>
                                   <td class="hidden-phone"><?php echo $rsBar['item_type'];?></td>
 
 

@@ -20,6 +20,17 @@
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-cogs"></i>
+                    <span>Company Setup</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="update_company_information.php">Create/Update Company Information</a></li>
+                    <li><a  href="company_image_upload.php">Upload Company Image</a></li>
+                    <!--<li><a  href="update_company_information.php">Update Company Information</a></li>-->
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
                     <span>Setups</span>
                 </a>
                 <ul class="sub">
@@ -29,6 +40,7 @@
                     <li><a  href="hall_setup.php">Hall Setup</a></li>
                     <li><a  href="bar_setup.php">Bar Setup</a></li>
                     <li><a  href="user_registration.php">User Setup</a></li>
+
                 </ul>
             </li>
 
@@ -75,9 +87,9 @@
                     <li><a  href="room_reservation.php">Add Reservation</a></li>
                     <li><a  href="show_update_reservation.php">Update Reservation</a></li>
                     <li><a  href="view_update_reservation.php">View Reservation</a></li>
-                    <li>-------</li>
+                    <li>------------------------------</li>
                     <li><a  href="show_update_reservation_checkins.php">Checked in Clients</a></li>
-                    <li><a  href="#">Checked out Clients</a></li>
+                    <li><a  href="show_update_reservation_checkouts.php">Checked out Clients</a></li>
                     <!--<li class="active"><a  href="form_validation.html">View Reservation</a></li>-->
 
                 </ul>
@@ -106,6 +118,78 @@
                     <li><a  href="view_bar.php">View Items in the Bar</a></li>
                 </ul>
             </li>
+
+            <!--multi level menu start <i class="fa fa-sitemap"></i>-->
+                   <li class="sub-menu">
+                            <a href="javascript:;" >
+
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>General Report</span>
+                            </a>
+                            <ul class="sub">
+                                 <li class="sub-menu">
+                                    <a  href="javascript:;">Accommodation Report</a>
+                                    <ul class="sub">
+                                        <li><a  href="room_setup_report.php">Room Setup Report</a></li>
+                                        <li><a  href="room_feature_report.php">Room Feature Report</a></li>
+                                        <li><a  href="room_reservation_report.php">Room Reservation Report</a></li>
+
+
+                                    </ul>
+                                </li>
+
+                                <li class="sub-menu">
+                                    <a href="javascript:;">Hall Report</a>
+                                    <ul class="sub">
+
+                                        <li><a  href="hall_setup_report.php">Hall Setup Report</a></li>
+                                        <li><a  href="hall_feature_report.php">Hall Feature Report</a></li>
+                                        <li><a  href="hall_reservation_report.php">Hall Reservation Report</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="sub-menu">
+                                    <a href="javascript:;">Bar Report</a>
+                                    <ul class="sub">
+                                        <li><a  href="bar_report.php">Bar Report</a></li>
+                                        <li><a  href="bar_setup_report.php">Bar Setup Report</a></li>
+
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+            <!--multi level menu end-->
+
+
+
+            <!--
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class=" fa fa-bar-chart-o"></i>
+                    <span>General Reports</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="room_setup_report.php">Room Setup Report</a></li>
+                    <li><a  href="room_feature_report.php">Room Feature Report</a></li>
+                    <li><a  href="room_reservation_report.php">Room Reservation Report</a></li>
+                    <li>------------------------------</li>
+                    <li><a  href="hall_setup_report.php">Hall Setup Report</a></li>
+                    <li><a  href="hall_feature_report.php">Hall Feature Report</a></li>
+                    <li><a  href="hall_reservation_report.php">Hall Reservation Report</a></li>
+                    <li>------------------------------</li>
+                    <li><a  href="bar_report.php">Bar Report</a></li>
+                    <li><a  href="bar_setup_report.php">Bar Setup Report</a></li>
+
+                </ul>
+            </li>
+
+            -->
+
+
+
 
             <li class="sub-menu">
                 <a href="javascript:;">

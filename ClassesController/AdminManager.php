@@ -68,10 +68,12 @@ class AdminController
         $rate=str_replace($delimiter, '', $rate);
         $discount=str_replace($delimiter, '', $discount);
         $pricePaid=floatval($rate)-floatval($discount);
-        $rate=number_format($rate,2);
+        $rate=floatval($rate);
+        $discount=floatval($discount);
+        /*$rate=number_format($rate,2);
         $discount=number_format($discount,2);
         $pricePaid=number_format($pricePaid,2);
-
+        */
 
         //validate
         if(empty($featurename)||empty($featuredescription)||empty($rate))
@@ -144,6 +146,21 @@ class AdminController
         $featureName = $this->fm->processfield($_POST['featureName']);
         $hallDescription = $this->fm->processfield($_POST['hallDescription']);
         $rate = $this->fm->processfield($_POST['rate']);
+        $discount = $this->fm->processfield($_POST['discount']);
+
+
+        $userInAttendance=$_SESSION['username'];
+        $delimiter=',';
+        $rate=str_replace($delimiter, '', $rate);
+        $discount=str_replace($delimiter, '', $discount);
+        $pricePaid=floatval($rate)-floatval($discount);
+        $rate=floatval($rate);
+        $discount=floatval($discount);
+        $pricePaid=floatval($pricePaid);
+        /*$rate=number_format($rate,2);
+        $discount=number_format($discount,2);
+        $pricePaid=number_format($pricePaid,2);
+        */
 
 
         //validate
@@ -175,8 +192,8 @@ class AdminController
                 return $msg;
             } else {
 
-                $insertQry = "INSERT INTO hall_feature_tbl (feature_name,feature_description, feature_rate, created_date)
-			VALUES('$featureName','$hallDescription','$rate','".date("Y-m-d H:i:s")."')";
+                $insertQry = "INSERT INTO hall_feature_tbl (feature_name,feature_description, feature_rate,discount, price_paid, created_date, created_by)
+			VALUES('$featureName','$hallDescription','$rate', '$discount','$pricePaid','".date("Y-m-d H:i:s")."', '$userInAttendance')";
 
                 $res = $this->db->executeQuery($insertQry);
 
@@ -205,6 +222,9 @@ class AdminController
         $roomName = $this->fm->processfield($_POST['roomName']);
         $featureId = $this->fm->processfield($_POST['featureId']);
         $availability = $this->fm->processfield($_POST['availability']);
+
+        $userInAttendance=$_SESSION['username'];
+
 
 
         //validate
@@ -235,8 +255,8 @@ class AdminController
                 return $msg;
             } else {
 
-                $insertQry = "INSERT INTO room_setup_tbl (room_number,room_name, feature_id,availability, created_date)
-			VALUES('$roomNumber','$roomName','$featureId','$availability','".date("Y-m-d H:i:s")."')";
+                $insertQry = "INSERT INTO room_setup_tbl (room_number,room_name, feature_id,availability, created_date, maker)
+			VALUES('$roomNumber','$roomName','$featureId','$availability','".date("Y-m-d H:i:s")."' '$userInAttendance')";
 
                 $res = $this->db->executeQuery($insertQry);
 
@@ -267,6 +287,9 @@ class AdminController
         $featureId = $this->fm->processfield($_POST['featureId']);
         $availability = $this->fm->processfield($_POST['availability']);
 
+        $userInAttendance=$_SESSION['username'];
+
+
 
         //validate
         if(empty($hallName)||empty($featureId)||empty($availability))
@@ -296,8 +319,8 @@ class AdminController
                 return $msg;
             } else {
 
-                $insertQry = "INSERT INTO hall_setup_tbl (hall_name,hall_feature_id,availability, created_date)
-			VALUES('$hallName','$featureId','$availability','".date("Y-m-d H:i:s")."')";
+                $insertQry = "INSERT INTO hall_setup_tbl (hall_name,hall_feature_id,availability, created_date, maker)
+			VALUES('$hallName','$featureId','$availability','".date("Y-m-d H:i:s")."', '$userInAttendance')";
 //'$hallNumber',
                 $res = $this->db->executeQuery($insertQry);
 
@@ -330,6 +353,22 @@ class AdminController
         //$itemRate = str_replace($delimiter, '', $this->fm->processfield($_POST['rate']));
         $quantity = $this->fm->processfield($_POST['quantity']);
         $threshold = $this->fm->processfield($_POST['threshold']);
+
+
+        $userInAttendance=$_SESSION['username'];
+        $delimiter=',';
+        $itemRate=str_replace($delimiter, '', $itemRate);
+        $quantity=str_replace($delimiter, '', $quantity);
+        $threshold=str_replace($delimiter, '', $threshold);
+
+        $itemRate=floatval($itemRate);
+        $quantity=floatval($quantity);
+        $threshold=floatval($threshold);
+        /*$rate=number_format($rate,2);
+        $discount=number_format($discount,2);
+        $pricePaid=number_format($pricePaid,2);
+        */
+
 
 
         //validate
@@ -394,7 +433,7 @@ class AdminController
             else
 
             {
-                $userInAttendance=$_SESSION['username'];
+
                 $insertQry = "INSERT INTO bar_setup_tbl (item_type, item_name,item_rate,quantity,quantity_available,threshold,created_by, created_date)
 			VALUES('$itemType','$itemName','$itemRate','$quantity','$quantity','$threshold','$userInAttendance','".date("Y-m-d H:i:s")."')";
 
@@ -536,7 +575,7 @@ class AdminController
         {
             //generate 4digit random number
             $serial = rand(100,999).substr(str_shuffle("0123456789"),0,1);
-            //call a method that returns school's shorth form
+
             $minshr = "VHM";
             $curDate=date('YmdHis');
             $userid = $minshr.$curDate.$serial;//generate
@@ -674,16 +713,22 @@ class AdminController
         {
             /*//generate 4digit random number
             $serial = rand(100,999).substr(str_shuffle("0123456789"),0,1);
-            //call a method that returns school's shorth form
+
             $minshr = "VHM";
             $curDate=date('YmdHis');
             $userid = $minshr.$curDate.$serial;//generate*/
             $userInAttendance=$_SESSION['username'];
             $delimiter=',';
+            //Note: the room_rate here is equal to the rate minus the discount in the room_feature
             $room_rate=str_replace($delimiter, '', $room_rate);
             $totalPrice= floatval($room_rate)*floatval($number_of_nights);
-            $room_rate=number_format($room_rate,2);
-            $totalPrice=number_format($totalPrice,2);
+            $room_rate=floatval($room_rate);
+            $totalPrice=floatval($totalPrice);
+            //$room_rate=number_format($room_rate,2);
+            //$totalPrice=number_format($totalPrice,2);
+
+
+
 
 
             //$twelveTime=strtotime("12:00:00");
@@ -691,8 +736,8 @@ class AdminController
             //date_out, time_out
             //prepare to insert
             $insertQry = "INSERT INTO room_reservation_tbl
-                  (client_name, client_address,client_phone,client_email,room_number,rate,number_of_people,date_in,time_in,number_of_days,date_out, visit_purpose, car_reg_number,car_model,car_color,price_paid, attended_to_by, date_created)
-			VALUES('$client_name','$client_address','$client_phone','$client_email','$room_number', '$room_rate','$number_of_people', '$dateIn', '$timeIn','$number_of_nights','$dateOut','$visit_purpose','$reg_number','$model', '$color','$totalPrice','$userInAttendance', '".date("Y-m-d H:i:s")."')";
+                  (client_name, client_address,client_phone,client_email,room_number,rate,number_of_people,date_in,time_in,number_of_days,date_out, visit_purpose, car_reg_number,car_model,car_color,price_paid, attended_to_by, date_created, status)
+			VALUES('$client_name','$client_address','$client_phone','$client_email','$room_number', '$room_rate','$number_of_people', '$dateIn', '$timeIn','$number_of_nights','$dateOut','$visit_purpose','$reg_number','$model', '$color','$totalPrice','$userInAttendance', '".date("Y-m-d H:i:s")."', 'Checked In')";
 
             $updateQryAvail="UPDATE room_setup_tbl SET availability='Not Available', updated_date='".date("Y-m-d H:i:s")."' where room_number = '$room_number'";
 
@@ -808,8 +853,11 @@ class AdminController
             $delimiter=',';
             $hall_feature_rate=str_replace($delimiter, '', $hall_feature_rate);
             $totalPrice= floatval($hall_feature_rate)*floatval($number_of_days);
-            $room_rate=number_format($hall_feature_rate,2);
-            $totalPrice=number_format($totalPrice,2);
+            //This is acctually rate minus discount setup in the hall features.
+            $hall_feature_rate=floatval($hall_feature_rate);
+            $totalPrice=floatval($totalPrice);
+            //$room_rate=number_format($hall_feature_rate,2);
+            //$totalPrice=number_format($totalPrice,2);
 
 
             //$twelveTime=strtotime("12:00:00");
@@ -825,7 +873,7 @@ class AdminController
 
             if($res)
             {
-                $this->audit->audit_log("User ".$_SESSION['username']." added a new user - ".$userInAttendance);
+                $this->audit->audit_log("User ".$_SESSION['username']." added a new hall client - ".$client_name);
 
                 $msg = '<div class="alert alert-success alert-block fade in">
                                   <button data-dismiss="alert" class="close close-sm" type="button">
@@ -917,9 +965,13 @@ class AdminController
             // echo "Item Rate".$itemRate;
             // echo "Quantity". $quantity;
             $totalPrice= floatval($itemRate)*floatval($quantity);
+
+            $itemRate=floatval($itemRate);
+            $quantity=floatval($quantity);
+            $totalPrice=floatval($totalPrice);
             //echo "Total Price".$totalPrice;
-            $itemRate=number_format($itemRate,2);
-            $totalPrice=number_format($totalPrice,2);
+            //$itemRate=number_format($itemRate,2);
+            //$totalPrice=number_format($totalPrice,2);
             //echo "Total Price after format".$totalPrice;
 
             //$twelveTime=strtotime("12:00:00");
@@ -974,6 +1026,102 @@ class AdminController
         //}
 
     }//end addBarItem
+    public function addCompanyInfo()
+    {
+        $coyName = $this->fm->processfield($_POST['coyName']);
+        $coyAddress = $this->fm->processfield($_POST['coyAddress']);
+        $coyPhone = $this->fm->processfield($_POST['coyPhone']);
+        $coyEmail = $this->fm->processfield($_POST['coyEmail']);
+        $webAddress = $this->fm->processfield($_POST['webAddress']);
+        //validate
+
+        $serial = rand(100, 999) . substr(str_shuffle("0123456789"), 0, 1);
+        $minshr = "VHM";
+        $curDate = date('YmdHis');
+        $coyid = $minshr . $curDate . $serial;
+        $userInAttendance = $_SESSION['username'];
+
+
+        if(empty($coyName)||empty($coyAddress)||empty($coyPhone)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please make sure all required fields are completed! Name, Address and Phone Number must be specified!
+             </div>';
+            return $msg;
+        }
+
+        if(!filter_var($coyEmail, FILTER_VALIDATE_EMAIL)) {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please Specify a valid email!
+             </div>';
+            return $msg;
+        }
+
+
+        $qry = "SELECT * FROM company_info_tbl";
+        $ftQry=$this->db->fetchArrayData($qry);
+        $coyFrmDB=$ftQry['coy_id'];
+
+        $row = $this->db->getNumOfRows($qry);
+        if($row >0 )
+        {
+            $updateCoyQry="UPDATE company_info_tbl SET coy_name='$coyName', coy_address='$coyAddress', coy_phone='$coyPhone', coy_email='$coyEmail',web_address='$webAddress', maker='$userInAttendance', date_updated='" . date("Y-m-d H:i:s") . "'";
+            $res = $this->db->executeQuery($updateCoyQry);
+            if ($res) {
+                $this->audit->audit_log("User " . $_SESSION['username'] . " Updated company information - " . $coyFrmDB);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully updated company\'s information!</p>
+                              </div>';
+                return $msg;
+
+
+            }
+
+
+        }
+        else {
+            $insertQry = "INSERT INTO company_info_tbl
+                  (coy_id, coy_name, coy_address,coy_phone,coy_email,web_address, maker, date_created)
+			VALUES('$coyid', '$coyName','$coyAddress','$coyPhone','$coyEmail','$webAddress', '$userInAttendance', '" . date("Y-m-d H:i:s") . "')";
+            $res = $this->db->executeQuery($insertQry);
+            if ($res) {
+                $this->audit->audit_log("User " . $_SESSION['username'] . " added a company information - " . $coyName);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully created company\'s information!</p>
+                              </div>';
+                return $msg;
+
+
+            }
+
+        }//else if not exists before
+
+    }//addCompanyInfo
+
+
     //addition ends here
     public function validateAge($then)
     {
@@ -1264,6 +1412,7 @@ class AdminController
         $reg_number = $this->fm->processfield($_POST['reg_number']);
         $model = $this->fm->processfield($_POST['model']);
         $color = $this->fm->processfield($_POST['color']);
+        $status = $this->fm->processfield($_POST['status']);
 
 
         //echo date_diff(date("Y-m-d"),$dob);
@@ -1340,17 +1489,25 @@ class AdminController
             $delimiter=',';
             $room_rate=str_replace($delimiter, '', $room_rate);
             $totalPrice= floatval($room_rate)*floatval($number_of_nights);
-            $room_rate=number_format($room_rate,2);
-            $totalPrice=number_format($totalPrice,2);
+            $room_rate=floatval($room_rate);
+            $totalPrice=floatval($totalPrice);
+
+            //$room_rate=number_format(floatval($room_rate),2);
+            //$totalPrice=number_format(floatval($totalPrice),2);
+
+
+
+
 
 
             //$twelveTime=strtotime("12:00:00");
 
             //date_out, time_out
             //prepare to insert
+
             $insertQry = "UPDATE room_reservation_tbl SET client_name='$client_name', client_address='$client_address',client_phone='$client_phone',client_email='$client_email'
 ,room_number='$room_number',rate='$room_rate',number_of_people='$number_of_people',date_in='$dateIn',time_in='$timeIn',number_of_days='$number_of_nights',date_out='$dateOut',
-visit_purpose='$visit_purpose', car_reg_number='$reg_number',car_model='$model',car_color='$color',price_paid='$totalPrice', attended_to_by='$userInAttendance', date_updated='".date("Y-m-d H:i:s")."' where room_reservation_id=".$clt_id."";
+visit_purpose='$visit_purpose', car_reg_number='$reg_number',car_model='$model',car_color='$color',price_paid='$totalPrice', attended_to_by='$userInAttendance', date_updated='".date("Y-m-d H:i:s")."', status='$status' where room_reservation_id=".$clt_id."";
 
             $res = $this->db->executeQuery($insertQry);
 
@@ -1463,8 +1620,12 @@ visit_purpose='$visit_purpose', car_reg_number='$reg_number',car_model='$model',
             $delimiter=',';
             $hall_feature_rate=str_replace($delimiter, '', $hall_feature_rate);
             $totalPrice= floatval($hall_feature_rate)*floatval($number_of_days);
-            $hall_feature_rate=number_format($hall_feature_rate,2);
-            $totalPrice = number_format($totalPrice, 2);
+            $hall_feature_rate=floatval($hall_feature_rate);
+            $totalPrice=floatval($totalPrice);
+            //$hall_feature_rate=number_format($hall_feature_rate,2);
+            //$totalPrice = number_format($totalPrice, 2);
+
+
 
 
             //$twelveTime=strtotime("12:00:00");
@@ -1579,8 +1740,10 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
             $delimiter=',';
             $itemRate=str_replace($delimiter, '', $itemRate);
             $totalPrice= floatval($itemRate)*floatval($quantity);
-            $itemRate=number_format($itemRate,2);
-            $totalPrice=number_format($totalPrice,2);
+            $quantity=floatval($quantity);
+            $itemRate=floatval($itemRate);
+            $totalPrice=floatval($totalPrice);
+
             //echo "<br/> after total price: ".$totalPrice ."and before last update updateQry";
             $updateQry = "UPDATE bar_tbl SET item_id='$itemId', quantity_sold='$quantity', rate='$itemRate',total='$totalPrice',attended_to_by='$userInAttendance', date_created= '".date("Y-m-d H:i:s")."' where bar_item_id='$itm_id'";
             $res = $this->db->executeQuery($updateQry);
@@ -1665,13 +1828,14 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         else if($row > 0)
         {
             $userInAttendance=$_SESSION['username'];
-            //$delimiter=',';
-            //$rate=str_replace($delimiter, '', $rate);
-            //$discount=str_replace($delimiter, '', $discount);
+
             $pricePaid=floatval($rate)-floatval($discount);
-            $rate=number_format($rate,2);
-            $discount=number_format($discount,2);
-            $pricePaid=number_format($pricePaid,2);
+            $rate=floatval($rate);
+            $discount=floatval($discount);
+            $pricePaid=floatval($pricePaid);
+            //$rate=number_format($rate,2);
+            //$discount=number_format($discount,2);
+            //$pricePaid=number_format($pricePaid,2);
             //$totalPrice= floatval($hall_feature_rate)*floatval($number_of_days);
             //$totalPrice = number_format($totalPrice, 2);
 
@@ -1769,7 +1933,7 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
 
             //date_out, time_out
             //prepare to insert
-            $updateQry = "UPDATE room_setup_tbl SET room_number='$roomNumber', room_name='$roomName', feature_id='$featureId', availability='$availability', updated_date='".date("Y-m-d H:i:s")."' where room_id=".$roomId."";
+            $updateQry = "UPDATE room_setup_tbl SET room_number='$roomNumber', room_name='$roomName', feature_id='$featureId', availability='$availability', updated_date='".date("Y-m-d H:i:s")."' , maker='$userInAttendance' where room_id=".$roomId."";
 
             $res = $this->db->executeQuery($updateQry);
 
@@ -1861,9 +2025,14 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
             //$rate=str_replace($delimiter, '', $rate);
             //$discount=str_replace($delimiter, '', $discount);
             $pricePaid=floatval($rate)-floatval($discount);
+            $rate=floatval($rate);
+            $discount=floatval($discount);
+            $pricePaid=floatval($pricePaid);
+            /*
             $rate=number_format($rate,2);
             $discount=number_format($discount,2);
             $pricePaid=number_format($pricePaid,2);
+            */
             //$totalPrice= floatval($hall_feature_rate)*floatval($number_of_days);
             //$totalPrice = number_format($totalPrice, 2);
 
@@ -2003,16 +2172,29 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         $delimiter=',';
         $oldQuantity=str_replace($delimiter, '', $oldQuantity);
         $quantity=str_replace($delimiter, '', $quantity);
+        $itemRate=str_replace($delimiter, '', $itemRate);
         $newQty=floatval($oldQuantity)+floatval($quantity);
         $cmpQty=floatval($oldQuantity)+floatval($quantity);
-        $oldQuantity=number_format(floatval($oldQuantity),2);
+
+        $oldQuantity=floatval($oldQuantity);
+        $quantity=floatval($quantity);
+        $itemRate=floatval($itemRate);
+        $newQty=floatval($newQty);
+        $threshold=str_replace($delimiter, '', $threshold);
+        $threshold=floatval($threshold);
+        $quantityAvailable=str_replace($delimiter, '', $quantityAvailable);
+        $quantityAvailable=floatval($quantityAvailable);
+        $newQtyAvailable=$quantityAvailable+$quantity;
+
+        /*
+         * $oldQuantity=number_format(floatval($oldQuantity),2);
         $quantity=number_format(floatval($quantity),2);
         $newQty=number_format(floatval($newQty),2);
         $threshold=str_replace($delimiter, '', $threshold);
         $threshold=number_format(floatval($threshold),2);
         $quantityAvailable=str_replace($delimiter, '', $quantityAvailable);
         $quantityAvailable=number_format(floatval($quantityAvailable), 2);
-        $newQtyAvailable=$quantityAvailable+$quantity;
+        $newQtyAvailable=$quantityAvailable+$quantity;*/
 
 
 
@@ -2060,7 +2242,6 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
 
 
         $qry = "SELECT * FROM bar_setup_tbl WHERE item_id=$item_id";
-
         $row = $this->db->getNumOfRows($qry);
         if($row <= 0 )
         {
@@ -2115,8 +2296,260 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
 
     }//End updateBarSetup
+    public function checkOut(){
+        //$chkAvailable = $this->fm->processfield($_POST['chkAvailable']);
+        $userInAttendance=$_SESSION['username'];
+        if(!empty($_POST['chkAvailable'])) {
+            foreach($_POST['chkAvailable'] as $checkOut) {
+           $chkQuery="select * from room_reservation_tbl where room_reservation_id=$checkOut";
+                $rsChk = $this->db->fetchData($chkQuery);
+                $rmNumber = $rsChk['room_number'];
+                $updRes="UPDATE room_setup_tbl SET availability='Available', updated_date='".date("Y-m-d H:i:s")."' where room_number = $rmNumber";
+                $updReservtn="UPDATE room_reservation_tbl SET date_out='".date("d-m-Y")."', status='Checked Out', actual_checked_out_date='".date("Y-m-d H:i:s")."' where room_reservation_id=$checkOut";
+                $resUpd = $this->db->executeQuery($updRes);
+                $reservatnUpd = $this->db->executeQuery($updReservtn);
+
+                if($resUpd && $reservatnUpd)
+                {
+                    $this->audit->audit_log("User ".$_SESSION['username']." updated room availability to Available - ".$userInAttendance." for room number:".$rmNumber);
+
+                }
+
+            }//end foreach
+            $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully checked out clients!</p>
+                              </div>';
+            return $msg;
+}
+        elseif(empty($_POST['chkAvailable'])){
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please select at least one client to sign out. Thank you!
+             </div>';
+            return $msg;
+        }
+
+    }//checkOut
+
+   public function uploadCompany($path, $coyid)
+    {
+        if(empty($coyid))
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Naada!</strong> Please create the company information first! Company information does not exist!
+             </div>';
+            return $msg;
+
+        }
+        if(empty($_FILES["file"]["name"]))
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Nah!</strong> Select file to be uploaded!
+             </div>';
+            return $msg;
+
+        }
+        if($_FILES["file"]["size"] > 900000)
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> The photograph is more than the allowed upload size of 900kb!
+             </div>';
+            return $msg;
+
+        }
+//generate 4digit random number
 
 
+        $filename = $coyid."_".$_FILES["file"]["name"];
+
+        if ((($_FILES["file"]["type"] == "image/png")||($_FILES["file"]["type"] == "image/jpeg")
+            ||($_FILES["file"]["type"] == "image/jpg")||($_FILES["file"]["type"] == "image/gif")||($_FILES["file"]["type"] == "image/pjpeg")))
+        {
+
+            $target_path = "../../imgs/uploads/".$path."/".$filename;
+            $realpath = "../../imgs/uploads/".$path."/".$filename;
+            //check if the user has a pix before remove it and replace
+
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_path))
+            {
+
+                $pcqy ="";
+                if($path=="coy")
+                {
+                    //$_SESSION['staimage']=$realpath;
+                    $pcqy = "SELECT * FROM company_info_tbl WHERE coy_id='$coyid'";
+                    $pxdata = $this->db->fetchData($pcqy);
+                    $imagename=$pxdata['coy_image'];
+
+                    //"../../".
+
+                    //chmod($imagename, 0777);
+                    if(!empty($imagename))unlink($imagename);
+
+                    $qry="UPDATE  company_info_tbl SET coy_image='$realpath' WHERE coy_id='$coyid'";
+                    //mysql_query("UPDATE users_tbl SET imagepath='$realpath' WHERE user_id='$ownerid'");
+                    echo "Path: ".$realpath;
+
+                    $res = $this->db->executeQuery($qry);
+                     if($res)
+                    {    $_SESSION['image']=$realpath;
+                        $this->audit->audit_log("User ".$_SESSION['username']." uploaded picture for company id".$coyid);
+
+                        $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Gracias!
+                                  </h4>
+                                  <p>Picture uploaded successfully!</p>
+                              </div>';
+                        return $msg;
+
+
+                    }
+
+                }
+                /*
+                 * else
+                {
+                    //$_SESSION['image']=$realpath;
+                    $pcqy = "SELECT * FROM tblstudent WHERE stud_id='$ownerid'";
+                    $pxdata = $this->db->fetchData($pcqy);
+                    $imagename="../".$pxdata['imgpath'];
+
+                    if(!empty($imagename)) unlink($imagename);
+
+                    mysql_query("UPDATE tblstudent SET imgpath='$realpath' WHERE stud_id='$ownerid'");
+                    $this->audit->audit_log("Admin ".$_SESSION['username']." uploaded picture ".$filename." for student ".$this->getStudentName($ownerid));
+
+                        $this->audit->audit_log($this->getStudentName($ownerid)." uploaded a picture ".$filename);
+                        return '<font color="#006600" size="-2">Picture uploaded successfully!</font>';
+
+                }*/
+            }
+            else
+                $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> File Upload failed, please try again!
+             </div>';
+            return $msg;
+
+
+        }//end if checking file type
+        else
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Invalid File selected!
+             </div>';
+            return $msg;
+
+
+        }
+    }//end uploadCompany
+
+/*
+    public function updateCompanyInfo()
+    {
+        $coyName = $this->fm->processfield($_POST['coyName']);
+        $coyAddress = $this->fm->processfield($_POST['coyAddress']);
+        $coyPhone = $this->fm->processfield($_POST['coyPhone']);
+        $coyEmail = $this->fm->processfield($_POST['coyEmail']);
+        $webAddress = $this->fm->processfield($_POST['webAddress']);
+        //validate
+        if(empty($coyName)||empty($coyAddress)||empty($coyPhone)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please make sure all required fields are completed! Name, Address and Phone Number must be specified!
+             </div>';
+            return $msg;
+        }
+
+        if(!filter_var($coyEmail, FILTER_VALIDATE_EMAIL)) {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please Specify a valid email!
+             </div>';
+            return $msg;
+        }
+
+
+        $qry = "SELECT * FROM company_info_tbl";
+
+        $row = $this->db->getNumOfRows($qry);
+        if($row >0 )
+        {
+            //username in use
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh oh!</strong> The Company Name has already been created, You can only Update the information!
+             </div>';
+            return $msg;
+
+        }
+        else {
+            $serial = rand(100, 999) . substr(str_shuffle("0123456789"), 0, 1);
+            $minshr = "VHM";
+            $curDate = date('YmdHis');
+            $coyid = $minshr . $curDate . $serial;
+            $userInAttendance = $_SESSION['username'];
+            $insertQry = "INSERT INTO company_info_tbl
+                  (coy_id, coy_name, coy_address,coy_phone,coy_email,web_address, maker, date_created)
+			VALUES('$coyid', '$coyName','$coyAddress','$coyPhone','$coyEmail','$webAddress', '$userInAttendance', '" . date("Y-m-d H:i:s") . "')";
+            $res = $this->db->executeQuery($insertQry);
+            if ($res) {
+                $this->audit->audit_log("User " . $_SESSION['username'] . " added a company information - " . $coyName);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully created company\'s information!</p>
+                              </div>';
+                return $msg;
+
+
+            }
+
+        }
+
+    }*/
    // End new Addition
 
 

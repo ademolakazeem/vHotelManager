@@ -1,6 +1,21 @@
 <?php
 require_once('authenticate.php');
 $db = new DBConnecting();
+$qry = "SELECT count(*) user_count FROM users_tbl";
+$rsCount = $db->fetchData($qry);
+//room reservation
+$qryAccEarning = "SELECT sum(CAST(price_paid as DECIMAL(12,2))) totalReservationEarnings FROM room_reservation_tbl";
+$rsSumAccEarning = $db->fetchData($qryAccEarning);
+//hall reservation
+$qryHallEarning = "SELECT sum(CAST(price_paid as DECIMAL(12,2))) totalHallResEarnings FROM hall_reservation_tbl";
+$rsSumHallEarning = $db->fetchArrayData($qryHallEarning);
+//bar items
+$qryBarEarning = "SELECT sum(CAST(total as DECIMAL(12,2))) totalBarEarnings FROM bar_tbl";
+$rsSumBarEarning = $db->fetchArrayData($qryBarEarning);
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +41,24 @@ require_once('head.php');
           <section class="wrapper">
               <!--state overview start-->
               <div class="row state-overview">
+                <!--  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol terques">
+                              <i class="fa fa-user"></i>
+                          </div>
+                          <div class="value">
+                              <h1 class="count">
+
+                                  0
+                              </h1>
+                              <?php
+                              //$countUsers= $rsCount['user_count'];
+                              //$countUsers= 100;
+                              ?>
+                              <p>New Users</p>
+                          </div>
+                      </section>
+                  </div>-->
                   <div class="col-lg-3 col-sm-6">
                       <section class="panel">
                           <div class="symbol terques">
@@ -33,9 +66,15 @@ require_once('head.php');
                           </div>
                           <div class="value">
                               <h1 class="count">
+
                                   0
                               </h1>
-                              <p>New Users</p>
+                              <?php
+                              $sumAccEarning= $rsSumAccEarning['totalReservationEarnings'];
+                              //echo $sumAccEarning;
+                              //$countUsers= 100;
+                              ?>
+                              <p>Accommodation Earnings</p>
                           </div>
                       </section>
                   </div>
@@ -45,10 +84,14 @@ require_once('head.php');
                               <i class="fa fa-tags"></i>
                           </div>
                           <div class="value">
-                              <h1 class=" count2">
+                              <?php
+                              $sumHallEarning= $rsSumHallEarning['totalHallResEarnings'];
+                              //echo $sumHallEarning;
+                              ?>
+                              <h1 class="count2">
                                   0
                               </h1>
-                              <p>Sales</p>
+                              <p>Hall Earnings</p>
                           </div>
                       </section>
                   </div>
@@ -58,10 +101,15 @@ require_once('head.php');
                               <i class="fa fa-shopping-cart"></i>
                           </div>
                           <div class="value">
+                              <?php
+                              $sumBarEarning = $rsSumBarEarning['totalBarEarnings'];
+                              //echo $sumBarEarning;
+                              ?>
+
                               <h1 class=" count3">
                                   0
                               </h1>
-                              <p>New Order</p>
+                              <p>Bar Earnings</p>
                           </div>
                       </section>
                   </div>
@@ -71,10 +119,13 @@ require_once('head.php');
                               <i class="fa fa-bar-chart-o"></i>
                           </div>
                           <div class="value">
+                              <?php
+                              $totalEarning=floatval($sumAccEarning)+floatval($sumHallEarning)+floatval($sumBarEarning);
+                              ?>
                               <h1 class=" count4">
                                   0
                               </h1>
-                              <p>Total Profit</p>
+                              <p>Total Earnings</p>
                           </div>
                       </section>
                   </div>
@@ -85,67 +136,104 @@ require_once('head.php');
                   <div class="col-lg-8">
                       <!--custom chart start-->
                       <div class="border-head">
-                          <h3>Earning Graph</h3>
-                      </div>
-                      <div class="custom-bar-chart">
-                          <ul class="y-axis">
-                              <li><span>100</span></li>
-                              <li><span>80</span></li>
-                              <li><span>60</span></li>
-                              <li><span>40</span></li>
-                              <li><span>20</span></li>
-                              <li><span>0</span></li>
-                          </ul>
-                          <div class="bar">
-                              <div class="title">JAN</div>
-                              <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">FEB</div>
-                              <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">MAR</div>
-                              <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">APR</div>
-                              <div class="value tooltips" data-original-title="55%" data-toggle="tooltip" data-placement="top">55%</div>
-                          </div>
-                          <div class="bar">
-                              <div class="title">MAY</div>
-                              <div class="value tooltips" data-original-title="20%" data-toggle="tooltip" data-placement="top">20%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">JUN</div>
-                              <div class="value tooltips" data-original-title="39%" data-toggle="tooltip" data-placement="top">39%</div>
-                          </div>
-                          <div class="bar">
-                              <div class="title">JUL</div>
-                              <div class="value tooltips" data-original-title="75%" data-toggle="tooltip" data-placement="top">75%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">AUG</div>
-                              <div class="value tooltips" data-original-title="45%" data-toggle="tooltip" data-placement="top">45%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">SEP</div>
-                              <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">OCT</div>
-                              <div class="value tooltips" data-original-title="42%" data-toggle="tooltip" data-placement="top">42%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">NOV</div>
-                              <div class="value tooltips" data-original-title="60%" data-toggle="tooltip" data-placement="top">60%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">DEC</div>
-                              <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
-                          </div>
-                      </div>
-                      <!--custom chart end-->
+                           <h3>Earning Graph</h3>
+                       </div>
+                       <div class="custom-bar-chart">
+                           <ul class="y-axis">
+                               <li><span>100</span></li>
+                               <li><span>80</span></li>
+                               <li><span>60</span></li>
+                               <li><span>40</span></li>
+                               <li><span>20</span></li>
+                               <li><span>0</span></li>
+                           </ul>
+                           <?php
+                            $accPercent = floatval($sumAccEarning)/floatval($totalEarning)*100;
+                           $hallPercent = floatval($sumHallEarning)/floatval($totalEarning)*100;
+                           $barPercent = floatval($sumBarEarning)/floatval($totalEarning)*100;
+
+
+                           ?>
+                           <div class="bar">
+                               <div class="title">ACC</div>
+
+                               <div class="value tooltips" data-original-title="<?php echo round($accPercent).'%'; ?>" data-toggle="tooltip" data-placement="top"><?php echo round($accPercent).'%'; ?></div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">HALL</div>
+                               <div class="value tooltips" data-original-title="<?php echo round($hallPercent).'%'; ?>" data-toggle="tooltip" data-placement="top"><?php echo round($hallPercent).'%'; ?></div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">BAR</div>
+                               <div class="value tooltips" data-original-title="<?php echo round($barPercent).'%'; ?>" data-toggle="tooltip" data-placement="top"><?php echo round($barPercent).'%'; ?></div>
+                           </div>
+
+                       </div>
+                       <!--custom chart end-->
+
+                      <!--custom chart start-->
+                      <!-- <div class="border-head">
+                           <h3>Earning Graph</h3>
+                       </div>
+                       <div class="custom-bar-chart">
+                           <ul class="y-axis">
+                               <li><span>100</span></li>
+                               <li><span>80</span></li>
+                               <li><span>60</span></li>
+                               <li><span>40</span></li>
+                               <li><span>20</span></li>
+                               <li><span>0</span></li>
+                           </ul>
+                           <div class="bar">
+                               <div class="title">JAN</div>
+                               <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">FEB</div>
+                               <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">MAR</div>
+                               <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">APR</div>
+                               <div class="value tooltips" data-original-title="55%" data-toggle="tooltip" data-placement="top">55%</div>
+                           </div>
+                           <div class="bar">
+                               <div class="title">MAY</div>
+                               <div class="value tooltips" data-original-title="20%" data-toggle="tooltip" data-placement="top">20%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">JUN</div>
+                               <div class="value tooltips" data-original-title="39%" data-toggle="tooltip" data-placement="top">39%</div>
+                           </div>
+                           <div class="bar">
+                               <div class="title">JUL</div>
+                               <div class="value tooltips" data-original-title="75%" data-toggle="tooltip" data-placement="top">75%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">AUG</div>
+                               <div class="value tooltips" data-original-title="45%" data-toggle="tooltip" data-placement="top">45%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">SEP</div>
+                               <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">OCT</div>
+                               <div class="value tooltips" data-original-title="42%" data-toggle="tooltip" data-placement="top">42%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">NOV</div>
+                               <div class="value tooltips" data-original-title="60%" data-toggle="tooltip" data-placement="top">60%</div>
+                           </div>
+                           <div class="bar ">
+                               <div class="title">DEC</div>
+                               <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
+                           </div>
+                       </div>
+                       custom chart end-->
                   </div>
                   <div class="col-lg-4">
                       <!--new earning start-->
@@ -703,14 +791,9 @@ require_once('head.php');
       </section>
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2013 &copy; FlatLab by VectorLab.
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
+      <?php
+      require_once('footer.php');
+      ?>
       <!--footer end-->
   </section>
 
@@ -733,6 +816,14 @@ require_once('head.php');
     <!--script for this page-->
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
+
+
+  <!-- Counts -->
+  <!-- <script>var countUsers = '<?php //echo $countUsers; ?>';</script>-->
+  <script>var sumAccEarning = '<?php echo $sumAccEarning; ?>';</script>
+ <script>var sumHallEarning = '<?php echo $sumHallEarning; ?>';</script>
+  <script>var sumBarEarning = '<?php echo $sumBarEarning; ?>';</script>
+  <script>var totalEarning = '<?php echo $totalEarning; ?>';</script>
     <script src="js/count.js"></script>
 
   <script>

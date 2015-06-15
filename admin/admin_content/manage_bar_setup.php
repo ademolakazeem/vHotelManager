@@ -78,7 +78,7 @@ require_once('head.php');
                                       <div class="form-group ">
                                           <label for="rate" class="control-label col-lg-2">Rate</label>
                                           <div class="col-lg-6">
-                                              <input class="rate form-control" id="rate" name="rate" type="text" value="<?php echo $rsEditBarSup['item_rate'];?>" />
+                                              <input class="rate form-control" id="rate" name="rate" type="text" value="<?php echo number_format(floatval($rsEditBarSup['item_rate']),2);?>" />
                                           </div>
                                       </div>
                                       <div class="form-group ">
@@ -94,7 +94,7 @@ require_once('head.php');
                                           <div class="col-lg-6">
                                             <!--<?php //echo number_format(floatval($rsEditBarSup['quantity']),2); ?>
                                               -->
-                                              <?php echo $rsEditBarSup['quantity'];?>
+                                              <?php echo number_format(floatval($rsEditBarSup['quantity']),2);?>
                                               <input name="oldQuantity" type="hidden" id="oldQuantity" value="<?php echo $rsEditBarSup['quantity'];?>">
                                           </div>
                                       </div>

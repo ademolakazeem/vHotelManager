@@ -66,7 +66,19 @@ require_once('head.php');
                                       </div>
 
 
+                                      <div class="form-group">
+                                          <label for="discount" class="control-label col-lg-2">Discount (<em>&#8358;</em>)</label>
+                                          <div class="col-lg-6">
+                                              <input class="rate form-control" id="discount" name="discount" type="text" />
+                                              <?php
 
+                                              //$dispDiscount=str_replace(',', '', $rsEditHallFea['discount']);
+                                              //$discount=str_replace($delimiter, '', $discount);
+                                             // echo number_format(floatval($dispDiscount),2);
+                                              ?>
+
+                                          </div>
+                                      </div>
 
 
                                       <div class="form-group">

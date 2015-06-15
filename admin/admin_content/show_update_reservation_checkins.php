@@ -3,12 +3,12 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
-if(isset($_POST['save']))
+if(isset($_POST['checkOut']))
 {
     $msg = $adm->checkOut();
 }
 
-$qry = "SELECT * FROM room_reservation_tbl ORDER BY client_name";
+$qry = "SELECT * FROM room_reservation_tbl where status != 'Checked Out' ORDER BY client_name";
 //$rsRoom = $db->fetchData($qry);
 //$clt_id = $_GET['clt_id'];
 
@@ -89,7 +89,7 @@ require_once('head.php');
                                   <?php '<td class="center hidden-phone">'.$rsRoom['number_of_days'].'</td>'; ?>
                                   <!--<td class="hidden-phone"><?php // echo $rsRmStup['availability'];?></td>-->
 
-                                  <td><input class="checkbox1" type="checkbox" name="chkAvailable[]" value="<?php echo $rsRoom['room_number'];?>">
+                                  <td><input class="checkbox1" type="checkbox" name="chkAvailable[]" value="<?php echo $rsRoom['room_reservation_id'];?>">
                                   </td>
 
                               </tr>
@@ -99,15 +99,17 @@ require_once('head.php');
                               ?>
                               </tbody>
                               </table>
-                                  <div class="form-group">
-                                      <div class="col-lg-offset-2 col-lg-10">
-                                          <button class="btn btn-danger" type="submit" name="save">Save</button>
-                                          <button class="btn btn-default" type="button">Cancel</button>
-                                      </div>
-                                  </div>
+
 
 
                               </div>
+                                      <div class="form-group">
+                                          <!--class="col-lg-offset-2 col-lg-10"-->
+                                          <div >
+                                              <button class="btn btn-danger" type="submit" name="checkOut">Check Client(s) Out Now</button>
+                                              <!-- <button class="btn btn-default" type="button">Cancel</button>-->
+                                          </div>
+                                      </div>
                                   </form>
 
 

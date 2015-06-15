@@ -59,11 +59,11 @@ require_once('head.php');
 
                                   $query = "SELECT room_number, room_name FROM `room_setup_tbl` where availability='Available'";
                                   if(isset($room_number) and strlen($room_number) > 0){
-                                      $queryRate="select a.room_number room_number, a.feature_id room_feature_id, a.availability availability, b.feature_id feature_feature_id, b.rate room_rate from room_setup_tbl a, room_feature_tbl b where a.room_number=$room_number and a.feature_id=b.feature_id";
+                                      $queryRate="select a.room_number room_number, a.feature_id room_feature_id, a.availability availability, b.feature_id feature_feature_id, b.rate room_rate, b.price_paid price_paid from room_setup_tbl a, room_feature_tbl b where a.room_number=$room_number and a.feature_id=b.feature_id";
                                       //SELECT * FROM subcategory where cat_id=$cat order by subcategory
                                   }
                                   else
-                                      $queryRate="select a.room_number room_number, a.feature_id room_feature_id, a.availability availability, b.feature_id feature_feature_id, b.rate room_rate from room_setup_tbl a, room_feature_tbl b where a.room_number=0 and a.feature_id=b.feature_id";
+                                      $queryRate="select a.room_number room_number, a.feature_id room_feature_id, a.availability availability, b.feature_id feature_feature_id, b.rate room_rate, b.price_paid price_paid from room_setup_tbl a, room_feature_tbl b where a.room_number=0 and a.feature_id=b.feature_id";
                                   ?>
 
 
@@ -110,11 +110,11 @@ require_once('head.php');
 
 
                                   <div class="form-group ">
-                                      <label for="room_rate" class="control-label col-lg-2">Rate</label>
+                                      <label for="room_rate" class="control-label col-lg-2">Price Per Night</label>
                                       <div class="col-lg-6">
                                           <input class="form-control" readonly="readonly" id="room_rate" name="room_rate" type="text"
                                                  <?php
-                                                 $dRate=$numRate['room_rate'];
+                                                 $dRate=$numRate['price_paid'];
                                                  $delimiter=',';
                                                  $dRate=str_replace($delimiter, '', $dRate);
                                                  ?>
