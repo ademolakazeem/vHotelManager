@@ -3,7 +3,7 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
-$qry = "SELECT a.*, b.name role FROM users_tbl a, roles_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.acclevel";
+$qry = "SELECT a.*, b.name role FROM users_tbl a, roles_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.id";
 //$qry = "SELECT a.username username, a.user_id user_id, a.fname fname, a.sex sex, a.dob dob, a.email email, a.address address, a.imagepath imagepath, a.phone phone, b.name role FROM users_tbl a, role_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.acclevel";
 //$qry = "SELECT * FROM users_tbl WHERE user_id = '".$_SESSION['user_id']."'";
 $rs = $db->fetchData($qry);

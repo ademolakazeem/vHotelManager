@@ -3,6 +3,8 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
+//echo "My page name is:".$_SERVER['PHP_SELF'];
+
 
 //$featurename =mysqli_real_escape_string($_POST['featurename']);
 //$featurdescription = mysql_real_escape_string($_POST['featurdescription']);
@@ -59,16 +61,18 @@ require_once('head.php');
                                       -->
                                       <div class="form-group ">
                                           <label for="hallName" class="control-label col-lg-2">Hall Name</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
                                               <input class=" form-control" id="hallName" name="hallName" type="text" />
                                           </div>
                                       </div>
 
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Feature Name</label>
-                                          <div class="col-lg-10">
-
-
+                                          <div class="col-lg-6">
+<?php
+//echo "My page name is:".$_SERVER['PHP_SELF'];
+//echo "<br/>My page basename is:".basename($_SERVER['PHP_SELF']);
+?>
 
                                               <select name="featureId" id="featureId" class="form-control m-bot15">
                                                   <option value="">--- Select ---</option>
@@ -98,7 +102,7 @@ require_once('head.php');
 
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Availability</label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-6">
 
 
 

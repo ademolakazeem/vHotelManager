@@ -13,7 +13,13 @@ class DBConnecting
 		$database_login = "vhotelmgrdb"; //dbname
 		$username_login = "v_hotel_mgr_user";//db username
 		$password_login = "vHotelIsCool123;"; //db password
-
+		
+/*
+        $hostname_login = "localhost"; //host
+		$database_login = "verdetec_vhotelmgrdb"; //dbname
+		$username_login = "verdetec_v_hotel";//db username
+		$password_login = "vHotelIsCool123;"; //db password
+*/
 
         //$connection = mysqli_connect('localhost', 'username', 'password', 'database');
         //$this->db =mysqli_select_db($database_login, $this->conn);

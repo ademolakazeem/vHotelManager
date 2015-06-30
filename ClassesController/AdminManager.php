@@ -27,7 +27,7 @@ class AdminController
 		else
 		{
 
-			$qry = "SELECT * FROM users_tbl WHERE username = '$username' AND password = '".sha1($password)."'";
+			$qry = "SELECT * FROM users_tbl WHERE trim(username) = '".trim($username)."' AND trim(password) = '".trim(sha1($password))."'";
 			
 			//$res = $this->db->getNumOfRows($qry);
 			//$fct = $this->db->fetchData($qry);
@@ -1121,6 +1121,99 @@ class AdminController
 
     }//addCompanyInfo
 
+    public function addPermissionSetup()
+    {
+        $pageName = $this->fm->processfield($_POST['pageName']);
+        $pageUrlName = $this->fm->processfield($_POST['pageUrlName']);
+        $parentId = $this->fm->processfield($_POST['parentId']);
+        $logoName = $this->fm->processfield($_POST['logoName']);
+        //validate
+        if(empty($pageName)
+    )
+    {
+        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Page Name cannot be empty, Please make sure you complete it!
+             </div>';
+        return $msg;
+    }
+        if(empty($pageUrlName)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Stop!</strong> The URL cannot be empty, Please provide necessary information!
+             </div>';
+            return $msg;
+        }
+        if((strlen($parentId)<1)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Nah!</strong> Parent Id should be completed, just select the appropriate number in the select box provided!
+             </div>';
+            return $msg;
+        }
+
+
+        //check if the username has not beeen registered before
+
+        $qry = "SELECT * FROM permissions_tbl WHERE lower(page_name) = '". strtolower($pageName)."'";
+
+        $row = $this->db->getNumOfRows($qry);
+        if($row >0 )
+        {
+            //username in use
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh oh!</strong> The permission has already in been added, Please try another name!
+             </div>';
+            return $msg;
+
+        }
+        else
+        {
+            $userInAttendance=$_SESSION['username'];
+
+            //prepare to insert
+
+            $insertQry = "INSERT INTO permissions_tbl
+                  (page_name, page_url, parent_id, logo_name, created_date, maker)
+			VALUES('$pageName','$pageUrlName', '$parentId', '$logoName', '".date("Y-m-d H:i:s")."','$userInAttendance')";
+
+            $res = $this->db->executeQuery($insertQry);
+
+            if($res)
+            {
+                $this->audit->audit_log("User ".$_SESSION['username']." added a new permission (page) information - ".$pageName);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully added permission (page) information for - '.$pageName.'</p>
+                              </div>';
+                return $msg;
+
+
+            }
+        }
+
+    }//end addPermissionSetup
+
 
     //addition ends here
     public function validateAge($then)
@@ -1145,6 +1238,7 @@ class AdminController
    //Update Starts here
     public function updateUserSetup()
     {
+        $username = $this->fm->processfield($_POST['username']);
         $firstname = $this->fm->processfield($_POST['firstname']);
         $lastname = $this->fm->processfield($_POST['lastname']);
         $address = $this->fm->processfield($_POST['address']);
@@ -1165,7 +1259,7 @@ class AdminController
 
 
 
-        if(empty($firstname)||empty($lastname)||empty($email)||empty($phone_number) ||empty($dob)||empty($sex)||empty($about_me)||empty($city_town)
+        if(empty($username)|| empty($firstname)||empty($lastname)||empty($email)||empty($phone_number) ||empty($dob)||empty($sex)||empty($about_me)||empty($city_town)
         )
         {
             $msg = '<div class="alert alert-block alert-danger fade in">
@@ -1206,13 +1300,32 @@ class AdminController
 		//	VALUES('$username','$userid','$fullname','".sha1($password)."', '$sex','$dob', '$acclevel', '$email','$address','$city_town','$phone_number',
         //        '".date("Y-m-d H:i:s")."','$about_me')";
 
-        $upquery = "UPDATE users_tbl SET fname = '$firstname', lname='$lastname',sex ='$sex',dob ='$dob',email = '$email',	address = '$address',city_town = '$city_town',phone = '$phone_number',about_me='$about_me', updated_date ='".date("Y-m-d H:i:s")."'  WHERE user_id = '".$_SESSION['user_id']."'";
+
+        //check if the username has not beeen registered before
+
+        $qryUsername = "SELECT username FROM users_tbl WHERE username='$username' and user_id != '$_SESSION[user_id]'";
+
+        $row = $this->db->getNumOfRows($qryUsername);
+        if($row > 0 )
+        {
+            //username in use
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Sorry!</strong> The username is not available, please choose another username!
+             </div>';
+            return $msg;
+
+        }
+
+        $upquery = "UPDATE users_tbl SET username='$username', fname = '$firstname', lname='$lastname',sex ='$sex',dob ='$dob',email = '$email',	address = '$address',city_town = '$city_town',phone = '$phone_number',about_me='$about_me', updated_date ='".date("Y-m-d H:i:s")."'  WHERE user_id = '".$_SESSION['user_id']."'";
 
         $res = $this->db->executeQuery($upquery);
 
         if($res)
         {
-            $this->audit->audit_log("User ".$_SESSION['username']." updated own information. ");
+            $this->audit->audit_log("User ".$_SESSION['username']." updated own profile information. ");
 
             $msg = '<div class="alert alert-success alert-block fade in">
                                   <button data-dismiss="alert" class="close close-sm" type="button">
@@ -1222,7 +1335,7 @@ class AdminController
                                       <i class="fa fa-ok-sign"></i>
                                     Thank you!
                                   </h4>
-                                  <p>You have successfully updated your information!</p>
+                                  <p>You have successfully updated your information! Please log out and login back to effect the new username</p>
                               </div>';
             return $msg;
 
@@ -2296,6 +2409,99 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
 
     }//End updateBarSetup
+    public function updatePermissionSetup()
+    {
+
+        $permId = $this->fm->processfield($_POST['permId']);
+        $pageName = $this->fm->processfield($_POST['pageName']);
+        $pageUrlName = $this->fm->processfield($_POST['pageUrlName']);
+        $parentId = $this->fm->processfield($_POST['parentId']);
+        $logoName = $this->fm->processfield($_POST['logoName']);
+        //validate
+        if(empty($pageName)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Page Name cannot be empty, Please make sure you complete it!
+             </div>';
+            return $msg;
+        }
+        if(empty($pageUrlName)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Stop!</strong> The URL cannot be empty, Please provide necessary information!
+             </div>';
+            return $msg;
+        }
+        /*if((strlen($parentId)<1)
+        )
+        {
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Nah!</strong> Parent Id should be completed, just select the appropriate number in the select box provided!
+             </div>';
+            return $msg;
+        }*/
+
+
+        //check if the username has not beeen registered before
+
+        $qry = "SELECT * FROM permissions_tbl WHERE perm_id = ". $permId."";
+
+        $row = $this->db->getNumOfRows($qry);
+        if($row <= 0 )
+        {
+            //username in use
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh oh!</strong> The permission does not exist, Please add first!
+             </div>';
+            return $msg;
+
+        }
+        else
+        {
+            $userInAttendance=$_SESSION['username'];
+
+            //prepare to insert
+
+            $updateQry = "UPDATE permissions_tbl
+                  SET page_name='$pageName', page_url='$pageUrlName', parent_id='$parentId', logo_name='$logoName', updated_date= '".date("Y-m-d H:i:s")."', maker='$userInAttendance' where perm_id=$permId";
+
+            $res = $this->db->executeQuery($updateQry);
+
+            if($res)
+            {
+                $this->audit->audit_log("User ".$_SESSION['username']." updated an existing permission (page) information to - ".$pageName);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully updated permission (page) information for - '.$pageName.'</p>
+                              </div>';
+                return $msg;
+
+
+            }
+        }
+
+    }//end updatePermissionSetup
     public function checkOut(){
         //$chkAvailable = $this->fm->processfield($_POST['chkAvailable']);
         $userInAttendance=$_SESSION['username'];
@@ -2550,6 +2756,57 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
 
     }*/
+
+
+    public function asideMenu(){
+
+//select all rows from the main_menu table
+//$queryResult = "select id,title,parentid,link from main_menu order by id asc";
+        $queryResult = "select perm_id id,page_name title, parent_id parentid,page_url link, logo_name from permissions_tbl order by perm_id asc";
+        $result =$this->db->executeQuery($queryResult);
+        //create a multidimensional array to hold a list of menu and parent menu
+        $menu = array(
+            'menus' => array(),
+            'parent_menus' => array()
+        );
+
+        //build the array lists with data from the menu table
+        //while ($row = mysql_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            //creates entry into menus array with current menu id ie. $menus['menus'][1]
+            $menu['menus'][$row['id']] = $row;
+            //creates entry into parent_menus array. parent_menus array contains a list of all menus with children
+            $menu['parent_menus'][$row['parentid']][] = $row['id'];
+        }
+       return $this->buildMenu(0, $menu);
+
+    }//end asideMenu
+
+
+// Create the main function to build milti-level menu. It is a recursive function.
+   public function buildMenu($parent, $menu) {
+        $html = "";
+
+
+        if (isset($menu['parent_menus'][$parent])) {
+            $html .= "<ul>";
+            foreach ($menu['parent_menus'][$parent] as $menu_id) {
+                if (!isset($menu['parent_menus'][$menu_id])) {
+                    $html .= "<li><a href='" . $menu['menus'][$menu_id]['link'] . "'>" . $menu['menus'][$menu_id]['title'] . "</a></li>";
+                }
+                if (isset($menu['parent_menus'][$menu_id])) {
+                    $html .= "<li><a href='" . $menu['menus'][$menu_id]['link'] . "'>" . $menu['menus'][$menu_id]['title'] . "</a>";
+                    $html .= buildMenu($menu_id, $menu);
+                    $html .= "</li>";
+                }
+            }
+            $html .= "</ul>";
+        }
+        return $html;
+    }
+
+
+
    // End new Addition
 
 

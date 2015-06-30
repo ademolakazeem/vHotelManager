@@ -145,7 +145,7 @@ require_once('head.php');
                                       <div class="form-group ">
                                           <label for="client_phone" class="control-label col-lg-2">Client Phone</label>
                                           <div class="col-lg-6">
-                                              <input class="form-control" id="client_phone" name="client_phone" type="text"
+                                              <input class="form-control numbaOnly" id="client_phone" name="client_phone" type="text"
                                                      value="<?php echo isset($_POST['client_phone']) ? $_POST['client_phone'] : ''; ?>"
                                                   />
                                           </div>
@@ -209,7 +209,7 @@ require_once('head.php');
                                           <!--<input class=" form-control" id="client_room_number" name="client_room_number" type="text"
                                                      value="<?php //echo isset($_POST['client_room_number']) ? $_POST['client_room_number'] : ''; ?>"
                                                   />-->
-                                          <select name="number_of_nights" id="number_of_nights" name="number_of_nights" class="form-control m-bot15"">
+                                          <select name="number_of_nights" id="number_of_nights"  class="form-control m-bot15"">
                                           <option value="<?php echo isset($_POST['number_of_nights']) ? $_POST['number_of_nights'] : ''; ?>"><?php echo isset($_POST['number_of_nights']) ? $_POST['number_of_nights'] : '--- Select number of nights ---'; ?></option>
                                           <?php
                                           $numCount=1;

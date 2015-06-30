@@ -89,7 +89,9 @@ require_once('head.php');
                                   <?php '<td class="center hidden-phone">'.$rsRoom['number_of_days'].'</td>'; ?>
                                   <!--<td class="hidden-phone"><?php // echo $rsRmStup['availability'];?></td>-->
 
-                                  <td><input class="checkbox1" type="checkbox" name="chkAvailable[]" value="<?php echo $rsRoom['room_reservation_id'];?>">
+                                  <td>
+                                      <input class="checkbox1" type="checkbox" name="chkAvailable[]" value="<?php echo $rsRoom['room_reservation_id'];?>">
+
                                   </td>
 
                               </tr>
@@ -153,6 +155,7 @@ require_once('head.php');
   <script src="js/respond.min.js" ></script>
   <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+
 
 
   <script type="text/javascript">

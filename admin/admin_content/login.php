@@ -79,7 +79,7 @@ require_once('head.php');
         <h2 class="form-signin-heading">sign in now</h2>
         <div class="login-wrap">
             <?php if(isset($msg)) echo $msg; ?>
-            <input type="text" class="form-control"  name="userId" placeholder="Username" autofocus>
+            <input type="text" class="form-control" id="userId"  name="userId" placeholder="Username" autofocus>
             <input type="password" class="form-control"  name="password" placeholder="Password">
             <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me
@@ -102,9 +102,9 @@ require_once('head.php');
                  </a>
              </div>-->
             <div class="registration">
-                Don't have an account yet?
-                <a class="" href="registration.html">
-                    Create an account
+                Want to go to the home page?
+                <a class="" href="../../frontend/frontend_content/index.html">
+                    Go home now
                 </a>
             </div>
 

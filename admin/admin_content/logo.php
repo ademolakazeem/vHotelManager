@@ -7,4 +7,4 @@
  */
 
 ?>
-<a href="index.php" class="logo" >vHotel<span>Manager<sup>&#153;</sup></span></a>
+<a href="index.php" class="logo" >Hot<span>ellia<sup>&#153;</sup></span></a>

@@ -3,12 +3,12 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
-$qry = "SELECT a.*, b.acclevel access_level, b.name role FROM users_tbl a, roles_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.acclevel";
+$qry = "SELECT a.*, b.id access_level, b.name role FROM users_tbl a, roles_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.id";
 //$qry = "SELECT a.username username, a.user_id user_id, a.fname fname, a.sex sex, a.dob dob, a.email email, a.address address, a.imagepath imagepath, a.phone phone, b.name role FROM users_tbl a, role_tbl b WHERE user_id = '".$_SESSION['user_id']."' and a.acclevel=b.acclevel";
 //$qry = "SELECT * FROM users_tbl WHERE user_id = '".$_SESSION['user_id']."'";
 $rs = $db->fetchData($qry);
 
-$qryAccLevel = "SELECT acclevel my_access_level, name my_role_name FROM roles_tbl WHERE acclevel = '".$rs['access_level']."'";
+$qryAccLevel = "SELECT id my_access_level, name my_role_name FROM roles_tbl WHERE id = '".$rs['access_level']."'";
 $rsAccLevel = $db->fetchData($qryAccLevel);
 
 if(isset($_POST['edit']))
@@ -75,6 +75,12 @@ require_once('head.php');
                               <h1> Profile Info</h1>
                               <form class="form-horizontal" role="form" action="" method="post">
                                   <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Username</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" value=" <?php echo $rs['username']; ?>" class="form-control" name="username" id="username" placeholder=" ">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
                                       <label  class="col-lg-2 control-label">FirstName</label>
                                       <div class="col-lg-6">
                                           <input type="text" value=" <?php echo $rs['fname']; ?>" class="form-control" name="firstname" id="firstname" placeholder=" ">
@@ -88,7 +94,7 @@ require_once('head.php');
                                   </div>
                                   <div class="form-group">
                                       <label  class="col-lg-2 control-label">Address</label>
-                                      <div class="col-lg-10">
+                                      <div class="col-lg-6">
                                           <textarea name="address" id="address" class="form-control" cols="20" rows="5">
                                               <?php echo $rs['address']; ?>
                                           </textarea>
@@ -96,7 +102,7 @@ require_once('head.php');
                                   </div>
                                   <div class="form-group">
                                       <label  class="col-lg-2 control-label">About Me</label>
-                                      <div class="col-lg-10">
+                                      <div class="col-lg-6">
                                           <textarea name="about_me" id="about_me" class="form-control" cols="20" rows="5">
                                               <?php echo $rs['about_me']; ?>
                                           </textarea>
@@ -194,7 +200,7 @@ require_once('head.php');
 
                                                   <?php
 
-                                                  $query = "SELECT acclevel, name FROM `roles_tbl`";
+                                                  $query = "SELECT id acclevel, name FROM `roles_tbl`";
                                                   $conn=$db->getConnection();
                                                   //$this->db->getConnection();
                                                   $result = mysqli_query($conn, $query);
