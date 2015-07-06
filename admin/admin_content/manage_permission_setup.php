@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
-
+require_once('access_denied_inclusion.php');
 //echo "My page name is:".$_SERVER['PHP_SELF'];
 
 
@@ -121,6 +121,9 @@ require_once('head.php');
                                                    $numCount+=1;
                                                }
  */
+                                              $dPerm=$rsEditPerm['parent_id'];
+                                              $selOnlyQry="SELECT perm_id, page_name, parent_id FROM permissions_tbl where perm_id = '$dPerm'";
+                                              $rsOnlyPerm = $db->fetchArrayData($selOnlyQry);
 
                                               ?>
 
@@ -130,7 +133,7 @@ require_once('head.php');
 -->
 
                                               <select name="parentId" id="parentId" class="form-control m-bot15">
-                                                  <option value="">--- Select ---</option>
+                                                  <option value="<?php echo $rsOnlyPerm['perm_id'];?>"><?php echo $rsOnlyPerm['perm_id']." ".$rsOnlyPerm['page_name'];?></option>
 
                                                   <?php
 

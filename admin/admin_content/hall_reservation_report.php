@@ -3,6 +3,8 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
+require_once('access_denied_inclusion.php');
+
 $queryRoom="SELECT * FROM hall_reservation_tbl";
 
 $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate FROM hall_reservation_tbl";
@@ -49,7 +51,7 @@ require_once('head.php');
                       <div class="panel-body">
                           <div class="row invoice-list">
                               <div class="text-center corporate-id">
-                                  <H2>ROOM RESERVATION REPORT</H2>
+                                  <H2>HALL RESERVATION REPORT</H2>
                                   <!--<img src="img/vector-lab.jpg" alt="">
                                   <img src="<?php //echo !empty($coyImage) ? $coyImage : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image'; ?>" alt="" />
                               --></div>

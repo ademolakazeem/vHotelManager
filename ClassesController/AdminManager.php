@@ -41,7 +41,7 @@ class AdminController
 				$_SESSION['username'] = $username;
 				$_SESSION['adlogged'] = "true";
                 $_SESSION['user_id'] = $getUserData['user_id'];
-				$_SESSION['userfullname'] = $getUserData['fname']." ".$getUserData['lname'];
+               	$_SESSION['userfullname'] = $getUserData['fname']." ".$getUserData['lname'];
 				$_SESSION['levelaccess'] = $getUserData['acclevel'];
                 $_SESSION['imagepathavatar'] = $getUserData['imagepathavatar'];
 				
@@ -1120,8 +1120,7 @@ class AdminController
         }//else if not exists before
 
     }//addCompanyInfo
-
-    public function addPermissionSetup()
+     public function addPermissionSetup()
     {
         $pageName = $this->fm->processfield($_POST['pageName']);
         $pageUrlName = $this->fm->processfield($_POST['pageUrlName']);
@@ -1150,6 +1149,7 @@ class AdminController
              </div>';
             return $msg;
         }
+  /*
         if((strlen($parentId)<1)
         )
         {
@@ -1161,7 +1161,7 @@ class AdminController
              </div>';
             return $msg;
         }
-
+*/
 
         //check if the username has not beeen registered before
 
@@ -1213,6 +1213,66 @@ class AdminController
         }
 
     }//end addPermissionSetup
+
+    public function addNewRole()
+    {
+        $roleName = $this->fm->processfield($_POST['role_name']);
+        $userInAttendance=$_SESSION['username'];
+
+
+
+        //validate
+        if(empty($roleName))
+        {
+            //return '<div style="color: #FF0000; font-size: small">Please make sure all fields are filled!</div>';
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please make sure all fields are filled!
+             </div>';
+            return $msg;
+        }
+        else {
+
+            $qry = "SELECT * FROM roles_tbl WHERE name = '$roleName'";
+
+            $row = $this->db->getNumOfRows($qry);
+            if ($row > 0) {
+
+                $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> The role has already been setup, Try another role name!
+             </div>';
+                return $msg;
+            } else {
+
+                $insertQry = "INSERT INTO roles_tbl (name, created_date, maker)
+			VALUES('$roleName','".date("Y-m-d H:i:s")."', '$userInAttendance')";
+//'$hallNumber',
+                $res = $this->db->executeQuery($insertQry);
+
+                if ($res) {
+                    $this->audit->audit_log("User " . $_SESSION['username'] . " added a new role information - " . $roleName);
+                    //return '<font color="#006600" size="-2">You have successfully register a staff!</font>';
+                    $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Gracias!
+                                  </h4>
+                                  <p>You have successfully added new role!</p>
+                              </div>';
+                    return $msg;
+                }
+            }
+        }
+
+    }//addNewRole
 
 
     //addition ends here
@@ -2782,7 +2842,6 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
 
     }//end asideMenu
 
-
 // Create the main function to build milti-level menu. It is a recursive function.
    public function buildMenu($parent, $menu) {
         $html = "";
@@ -2804,6 +2863,63 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
         return $html;
     }
+
+    public function assignNow(){
+        $roleId = $this->fm->processfield($_POST['role_id']);
+
+        $userInAttendance=$_SESSION['username'];
+
+    if( strlen($roleId) <= 0 ){
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please select a role name. Thank you!
+             </div>';
+            return $msg;
+        }
+
+        if(!empty($_POST['chkAvailable']) ) {
+
+            $delQry="DELETE FROM role_permissions_tbl WHERE ROLE_ID='$roleId'";
+            $resDel=$this->db->executeQuery($delQry);
+            foreach($_POST['chkAvailable'] as $assign) {
+                //$chkQuery="select * from room_reservation_tbl where room_reservation_id=$assign";
+                //$rsChk = $this->db->fetchData($chkQuery);
+                //$rmNumber = $rsChk['room_number'];
+                $ins="INSERT INTO  role_permissions_tbl (ROLE_ID, PERM_ID, CREATED_DATE, MAKER) VALUE('$roleId','$assign', '".date("Y-m-d H:i:s")."', '$userInAttendance')";
+                $resIns = $this->db->executeQuery($ins);
+
+                if($resIns)
+                {
+                    $this->audit->audit_log("User ".$_SESSION['username']." added role - role id:".$roleId. " to permission - permission id: ".$assign);
+
+                }
+
+            }//end foreach
+            $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully assigned role to the selected permission(s)!</p>
+                              </div>';
+            return $msg;
+        }
+        elseif(empty($_POST['chkAvailable'])){
+            $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please select at least one permission in order to assign role. Thank you!
+             </div>';
+            return $msg;
+        }
+
+    }//assignNow
 
 
 

@@ -2,6 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+require_once('access_denied_inclusion.php');
 
 $queryBar="SELECT a.*, b.item_name FROM bar_tbl a, bar_setup_tbl b where a.item_id=b.item_id";
 

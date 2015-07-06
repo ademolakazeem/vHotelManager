@@ -3,6 +3,7 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
+require_once('access_denied_inclusion.php');
 
 
 //$qry="SELECT a.hall_number hall_number, a.hall_name hall_name, a.feature_id a_feature_id, a.availability availability, a.created_date created_date, b.feature_name feature_name, b.feature_id b_feature_id, b.full_description full_description, b.rate rate, b.discount discount, b.price_paid price_paid FROM hall_setup_tbl a, room_feature_tbl b WHERE  a.feature_id=b.feature_id";
@@ -37,6 +38,24 @@ require_once('head.php');
           <section class="wrapper">
               <!-- page start-->
              <div class="row">
+                 <!--breadcrumbs start-->
+                 <div class="breadcrumbs">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-lg-4 col-sm-4">
+                                 <h1>View Hall Setup</h1>
+                             </div>
+                             <div class="col-lg-8 col-sm-8">
+                                 <ol class="breadcrumb pull-right">
+                                     <li><a href="index.php">Home</a></li>
+                                     <!--<li><a href="show_update_room_info.php">Show Room Setup</a></li>-->
+                                     <li class="active">View Hall Setup</li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">

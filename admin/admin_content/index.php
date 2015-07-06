@@ -1,6 +1,10 @@
 <?php
 require_once('authenticate.php');
 $db = new DBConnecting();
+
+require_once('access_denied_inclusion.php');
+
+
 $qry = "SELECT count(*) user_count FROM users_tbl";
 $rsCount = $db->fetchData($qry);
 //room reservation
@@ -60,6 +64,7 @@ require_once('head.php');
                               <?php
                               //$countUsers= $rsCount['user_count'];
                               //$countUsers= 100;
+               // echo "My page name is:".$_SERVER['PHP_SELF'];
                               ?>
                               <p>New Users</p>
                           </div>
@@ -120,6 +125,7 @@ require_once('head.php');
                       </section>
                   </div>
                   <div class="col-lg-3 col-sm-6">
+
                       <section class="panel">
                           <div class="symbol blue">
                               <i class="fa fa-bar-chart-o"></i>
@@ -140,6 +146,11 @@ require_once('head.php');
 
               <div class="row">
                   <div class="col-lg-8">
+                      <?php
+                      //echo "My page name is:".$_SERVER['PHP_SELF'];
+                      //echo "<br/>";
+                      //echo "My page name is:".basename($_SERVER['PHP_SELF']);
+                      ?>
                       <!--custom chart start-->
                       <div class="border-head">
                            <h3>Earning Graph</h3>

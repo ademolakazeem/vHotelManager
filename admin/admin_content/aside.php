@@ -8,8 +8,11 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+
 //select all rows from the main_menu table
-$dQuery="select perm_id id, page_name title, parent_id parentid, page_url link, logo_name from permissions_tbl where parent_id=0 order by id asc";
+//$dQuery="select perm_id id, page_name title, parent_id parentid, page_url link, logo_name from permissions_tbl where parent_id=0 order by id asc";
+//$dQuery="select a.perm_id id, a.page_name title, a.parent_id parentid, a.page_url link, a.logo_name from permissions_tbl a, role_permissions_tbl b, users_tbl c where a.parent_id=0 and a.perm_id=b.perm_id and b.role_id=c.acclevel and c.acclevel='".$_SESSION['levelaccess']."' order by id asc";
+$dQuery="select distinct a.perm_id id, a.page_name title, a.parent_id parentid, a.page_url link, a.logo_name from permissions_tbl a, role_permissions_tbl b, users_tbl c where a.parent_id=0 and a.perm_id=b.perm_id and b.role_id=".$_SESSION['levelaccess']." order by id asc";
 $result=$db->executeQuery($dQuery);
 ?>
 <aside>
@@ -43,8 +46,11 @@ $result=$db->executeQuery($dQuery);
 
 
                 <?php
-                $subQuery="select perm_id id, page_name title, parent_id parentid, page_url link, logo_name from permissions_tbl where parent_id=".$row['id']." order by id asc";
-                $resSub=$db->executeQuery($subQuery);
+                //$subQuery="select perm_id id, page_name title, parent_id parentid, page_url link, logo_name from permissions_tbl where parent_id=".$row['id']." order by id asc";
+
+
+            $subQuery="select distinct a.perm_id id, a.page_name title, a.parent_id parentid, a.page_url link, a.logo_name from permissions_tbl a, role_permissions_tbl b, users_tbl c where a.parent_id=".$row['id']." and a.perm_id=b.perm_id and b.role_id=".$_SESSION['levelaccess']." order by id asc";
+            $resSub=$db->executeQuery($subQuery);
                 //$res_pro=$dbcon->query("SELECT * FROM sub_menu WHERE m_menu_id=".$row['m_menu_id']);
                 ?>
                 <ul class="sub">

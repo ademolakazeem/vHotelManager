@@ -3,6 +3,8 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
+require_once('access_denied_inclusion.php');
+
 $selQry = "SELECT * FROM company_info_tbl";
 $rsEditCoyStUp = $db->fetchArrayData($selQry);
 
@@ -39,10 +41,29 @@ require_once('head.php');
               <!-- page start-->
 
               <div class="row">
+                  <!--breadcrumbs start-->
+                  <div class="breadcrumbs">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-lg-4 col-sm-4">
+                                  <h2>Create/Update Company</h2>
+
+                              </div>
+                              <div class="col-lg-8 col-sm-8">
+                                  <ol class="breadcrumb pull-right">
+                                      <li><a href="index.php">Home</a></li>
+                                      <!--<li><a href="show_update_permission.php">Show Permissions</a></li>-->
+                                      <li class="active">Create/Update Company</li>
+                                  </ol>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Company Creation Form
+                              Company Creation/Update Form
                           </header>
                           <div class="panel-body">
                               <?php if(isset($msg)) echo $msg; ?>
@@ -65,9 +86,9 @@ require_once('head.php');
                                       <div class="form-group">
                                           <label  class="col-lg-2 control-label">Company Address</label>
                                           <div class="col-lg-6">
-                                              <textarea name="coyAddress" id="coyAddress" class="form-control" cols="6" rows="5"  style="text-align: left">
-                                                  <?php echo $rsEditCoyStUp['coy_address']; ?>
-
+                                              <!--  class="form-control"-->
+                                              <textarea name="coyAddress" id="coyAddress"  cols="6" rows="5" class="form-control" style="text-align: left">
+                                                 <?php echo $rsEditCoyStUp['coy_address']; ?>
                                               </textarea>
                                           </div>
                                       </div>

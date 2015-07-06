@@ -2,6 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+require_once('access_denied_inclusion.php');
 
 $queryFeat="SELECT * FROM bar_setup_tbl";
 

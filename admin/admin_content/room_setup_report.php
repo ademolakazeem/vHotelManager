@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
-
+require_once('access_denied_inclusion.php');
 $queryFeat="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id";
 
 //$querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl";

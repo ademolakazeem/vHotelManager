@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
-
+require_once('access_denied_inclusion.php');
 $accfea_id = $_GET['accfea_id'];
 //@$item_id=$_GET['item_id'];
 
@@ -43,6 +43,24 @@ require_once('head.php');
               <!-- page start-->
 
               <div class="row">
+                  <!--breadcrumbs start-->
+                  <div class="breadcrumbs">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-lg-4 col-sm-4">
+                                  <h1>Manage Room Features</h1>
+                              </div>
+                              <div class="col-lg-8 col-sm-8">
+                                  <ol class="breadcrumb pull-right">
+                                      <li><a href="index.php">Home</a></li>
+                                      <li><a href="show_update_room_features.php">Show Room Features</a></li>
+                                      <li class="active">Manage Room Features</li>
+                                  </ol>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">

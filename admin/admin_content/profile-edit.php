@@ -195,7 +195,7 @@ require_once('head.php');
                                           <div class="col-md-6 col-xs-11">
                                               <select name="acclevel" id="acclevel" class="form-control m-bot15">
 
-                                                  $rsAccLevel
+
                                                   <option value="<?php echo $rsAccLevel['my_access_level'];?>"><?php echo $rsAccLevel['my_role_name'];?></option>
 
                                                   <?php

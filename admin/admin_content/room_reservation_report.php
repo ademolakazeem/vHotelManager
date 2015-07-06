@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
-
+require_once('access_denied_inclusion.php');
 $queryRoom="SELECT * FROM room_reservation_tbl";
 
 $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate FROM room_reservation_tbl";

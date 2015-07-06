@@ -2,16 +2,14 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+//$qryAccess = "SELECT distinct a.perm_id, a.page_url FROM permissions_tbl a, role_permissions_tbl b where a.perm_id=b.perm_id and a.page_url LIKE '".basename($_SERVER['PHP_SELF'])."%' order by a.perm_id asc";
+require_once('access_denied_inclusion.php');
+
+
 $qry = "SELECT * FROM permissions_tbl order by perm_id asc";
-//$rsPerm = $db->fetchData($qry);
-//$clt_id = $_GET['clt_id'];
+
 
 ?>
-
-
-
-
-
 
 
 
@@ -45,7 +43,8 @@ require_once('head.php');
                      <div class="container">
                          <div class="row">
                              <div class="col-lg-4 col-sm-4">
-                                 <h1>Show Permissions</h1>
+                                 <h2>Show Permissions</h2>
+
                              </div>
                              <div class="col-lg-8 col-sm-8">
                                  <ol class="breadcrumb pull-right">
@@ -189,22 +188,8 @@ require_once('head.php');
       ?>
       <!--footer end-->
   </section>
-
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="js/jquery.scrollTo.min.js"></script>
-  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-  <script src="js/respond.min.js" ></script>
-
-
-  <!--common script for all pages-->
-  <script src="js/common-scripts.js"></script>
-  <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
-
-
+  <!--<script src="js/jquery.js"></script>-->
 
   <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -214,6 +199,25 @@ require_once('head.php');
   <script src="js/respond.min.js" ></script>
   <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+
+  <!--
+   <script src="js/bootstrap.min.js"></script>
+   <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+   <script src="js/jquery.scrollTo.min.js"></script>
+   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+   <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+   <script src="js/respond.min.js" ></script>
+
+     <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+
+   -->
+
+
+  <!--common script for all pages-->
+  <script src="js/common-scripts.js"></script>
+
+
+
 
 
 

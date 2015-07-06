@@ -3,7 +3,7 @@ require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
 
-
+require_once('access_denied_inclusion.php');
 
 $qry="SELECT * FROM room_feature_tbl";
 
@@ -33,6 +33,25 @@ require_once('head.php');
           <section class="wrapper">
               <!-- page start-->
              <div class="row">
+                 <!--breadcrumbs start-->
+                 <div class="breadcrumbs">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-lg-4 col-sm-4">
+                                 <h2>Show Room Features</h2>
+
+                             </div>
+                             <div class="col-lg-8 col-sm-8">
+                                 <ol class="breadcrumb pull-right">
+                                     <li><a href="index.php">Home</a></li>
+                                     <!--<li><a href="show_update_permission.php">Show Permissions</a></li>-->
+                                     <li class="active">Show Room Features</li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
@@ -115,20 +134,7 @@ require_once('head.php');
   </section>
 
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="js/jquery.scrollTo.min.js"></script>
-  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-  <script src="js/respond.min.js" ></script>
-
-
-  <!--common script for all pages-->
-  <script src="js/common-scripts.js"></script>
-  <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
-
-
+  <!--<script src="js/jquery.js"></script>-->
 
   <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -138,6 +144,23 @@ require_once('head.php');
   <script src="js/respond.min.js" ></script>
   <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+
+  <!--
+   <script src="js/bootstrap.min.js"></script>
+   <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+   <script src="js/jquery.scrollTo.min.js"></script>
+   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+   <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+   <script src="js/respond.min.js" ></script>
+
+     <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+
+   -->
+
+
+  <!--common script for all pages-->
+  <script src="js/common-scripts.js"></script>
+
 
 
   <script type="text/javascript">

@@ -2,6 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+require_once('access_denied_inclusion.php');
 
 $itm_id = $_GET['itm_id'];
 
@@ -44,6 +45,25 @@ require_once('head.php');
           <section class="wrapper">
               <!-- page start-->
              <div class="row">
+                 <!--breadcrumbs start-->
+                 <div class="breadcrumbs">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-lg-4 col-sm-4">
+                                 <h2>Manage Bar Setup</h2>
+
+                             </div>
+                             <div class="col-lg-8 col-sm-8">
+                                 <ol class="breadcrumb pull-right">
+                                     <li><a href="index.php">Home</a></li>
+                                     <li><a href="show_update_bar_setup.php">Show Bar Setup</a></li>
+                                     <li class="active">Manage Bar Setup</li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">

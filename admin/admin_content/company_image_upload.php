@@ -5,6 +5,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+require_once('access_denied_inclusion.php');
 
 $queryCoy="SELECT coy_id FROM company_info_tbl";
 $resCoy=$db->fetchArrayData($queryCoy);
@@ -85,6 +86,25 @@ require_once('head.php');
           <section class="wrapper">
               <!-- page start-->
              <div class="row">
+                 <!--breadcrumbs start-->
+                 <div class="breadcrumbs">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-lg-4 col-sm-4">
+                                 <h2>Coy Image Upload</h2>
+
+                             </div>
+                             <div class="col-lg-8 col-sm-8">
+                                 <ol class="breadcrumb pull-right">
+                                     <li><a href="index.php">Home</a></li>
+                                     <!--<li><a href="show_update_permission.php">Show Permissions</a></li>-->
+                                     <li class="active">Coy Image Upload</li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!--breadcrumbs end-->
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">

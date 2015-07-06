@@ -2,6 +2,7 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+require_once('access_denied_inclusion.php');
 
 $queryFeat="SELECT * FROM hall_feature_tbl";
 
@@ -54,7 +55,7 @@ require_once('head.php');
                       <div class="panel-body">
                           <div class="row invoice-list">
                               <div class="text-center corporate-id">
-                                  <H2>ROOM FEATURE REPORT</H2>
+                                  <H2>HALL FEATURE REPORT</H2>
                                   <!--<img src="img/vector-lab.jpg" alt="">
                                   <img src="<?php //echo !empty($coyImage) ? $coyImage : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image'; ?>" alt="" />
                               --></div>
