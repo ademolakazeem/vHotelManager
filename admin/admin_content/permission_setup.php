@@ -46,7 +46,7 @@ require_once('head.php');
                      <div class="container">
                          <div class="row">
                              <div class="col-lg-4 col-sm-4">
-                                 <h1>New Permission Setup</h1>
+                                 <h2>New Permission Setup</h2>
                              </div>
                              <div class="col-lg-8 col-sm-8">
                                  <ol class="breadcrumb pull-right">
@@ -119,7 +119,7 @@ require_once('head.php');
 -->
 
                                               <select name="parentId" id="parentId" class="form-control m-bot15">
-                                                  <option value="">--- Select ---</option>
+                                                  <option value="-1">--- Select ---</option>
 
                                                   <?php
 

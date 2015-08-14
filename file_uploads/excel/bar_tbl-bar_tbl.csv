@@ -1,0 +1,4 @@
+bar_item_id,item_id,quantity_sold,rate,total,attended_to_by,date_created,date_updated
+19,1,4,10000,40000,Demola,5/25/2015 19:34,5/25/2015 18:34
+20,2,2,370,740,Demola,5/25/2015 19:47,5/25/2015 18:47
+21,9,1,900,900,admin,5/27/2015 20:28,5/27/2015 19:28

@@ -1,0 +1,14 @@
+item_type,item_name,item_rate,quantity,threshold
+Food,Salad,1500,3000,10
+Drink,Champagne ,10000,100,30
+Drink,33 Lergar Beer,370,1500,400
+Drink,Eva Water,100,100,10
+Food,Chicken and Chips Big,2000,200,5
+Food,Chicken and Chips Medium,1500,200,5
+Food,Fish and Chips Big,2500,200,5
+Food,Fish and Chips Medium,2000,200,5
+Food,Rice and Chicken,900,500,10
+Food,Pizza Family Size,2800,300,5
+Drink,Multina,100,4000,5
+Drink,Hennessy,35000,50,5
+Drink,Mowet,60000,50,5

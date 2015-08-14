@@ -2,11 +2,127 @@
 require_once('authenticate.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+$fm = new Format();
 require_once('access_denied_inclusion.php');
-$queryFeat="SELECT * FROM room_feature_tbl";
 
-$querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl";
-$resSummAll=$db->fetchArrayData($querySum);
+
+
+
+
+if(isset($_POST['searchNow']))
+{
+    //$start_date = mysqli_real_escape_string($db->getConnection(),$_POST['start_date']);
+    //$end_date = mysqli_real_escape_string($db->getConnection(),$_POST['end_date']);
+    $criteria = $fm->processfield($_POST['criteria']);
+    $start_date = $fm->processfield($_POST['start_date']);
+    $end_date = $fm->processfield($_POST['end_date']);
+    $criteria=strtolower($criteria);
+    if(!empty($criteria) && empty($start_date) && empty($end_date)){
+        //!empty($criteria)
+       /* $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria')";*/
+
+        $queryFeat="SELECT * FROM room_feature_tbl where lower(feature_name) like '%$criteria%'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where lower(feature_name) like '%$criteria%'";
+
+    }//end if only criteria was selected
+
+    elseif(empty($criteria) && !empty($start_date) && empty($end_date)){
+
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and a.created_date='$start_date'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where DATE(created_date)='$start_date'";
+        $queryFeat="SELECT * FROM room_feature_tbl where DATE(created_date)='$start_date'";
+
+
+
+    }//only startdate was selected
+    elseif(empty($criteria) && empty($start_date) && !empty($end_date)){
+
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and a.created_date='$end_date'";
+        $queryFeat="SELECT * FROM room_feature_tbl where DATE(created_date)='$end_date'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where DATE(created_date)='$end_date'";
+
+    }//only enddate was selected
+
+    elseif(!empty($criteria) && !empty($start_date) && empty($end_date)){
+
+       /* $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria') and a.created_date='$start_date'";*/
+
+        $queryFeat="SELECT * FROM room_feature_tbl where  lower(feature_name) like '%$criteria%' and DATE(created_date)='$start_date'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where lower(feature_name) like '%$criteria%' and DATE(created_date)='$start_date'";
+
+
+    }//both startdate and criteria were selected
+
+    elseif(!empty($criteria) && empty($start_date) && !empty($end_date))
+    {
+       /* $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria') and a.DATE(created_date)='$end_date'";*/
+
+        $queryFeat="SELECT * FROM room_feature_tbl where  lower(feature_name) like '%$criteria%' and DATE(created_date)='$end_date'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where lower(feature_name) like '%$criteria%' and DATE(a.created_date)='$end_date'";
+
+    }//both criteria and enddate
+    elseif(empty($criteria) && !empty($start_date) && !empty($end_date))
+    {
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and (a.created_date BETWEEN '$start_date' and '$end_date')";
+        $queryFeat="SELECT * FROM room_feature_tbl where created_date BETWEEN '$start_date' and '$end_date'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where  created_date BETWEEN '$start_date' and '$end_date'";
+    }//both startdate and enddate
+
+    elseif(!empty($criteria) && !empty($start_date) && !empty($end_date))
+    {
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+        //(a.created_date BETWEEN '$start_date' and '$end_date')lower(feature_name) like '%$criteria%'";
+
+        $queryFeat="SELECT * FROM room_feature_tbl where (created_date BETWEEN '$start_date' and '$end_date') and lower(feature_name) like '%$criteria%'";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where (created_date BETWEEN '$start_date' and '$end_date') and lower(feature_name) like '%$criteria%'";
+
+    }//all criteria, startdate and enddate
+    elseif(empty($criteria) && empty($start_date) && empty($end_date))
+    {
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id";
+
+        $queryFeat="SELECT * FROM room_feature_tbl";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl";
+        //echo "all is empty!";
+
+    }//if no info is specified, but the button is clicked.
+   /* else
+    {
+        //$queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=0";
+        $queryFeat="SELECT * FROM room_feature_tbl where feature_id=0";
+        $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where feature_id=0";
+    }//anything else.*/
+
+
+
+}//end searchNow
+else
+{
+    // $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=0";
+    $queryFeat="SELECT * FROM room_feature_tbl where feature_id=0";
+    $querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl where feature_id=0";
+
+}
+
+
+$res=mysqli_query($db->getConnection(), $queryFeat) or die(mysql_error());
+//$resSummAll=mysqli_query($db->getConnection(), $querySum) or die(mysql_error());
+$resSummAll=$db->fetchData($querySum);
+//echo "resSumAll rate ".$resSummAll['sum_rate'];
+
+
+
+
+
+
+
+
+
+
+
 
 $queryCoy="SELECT * FROM company_info_tbl";
 $resCoy=$db->fetchArrayData($queryCoy);
@@ -101,7 +217,9 @@ require_once('head.php');
                               <tbody>
                               <?php
                               $i=1;
-                              $res=mysqli_query($db->getConnection(), $queryFeat) or die(mysql_error());
+
+                              if($db->getNumOfRows($queryFeat) > 0 && $db->getNumOfRows($querySum) > 0)
+                              {
                               while($rsFeat =mysqli_fetch_array($res, MYSQLI_ASSOC))
                               {
                               ?>
@@ -118,18 +236,43 @@ require_once('head.php');
                               </tr>
                                   <?php
                                   $i++;
+                              }//end while
+                              }//end if
+                              else
+                              //if($db->getNumOfRows($queryRM) <= 0)
+                              {
+                                  ?>
+
+                                  <tr><td colspan="8" align="center">
+                                          <div class="alert alert-info fade in">
+                                              <button data-dismiss="alert" class="close close-sm" type="button">
+                                                  <i class="fa fa-times"></i>
+                                              </button>
+                                              <strong>Sorry!</strong> There is no data in the search!
+                                          </div>
+                                      </td>
+                                  </tr>
+                              <?php
                               }
                               ?>
-
 
                               </tbody>
                           </table>
                           <div class="row">
                               <div class="col-lg-4 invoice-block pull-right">
                                   <ul class="unstyled amounts">
-                                      <li><strong>Total Unit Price </strong> :<?php echo "&#8358; ".number_format($resSummAll['sum_rate'], 2); ?></li>
+
+                                        <?php
+                                     /* while($rsS =mysqli_fetch_array($resSummAll, MYSQLI_ASSOC))
+                                      {*/
+                                      ?>
+                                          <li><strong>Total Unit Price </strong> :<?php echo "&#8358; ".number_format($resSummAll['sum_rate'], 2); ?></li>
                                       <li><strong>Sub - Total amount Paid :</strong> <?php echo "&#8358; ".number_format($resSummAll['sum_discount'], 2);?></li>
                                      <li><strong>Grand Total amount Paid :</strong> <?php echo "&#8358; ".number_format($resSummAll['sum_paid'], 2);?></li>
+
+                                      <?php
+                                     /* }*/
+                                        ?>
 
                                       <!--<li><strong>VAT :</strong> -----</li>
                                       <li><strong>Grand Total :</strong> $6138</li>-->
@@ -176,6 +319,11 @@ require_once('head.php');
 
           }
           button#btnSub {
+
+              display: none;
+
+          }
+          div#dvPrint {
 
               display: none;
 

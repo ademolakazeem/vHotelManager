@@ -193,7 +193,8 @@ public function upload($path,$ownerid)
 
                                 $res = $this->db->executeQuery($qry);
                                 if($res)
-                                {    $_SESSION['image']=$realpath;
+                                {
+                                    $_SESSION['image']=$realpath;
                                     $this->audit->audit_log("User ".$_SESSION['username']." uploaded picture for user ".$this->getUserName($ownerid));
 
                                     $msg = '<div class="alert alert-success alert-block fade in">

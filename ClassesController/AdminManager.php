@@ -255,8 +255,8 @@ class AdminController
                 return $msg;
             } else {
 
-                $insertQry = "INSERT INTO room_setup_tbl (room_number,room_name, feature_id,availability, created_date, maker)
-			VALUES('$roomNumber','$roomName','$featureId','$availability','".date("Y-m-d H:i:s")."' '$userInAttendance')";
+                $insertQry = "INSERT INTO room_setup_tbl (room_number,room_name, feature_id, availability, created_date, maker)
+			VALUES('$roomNumber','$roomName','$featureId','$availability','".date("Y-m-d H:i:s")."', '$userInAttendance')";
 
                 $res = $this->db->executeQuery($insertQry);
 
@@ -1273,8 +1273,6 @@ class AdminController
         }
 
     }//addNewRole
-
-
     //addition ends here
     public function validateAge($then)
     {
@@ -1294,7 +1292,8 @@ class AdminController
              </div>';
             return $msg;
         }
-    }
+    }//end ValidateAge
+
    //Update Starts here
     public function updateUserSetup()
     {
@@ -1404,7 +1403,7 @@ class AdminController
 
 
 
-    }
+    }//end updateUserSetup
     public function updateUserPassword()
     {
         $currentPassword = $this->fm->processfield($_POST['current_password']);
@@ -2605,16 +2604,146 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
 
     }//checkOut
+    public function uploadCompany($path, $coyid)
+{
+if(empty($coyid))
+{
+$msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Naada!</strong> Please create the company information first! Company information does not exist!
+             </div>';
+return $msg;
 
-   public function uploadCompany($path, $coyid)
+}
+if(empty($_FILES["file"]["name"]))
+{
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Nah!</strong> Select file to be uploaded!
+             </div>';
+    return $msg;
+
+}
+if($_FILES["file"]["size"] > 900000)
+{
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> The photograph is more than the allowed upload size of 900kb!
+             </div>';
+    return $msg;
+
+}
+//generate 4digit random number
+
+
+$filename = $coyid."_".$_FILES["file"]["name"];
+
+if ((($_FILES["file"]["type"] == "image/png")||($_FILES["file"]["type"] == "image/jpeg")
+    ||($_FILES["file"]["type"] == "image/jpg")||($_FILES["file"]["type"] == "image/gif")||($_FILES["file"]["type"] == "image/pjpeg")))
+{
+
+    $target_path = "../../imgs/uploads/".$path."/".$filename;
+    $realpath = "../../imgs/uploads/".$path."/".$filename;
+    //check if the user has a pix before remove it and replace
+
+    if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_path))
     {
-        if(empty($coyid))
+
+        $pcqy ="";
+        if($path=="coy")
+        {
+            //$_SESSION['staimage']=$realpath;
+            $pcqy = "SELECT * FROM company_info_tbl WHERE coy_id='$coyid'";
+            $pxdata = $this->db->fetchData($pcqy);
+            $imagename=$pxdata['coy_image'];
+
+            //"../../".
+
+            //chmod($imagename, 0777);
+            if(!empty($imagename))unlink($imagename);
+
+            $qry="UPDATE  company_info_tbl SET coy_image='$realpath' WHERE coy_id='$coyid'";
+            //mysql_query("UPDATE users_tbl SET imagepath='$realpath' WHERE user_id='$ownerid'");
+            echo "Path: ".$realpath;
+
+            $res = $this->db->executeQuery($qry);
+            if($res)
+            {    $_SESSION['image']=$realpath;
+                $this->audit->audit_log("User ".$_SESSION['username']." uploaded picture for company id".$coyid);
+
+                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Gracias!
+                                  </h4>
+                                  <p>Picture uploaded successfully!</p>
+                              </div>';
+                return $msg;
+
+
+            }
+
+        }
+        /*
+         * else
+        {
+            //$_SESSION['image']=$realpath;
+            $pcqy = "SELECT * FROM tblstudent WHERE stud_id='$ownerid'";
+            $pxdata = $this->db->fetchData($pcqy);
+            $imagename="../".$pxdata['imgpath'];
+
+            if(!empty($imagename)) unlink($imagename);
+
+            mysql_query("UPDATE tblstudent SET imgpath='$realpath' WHERE stud_id='$ownerid'");
+            $this->audit->audit_log("Admin ".$_SESSION['username']." uploaded picture ".$filename." for student ".$this->getStudentName($ownerid));
+
+                $this->audit->audit_log($this->getStudentName($ownerid)." uploaded a picture ".$filename);
+                return '<font color="#006600" size="-2">Picture uploaded successfully!</font>';
+
+        }*/
+    }
+    else
+        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> File Upload failed, please try again!
+             </div>';
+    return $msg;
+
+
+}//end if checking file type
+else
+{
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Invalid File selected!
+             </div>';
+    return $msg;
+
+
+}
+}//end uploadCompany
+    public function excelUpload($table)
+    {
+        if(empty($table))
         {
             $msg = '<div class="alert alert-block alert-danger fade in">
                <button data-dismiss="alert" class="close close-sm" type="button">
                  <i class="fa fa-times"></i>
                </button>
-               <strong>Naada!</strong> Please create the company information first! Company information does not exist!
+               <strong>Naada!</strong> Please select the table name first!
              </div>';
             return $msg;
 
@@ -2630,97 +2759,404 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
             return $msg;
 
         }
-        if($_FILES["file"]["size"] > 900000)
+
+
+
+        $filename = $table."-".$_FILES["file"]["name"];
+        // $filename = $_FILES["file"]["name"];
+
+        if ((($_FILES["file"]["type"] == "application/vnd.ms-excel")||($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")))
         {
-            $msg = '<div class="alert alert-block alert-danger fade in">
-               <button data-dismiss="alert" class="close close-sm" type="button">
-                 <i class="fa fa-times"></i>
-               </button>
-               <strong>Oops!</strong> The photograph is more than the allowed upload size of 900kb!
-             </div>';
-            return $msg;
-
-        }
-//generate 4digit random number
+            //||($_FILES["file"]["type"] == "text/csv")
+            $target_path = "../../file_uploads/excel/".$filename;
+            $realpath = "../../file_uploads/excel/".$filename;
 
 
-        $filename = $coyid."_".$_FILES["file"]["name"];
 
-        if ((($_FILES["file"]["type"] == "image/png")||($_FILES["file"]["type"] == "image/jpeg")
-            ||($_FILES["file"]["type"] == "image/jpg")||($_FILES["file"]["type"] == "image/gif")||($_FILES["file"]["type"] == "image/pjpeg")))
-        {
-
-            $target_path = "../../imgs/uploads/".$path."/".$filename;
-            $realpath = "../../imgs/uploads/".$path."/".$filename;
             //check if the user has a pix before remove it and replace
 
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_path))
             {
 
-                $pcqy ="";
-                if($path=="coy")
+            //check if the user has a pix before remove it and replace
+            //$databasetable = "vhotelmgrdb";
+
+                $ext=pathinfo($target_path, PATHINFO_EXTENSION);
+                if($ext=="csv")
                 {
-                    //$_SESSION['staimage']=$realpath;
-                    $pcqy = "SELECT * FROM company_info_tbl WHERE coy_id='$coyid'";
-                    $pxdata = $this->db->fetchData($pcqy);
-                    $imagename=$pxdata['coy_image'];
+                    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops! </strong>Invalid file upload, .CSV not supported, only .xls and .xlsx!
+                </div>';
+                    return $msg;
+                }
 
-                    //"../../".
 
-                    //chmod($imagename, 0777);
-                    if(!empty($imagename))unlink($imagename);
+/************************ YOUR DATABASE CONNECTION END HERE  ****************************/
 
-                    $qry="UPDATE  company_info_tbl SET coy_image='$realpath' WHERE coy_id='$coyid'";
-                    //mysql_query("UPDATE users_tbl SET imagepath='$realpath' WHERE user_id='$ownerid'");
-                    echo "Path: ".$realpath;
 
-                    $res = $this->db->executeQuery($qry);
-                     if($res)
-                    {    $_SESSION['image']=$realpath;
-                        $this->audit->audit_log("User ".$_SESSION['username']." uploaded picture for company id".$coyid);
+set_include_path(get_include_path() . PATH_SEPARATOR . '../../ClassesController/');
+include 'PHPExcel/IOFactory.php';
 
-                        $msg = '<div class="alert alert-success alert-block fade in">
+// This is the file path to be uploaded.
+//$inputFileName = 'uInfo.xlsx';
+
+               $inputFileName = $target_path;
+            //echo "inputFilename:".$inputFileName;
+ //$path_parts = pathinfo($inputFileName);
+
+try {
+    $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+} catch(Exception $e) {
+   // die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+    $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops! </strong>Error loading file '.pathinfo($inputFileName,PATHINFO_BASENAME).': '.$e->getMessage().'
+             </div>';
+   //return $msg;
+}
+
+
+$allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+$arrayCount = count($allDataInSheet);  // Here get total count of row in that Excel sheet
+
+            if($table=="bar_setup_tbl")
+            {
+                for($i=2;$i<=$arrayCount;$i++)
+                {
+                    $itemType = trim($allDataInSheet[$i]["A"]);
+                    $itemName = trim($allDataInSheet[$i]["B"]);
+                    $itemRate = trim($allDataInSheet[$i]["C"]);
+                    $quantity = trim($allDataInSheet[$i]["D"]);
+                    $threshold = trim($allDataInSheet[$i]["E"]);
+
+                    $userInAttendance=$_SESSION['username'];
+
+
+
+                    $query = "SELECT item_name FROM $table WHERE item_type = '".$itemType."' and item_name = '".$itemName."'";
+                    $sql = $this->db->executeQuery($query);
+                    $recResult = mysqli_fetch_array($sql);
+                    $existName = $recResult["item_name"];
+                        if($existName=="") {
+                        //$insertTable= mysqli_query($link, "insert into $databasetable (name, email) values('".$userName."', '".$userMobile."');");
+
+
+                            $insertQry = "INSERT INTO bar_setup_tbl (item_type, item_name,item_rate,quantity,quantity_available,threshold,created_by, created_date)
+			VALUES('$itemType','$itemName','$itemRate','$quantity','$quantity','$threshold','$userInAttendance','".date("Y-m-d H:i:s")."')";
+
+                            $insertHstQry = "INSERT INTO bar_setup_history_tbl (item_type, item_name,item_rate,quantity,quantity_available,threshold,created_by, created_date)
+			VALUES('$itemType','$itemName','$itemRate','$quantity','$quantity','$threshold','$userInAttendance','".date("Y-m-d H:i:s")."')";
+
+                            $res = $this->db->executeQuery($insertQry);
+                            $resHst = $this->db->executeQuery($insertHstQry);
+
+                            if($res && $resHst)
+                            {
+                                $this->audit->audit_log("User ".$_SESSION['username']." has successfully upload batch Bar Setup!");
+
+                                $msg = '<div class="alert alert-success alert-block fade in">
                                   <button data-dismiss="alert" class="close close-sm" type="button">
                                       <i class="fa fa-times"></i>
                                   </button>
                                   <h4>
                                       <i class="fa fa-ok-sign"></i>
-                                    Gracias!
+                                    Aprc8tn!
                                   </h4>
-                                  <p>Picture uploaded successfully!</p>
+                                  <p>You have successfully uploaded batch Bar Setup!</p>
                               </div>';
+                                //return $msg;
+
+
+                            }
+                            else{
+                                $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Something went wrong!</strong> Some data cannot be uploaded!
+                            </div>';
+                                return $msg;
+
+                                //continue;
+                            }
+
+                            //I moved a msg from here
+
+                        } else {
+                            $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Something went wrong!</strong>'. $existName.' already exist, Please remove it from the file!
+                            </div>';
+                            return $msg;
+
+                        }
+                    }//end for
+                //return $msg;
+            }//end if bar_setup_tbl
+            else if($table=="bar_tbl")
+                {
+                    for($i=2;$i<=$arrayCount;$i++)
+                    {
+                        $itemId = trim($allDataInSheet[$i]["A"]);
+                        $quantity = trim($allDataInSheet[$i]["B"]);
+                        $itemRate = trim($allDataInSheet[$i]["C"]);
+                        $userInAttendance=$_SESSION['username'];
+
+                        if(empty($itemId)|| empty($itemRate)||empty($quantity)){
+                            $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Oops!</strong> Please do not upload empty Id, rate or quantity. Thank you.
+                            </div>';
+                            return $msg;
+
+                        }
+                        else if(!is_numeric($itemId) || !is_numeric($itemRate) || !is_numeric($quantity)){
+                            $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Whoa!</strong> Please item id, rate and quantity must be numeric only. Thank you.
+                            </div>';
+                            return $msg;
+                        }
+
+
+                        $query = "SELECT * FROM bar_setup_tbl WHERE item_id = '".$itemId."' and item_rate='".$itemRate."'";
+                        //$sql = $this->db->executeQuery($query);
+                        //$recResult = mysqli_fetch_array($sql);
+                        //$existId = $recResult["item_id"];
+                        $getNOR = $this->db->getNumOfRows($query);
+                        echo "the getNoR:".$getNOR;
+                        if($getNOR > 0) {
+                            //added ffresh
+                            $totalPrice= floatval($itemRate)*floatval($quantity);
+                            $itemRate=floatval($itemRate);
+                            $quantity=floatval($quantity);
+                            $totalPrice=floatval($totalPrice);
+
+
+                            $insertQry = "INSERT INTO bar_tbl
+                  (item_id, quantity_sold,rate,total,attended_to_by, date_created)
+			VALUES('$itemId','$quantity','$itemRate','$totalPrice','$userInAttendance', '".date("Y-m-d H:i:s")."')";
+
+                            $res = $this->db->executeQuery($insertQry);
+
+                            if($res)
+                            {
+
+                                $qtyQuery = "SELECT quantity_available qtyAvailable FROM `bar_setup_tbl` where quantity_available > 0 and item_id=$itemId";
+                                //echo "I got here after string qtyQuery and item_id:".$itemId;
+                                $qtyRow = $this->db->fetchData($qtyQuery);
+                                $qtyCounted=$qtyRow['qtyAvailable'];
+
+                                $newQtyAvail=floatval($qtyCounted) - floatval($quantity);
+                                $updQuery = "UPDATE bar_setup_tbl SET quantity_available = '$newQtyAvail', updated_date ='".date("Y-m-d H:i:s")."'  WHERE item_id=$itemId";
+                                $upRes = $this->db->executeQuery($updQuery);
+                                $this->audit->audit_log("User ".$_SESSION['username']." added a new user - ".$userInAttendance);
+
+
+                                $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully uploaded batch Bar item!</p>
+
+                              </div>';
+                                //return $msg;
+
+
+                            }
+                            else{
+                                $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Something went wrong!</strong> Some data cannot be uploaded!
+                            </div>';
+                                return $msg;
+
+                                //continue;
+                            }
+
+                            //I moved a msg from here
+
+                        } else {
+                            $msg = '<div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i></button>
+                                <strong>Something went wrong!</strong> The Item Id or the rate (price) you supplied does not exist in our database, please add appropriate values and try again!
+                            </div>';
+                            return $msg;
+
+                        }//else if getNOR
+                    }//end for
+                    //return $msg;
+                }//end if bar_tbl
+            else if($table=="hall_reservation_tbl")
+            {
+                for($i=2;$i<=$arrayCount;$i++)
+                {
+                    $client_name = trim($allDataInSheet[$i]["A"]);
+                    $client_address = trim($allDataInSheet[$i]["B"]);
+                    $client_email = trim($allDataInSheet[$i]["C"]);
+                    $client_phone = trim($allDataInSheet[$i]["D"]);
+                    $purpose = trim($allDataInSheet[$i]["E"]);
+                    $startDate = trim($allDataInSheet[$i]["F"]);
+                    $startTime = trim($allDataInSheet[$i]["G"]);
+                    $number_of_days = trim($allDataInSheet[$i]["H"]);
+                    $endDate = trim($allDataInSheet[$i]["I"]);
+                    $endTime = trim($allDataInSheet[$i]["J"]);
+                    $hall_feature_rate = trim($allDataInSheet[$i]["K"]);
+                    $hall_number = trim($allDataInSheet[$i]["L"]);
+                    $userInAttendance=$_SESSION['username'];
+
+
+
+
+
+
+
+                   // new
+
+                    //validate
+                    if(empty($client_name)||empty($client_address)||empty($client_phone)||empty($hall_number)||empty($hall_feature_rate) ||empty($number_of_days)||empty($startDate)
+                        ||empty($startTime)||empty($endDate) ||empty($purpose) ||empty($endTime)
+                    )
+                    {
+                        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please make sure all required fields are completed!
+             </div>';
+                        return $msg;
+                    }
+
+                    if(!filter_var($client_email, FILTER_VALIDATE_EMAIL)) {
+                        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oops!</strong> Please Specify a valid email!
+             </div>';
+                        return $msg;
+                    }
+                    //, $min
+                    // $then will first be a string-date
+                    $inDate = strtotime($startDate);
+                    $outDate=strtotime($endDate);
+                    //$inTime=strtotime($startTime);
+
+                    if($outDate < $inDate)
+                    {
+                        $msg = '<div class="alert alert-block alert-danger fade in">
+                 <button data-dismiss="alert" class="close close-sm" type="button">
+                   <i class="fa fa-times"></i>
+                 </button>
+                 <strong>Nah!</strong> Check out date cannot come first!
+               </div>';
                         return $msg;
 
 
                     }
 
-                }
-                /*
-                 * else
-                {
-                    //$_SESSION['image']=$realpath;
-                    $pcqy = "SELECT * FROM tblstudent WHERE stud_id='$ownerid'";
-                    $pxdata = $this->db->fetchData($pcqy);
-                    $imagename="../".$pxdata['imgpath'];
+                    //check if the username has not beeen registered before
 
-                    if(!empty($imagename)) unlink($imagename);
+                    $qry = "SELECT * FROM hall_reservation_tbl WHERE lower(client_name) = '". strtolower($client_name)."' and start_date='$startDate'";
 
-                    mysql_query("UPDATE tblstudent SET imgpath='$realpath' WHERE stud_id='$ownerid'");
-                    $this->audit->audit_log("Admin ".$_SESSION['username']." uploaded picture ".$filename." for student ".$this->getStudentName($ownerid));
+                    $row = $this->db->getNumOfRows($qry);
+                    if($row >0 )
+                    {
+                        //username in use
+                        $msg = '<div class="alert alert-block alert-danger fade in">
+               <button data-dismiss="alert" class="close close-sm" type="button">
+                 <i class="fa fa-times"></i>
+               </button>
+               <strong>Oh oh!</strong> The hall has already in been reserved, Please try another Hall!
+             </div>';
+                        return $msg;
 
-                        $this->audit->audit_log($this->getStudentName($ownerid)." uploaded a picture ".$filename);
-                        return '<font color="#006600" size="-2">Picture uploaded successfully!</font>';
+                    }
+                    else
+                    {
+                        /*//generate 4digit random number
+                        $serial = rand(100,999).substr(str_shuffle("0123456789"),0,1);
+                        //call a method that returns school's shorth form
+                        $minshr = "VHM";
+                        $curDate=date('YmdHis');
+                        $userid = $minshr.$curDate.$serial;//generate*/
+                        $userInAttendance=$_SESSION['username'];
+                        $delimiter=',';
+                        $hall_feature_rate=str_replace($delimiter, '', $hall_feature_rate);
+                        $totalPrice= floatval($hall_feature_rate)*floatval($number_of_days);
+                        //This is acctually rate minus discount setup in the hall features.
+                        $hall_feature_rate=floatval($hall_feature_rate);
+                        $totalPrice=floatval($totalPrice);
+                        //$room_rate=number_format($hall_feature_rate,2);
+                        //$totalPrice=number_format($totalPrice,2);
+                        $insertQry = "INSERT INTO hall_reservation_tbl
+                  (client_name, client_address,client_email,client_phone,purpose_of_use,start_date,startTime,no_of_days,end_date,end_time, rate, hall_number,price_paid, attended_to_by, created_date)
+			VALUES('$client_name','$client_address','$client_email','$client_phone','$purpose','$startDate','$startTime','$number_of_days','$endDate', '$endTime','$hall_feature_rate','$hall_number','$totalPrice','$userInAttendance', '".date("Y-m-d H:i:s")."')";
 
-                }*/
-            }
+                        $res = $this->db->executeQuery($insertQry);
+
+                        if($res)
+                        {
+                            $this->audit->audit_log("User ".$_SESSION['username']." added a new hall client - ".$client_name);
+
+                            $msg = '<div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="fa fa-times"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="fa fa-ok-sign"></i>
+                                    Thanks!
+                                  </h4>
+                                  <p>You have successfully booked an hall for a client!</p>
+                              </div>';
+                            //return $msg;
+
+
+                        }
+                    }
+
+
+                    //end new
+
+                }//end for
+                //return $msg;
+            }//end if bar_tbl
+
+
+
+
+
+
+
+
+
+
+            }//endif move
             else
+            {
                 $msg = '<div class="alert alert-block alert-danger fade in">
                <button data-dismiss="alert" class="close close-sm" type="button">
                  <i class="fa fa-times"></i>
                </button>
-               <strong>Oops!</strong> File Upload failed, please try again!
+               <strong>Oops! </strong> File Upload failed, please try again!
              </div>';
-            return $msg;
+            //return $msg;
+            }//end elseif
+
+
 
 
         }//end if checking file type
@@ -2732,11 +3168,13 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
                </button>
                <strong>Oops!</strong> Invalid File selected!
              </div>';
-            return $msg;
+           // return $msg;
 
 
         }
-    }//end uploadCompany
+
+        return $msg;
+    }//end excelUpload
 
 /*
     public function updateCompanyInfo()
@@ -2841,8 +3279,7 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
        return $this->buildMenu(0, $menu);
 
     }//end asideMenu
-
-// Create the main function to build milti-level menu. It is a recursive function.
+    // Create the main function to build milti-level menu. It is a recursive function.
    public function buildMenu($parent, $menu) {
         $html = "";
 
@@ -2863,8 +3300,7 @@ price_paid='$totalPrice', attended_to_by='$userInAttendance', updated_date='".da
         }
         return $html;
     }
-
-    public function assignNow(){
+   public function assignNow(){
         $roleId = $this->fm->processfield($_POST['role_id']);
 
         $userInAttendance=$_SESSION['username'];

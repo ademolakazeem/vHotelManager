@@ -47,24 +47,7 @@ require_once('head.php');
                  <div class="breadcrumbs">
                      <div class="container">
                          <div class="row">
-                             <!--breadcrumbs start-->
-                             <div class="breadcrumbs">
-                                 <div class="container">
-                                     <div class="row">
-                                         <div class="col-lg-4 col-sm-4">
-                                             <h1>Assign Role Permission</h1>
-                                         </div>
-                                         <div class="col-lg-8 col-sm-8">
-                                             <ol class="breadcrumb pull-right">
-                                                 <li><a href="index.php">Home</a></li>
-                                                 <!--<li><a href="show_update_room_info.php">Show Room Setup</a></li>-->
-                                                 <li class="active">Assign Role Permission</li>
-                                             </ol>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!--breadcrumbs end-->
+
                              <div class="col-lg-4 col-sm-4">
                                  <h2>Role Permissions</h2>
                              </div>
@@ -149,7 +132,7 @@ require_once('head.php');
                                           <th class="hidden-phone">Logo Name</th>
                                           <th class="hidden-phone">Created Date</th>
                                           <!--<th class="hidden-phone">Maker</th>-->
-                                          <th><input type="checkbox" id="selecctall"/> SelecctAll</th>
+                                          <th><input type="checkbox" id="selecctall"/> SelectAll</th>
 
                                       </tr>
                                       </thead>

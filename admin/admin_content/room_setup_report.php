@@ -1,13 +1,82 @@
 <?php
 require_once('authenticate.php');
+require_once('../../ClassesController/format.php');
 $db = new DBConnecting();
 $adm = new AdminController();
+$fm = new Format();
 require_once('access_denied_inclusion.php');
-$queryFeat="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id";
 
-//$querySum="SELECT sum(price_paid)sum_paid, sum(rate) sum_rate, sum(discount) sum_discount FROM room_feature_tbl";
-//$resSummAll=$db->fetchArrayData($querySum);
+if(isset($_POST['searchNow']))
+{
+    //$start_date = mysqli_real_escape_string($db->getConnection(),$_POST['start_date']);
+    //$end_date = mysqli_real_escape_string($db->getConnection(),$_POST['end_date']);
+    $criteria = $fm->processfield($_POST['criteria']);
+    $start_date = $fm->processfield($_POST['start_date']);
+    $end_date = $fm->processfield($_POST['end_date']);
+    $criteria=strtolower($criteria);
+if(!empty($criteria) && empty($start_date) && empty($end_date)){
+    //!empty($criteria)
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria')";
 
+}//end if only criteria was selected
+
+    elseif(empty($criteria) && !empty($start_date) && empty($end_date)){
+
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and a.created_date='$start_date'";
+
+    }//only startdate was selected
+  elseif(empty($criteria) && empty($start_date) && !empty($end_date)){
+
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and a.created_date='$end_date'";
+
+  }//only enddate was selected
+
+    elseif(!empty($criteria) && !empty($start_date) && empty($end_date)){
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria') and a.created_date='$start_date'";
+
+     }//both startdate and criteria were selected
+
+    elseif(!empty($criteria) && empty($start_date) && !empty($end_date))
+    {
+        $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and
+    (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria') and a.created_date='$end_date'";
+    }//both criteria and enddate
+    elseif(empty($criteria) && !empty($start_date) && !empty($end_date))
+    {
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and (a.created_date BETWEEN '$start_date' and '$end_date')";
+    //and (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria')
+    }//both startdate and enddate
+
+    elseif(!empty($criteria) && !empty($start_date) && !empty($end_date))
+    {
+        $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id and (a.created_date BETWEEN '$start_date' and '$end_date')
+        and (a.room_number='$criteria' || lower(a.room_name) like '%$criteria%' || a.availability='$criteria')";
+    }//all criteria, startdate and enddate
+
+
+
+
+
+    elseif(empty($criteria) && empty($start_date) && empty($end_date))
+    {
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=b.feature_id";
+    }//if no info is specified, but the button is clicked.
+    else
+    {
+        $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=0";
+    }//anything else.
+
+
+
+}//end searchNow
+else
+    $queryRM="SELECT a.*, b.feature_name FROM room_setup_tbl a, room_feature_tbl b where a.feature_id=0";
+
+
+
+//Start for company
 $queryCoy="SELECT * FROM company_info_tbl";
 $resCoy=$db->fetchArrayData($queryCoy);
 $coyId=$resCoy['coy_id'];
@@ -17,11 +86,7 @@ $coyPhone=$resCoy['coy_phone'];
 $coEmail=$resCoy['coy_email'];
 $webAddress=$resCoy['web_address'];
 $coyImage=$resCoy['coy_image'];
-
-
-
-
-
+//End for company
 ?>
 
 
@@ -48,8 +113,27 @@ require_once('head.php');
       <section id="main-content">
           <section class="wrapper">
               <!-- invoice start-->
+              <!--breadcrumbs start-->
+              <div class="breadcrumbs" id="dvPrint">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-4 col-sm-4">
+                              <h2>Room Setup Report</h2>
+                          </div>
+                          <div class="col-lg-8 col-sm-8">
+                              <ol class="breadcrumb pull-right">
+                                  <li><a href="index.php">Home</a></li>
+                                  <li><a href="show_room_setup_report.php">Show Rm Setup Rpt</a></li>
+                                  <li class="active">Rm Setup Rpt</li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--breadcrumbs end-->
               <section>
                   <div class="panel panel-primary">
+
                       <!--<div class="panel-heading navyblue"> INVOICE</div>-->
                       <div class="panel-body">
                           <div class="row invoice-list">
@@ -102,23 +186,44 @@ require_once('head.php');
                               <tbody>
                               <?php
                               $i=1;
-                              $res=mysqli_query($db->getConnection(), $queryFeat) or die(mysql_error());
-                              while($rsFeat =mysqli_fetch_array($res, MYSQLI_ASSOC))
+                              $res=mysqli_query($db->getConnection(), $queryRM) or die(mysql_error());
+
+                              if($db->getNumOfRows($queryRM) > 0)
+                              {
+
+                              while($rsRSetUp =mysqli_fetch_array($res, MYSQLI_ASSOC))
                               {
                               ?>
                               <tr>
                                   <td><?php echo $i; ?></td>
-                                  <td><?php echo $rsFeat['room_number']; ?></td>
-                                  <td class="hidden-phone"><?php echo $rsFeat['room_name']; ?></td>
-                                  <td><?php echo $rsFeat['feature_name']; ?></td>
-                                  <td><?php echo $rsFeat['availability']; ?></td>
-                                  <td><?php echo $rsFeat['created_date']; ?></td>
-                                  <td class=""><?php echo $rsFeat['maker']; ?></td>
+                                  <td><?php echo $rsRSetUp['room_number']; ?></td>
+                                  <td class="hidden-phone"><?php echo $rsRSetUp['room_name']; ?></td>
+                                  <td><?php echo $rsRSetUp['feature_name']; ?></td>
+                                  <td><?php echo $rsRSetUp['availability']; ?></td>
+                                  <td><?php echo $rsRSetUp['created_date']; ?></td>
+                                  <td class=""><?php echo $rsRSetUp['maker']; ?></td>
 
 
                               </tr>
                                   <?php
                                   $i++;
+                              }//end while
+                              }//end if
+                              else
+                                  //if($db->getNumOfRows($queryRM) <= 0)
+                              {
+                                  ?>
+
+                                  <tr><td colspan="7" align="center">
+                                          <div class="alert alert-info fade in">
+                                              <button data-dismiss="alert" class="close close-sm" type="button">
+                                                  <i class="fa fa-times"></i>
+                                              </button>
+                                              <strong>Sorry!</strong> There is no data in the search!
+                                          </div>
+                                      </td>
+                                  </tr>
+                              <?php
                               }
                               ?>
 
@@ -178,13 +283,17 @@ require_once('head.php');
               display: none;
 
           }
+          div#dvPrint {
+
+              display: none;
+
+          }
 
 
       }
 
   </style>
-
-<!--New for Export PDF, Excel-->
+  <!--New for Export PDF, Excel-->
   <!--Jquery Plugin-->
   <script type="text/javascript" src="../../ClassesController/htmltable_export/tableExport.js"></script>
       <script type="text/javascript" src="../../ClassesController/htmltable_export/jquery.base64.js"></script>

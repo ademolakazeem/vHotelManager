@@ -6,7 +6,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <!--<link rel="shortcut icon" href="img/favicon.png">-->
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
-    <title>vHotel Management System</title>
+    <title>Hotellia&#153; Hotel Management System</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">

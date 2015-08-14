@@ -180,6 +180,11 @@ require_once('head.php');
               display: none;
 
           }
+          div#dvPrint {
+
+              display: none;
+
+          }
 
 
       }

@@ -45,7 +45,7 @@ require_once('head.php');
                      <div class="container">
                          <div class="row">
                              <div class="col-lg-4 col-sm-4">
-                                 <h1>New Room Setup</h1>
+                                 <h2>New Room Setup</h2>
                              </div>
                              <div class="col-lg-8 col-sm-8">
                                  <ol class="breadcrumb pull-right">

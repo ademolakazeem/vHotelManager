@@ -121,8 +121,9 @@ require_once('head.php');
                                                    $numCount+=1;
                                                }
  */
-                                              $dPerm=$rsEditPerm['parent_id'];
-                                              $selOnlyQry="SELECT perm_id, page_name, parent_id FROM permissions_tbl where perm_id = '$dPerm'";
+                                              //$dPerm=$rsEditPerm['parent_id'];
+                                              $dPerm=$rsEditPerm['perm_id'];
+                                              $selOnlyQry="SELECT perm_id, page_name, parent_id FROM permissions_tbl where parent_id = '$dPerm'";
                                               $rsOnlyPerm = $db->fetchArrayData($selOnlyQry);
 
                                               ?>
@@ -133,9 +134,23 @@ require_once('head.php');
 -->
 
                                               <select name="parentId" id="parentId" class="form-control m-bot15">
-                                                  <option value="<?php echo $rsOnlyPerm['perm_id'];?>"><?php echo $rsOnlyPerm['perm_id']." ".$rsOnlyPerm['page_name'];?></option>
 
                                                   <?php
+                                                  if($db->getNumOfRows($selOnlyQry)  > 0)
+                                                  {?>
+
+                                                  <option value="<?php echo $rsEditPerm['parent_id'];?>"><?php echo $rsOnlyPerm['perm_id']." ".$rsOnlyPerm['page_name'];?></option>
+                                                  <?php
+                                                  }
+                                                  else{
+
+                                                  ?>
+                                                  <option value="0">--- Select ---</option>
+                                                  <?php
+                                                  }
+
+                                                  ?>
+                                                <?php
 
                                                   $query = "SELECT * FROM `permissions_tbl` where parent_id=0";
                                                   $conn=$db->getConnection();
@@ -171,6 +186,7 @@ require_once('head.php');
                                           <div class="col-lg-6">
 
                                               <select name="logoName" id="logoName" class="form-control m-bot15">
+                                                  <option value="">--- Select Logo ---</option>
                                                   <?php
                                                   if($rsEditPerm['logo_name']=='fa fa-dashboard'){
                                                       $logName= "Dashboard Logo";
@@ -198,7 +214,7 @@ require_once('head.php');
                                                       $logName="";
                                                   }
                                                   ?>
-                                                  <option value="<?php echo $logName;?>"><?php echo $logName;?> </option>
+                                              <option value="<?php echo $logName;?>"><?php echo $logName;?> </option>
                                               <option value="fa fa-dashboard">Dashboard Logo</option>
                                               <option value="fa fa-cogs">Manager (Settings) Logo</option>
                                               <option value="fa fa-tasks">Reservation (tasks) Logo</option>

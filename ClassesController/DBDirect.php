@@ -64,7 +64,8 @@ class DBConnecting
         //$res=$this->mysqli->query($qry) or die(mysql_error());
         $res=mysqli_query($this->conn, $qry);
         //_query($qry) or die(mysql_error());
-		$num=mysqli_num_rows($res);
+		//$num=mysqli_num_rows($res);
+        $num=mysqli_num_rows($res);
         //$num=mysql_num_rows($this->mysqli->query($qry) or die(mysql_error()));
 
 		return $num;
